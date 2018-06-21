@@ -13,10 +13,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/api/test', (req, res)=> {
-  console.log('api hit')
+app.get('/auth/google', (req, res)=> {
+  console.log('auth api hit')
   res.send('Supppppp')
 })
+
+app.get('/auth/google/callback', (req, res => {
+
+}));
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('server is listening')
