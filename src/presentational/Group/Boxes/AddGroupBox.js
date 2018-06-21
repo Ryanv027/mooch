@@ -1,12 +1,13 @@
 import React , { Component } from 'react'
-import styles from './Dashboard.css'
 
-class Dashboard extends Component {
+class AddGroupBox extends Component {
     render() {
-        return (
+        return(
             <div>
                 Yo-Yo Ma's Mama's yo-yo, yo
             </div>
         )
     }
 }
+
+export default AddGroupBox
