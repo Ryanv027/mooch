@@ -1,0 +1,13 @@
+.groupBox {
+    border: 1mm solid ;
+    width: 300px ;
+    height: 300px ;
+    margin: 25px 25px;
+}
+
+.addGroupBox {
+    border: 1mm dashed ;
+    width: 300px ;
+    height: 300px ;
+    margin: 25px 25px;
+}

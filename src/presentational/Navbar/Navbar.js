@@ -3,16 +3,28 @@ import styles from './Navbar.css'
 
 class Navbar extends Component {
 
-    render() {
-        return(
+    sayHello = () => {
+        console.log("hello!")
+    }
+
+    render = () => {
+        return (
             <nav>
                 <div className = "nav-wrapper">
-                    <a className="brand-logo center">mooch</a>
+                        <a className="brand-logo center">mooch</a>
                     <div className = "left">
-                        <a className = {styles.padL}>home </a>
+                        <ul>
+                            <li>
+                                <a className = {styles.padL} onClick = {this.sayHello}>home</a>
+                            </li>
+                        </ul>
                     </div>
                     <div className = "right">
-                        <a className = {styles.padR}>logout </a>
+                        <ul>
+                            <li>
+                                <a className = {styles.padR} onClick = {this.sayHello}>logout</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
