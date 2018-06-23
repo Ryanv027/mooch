@@ -2,20 +2,33 @@ import React , { Component } from 'react'
 import Navbar from '../Navbar/Navbar'
 import AddGroupBox from '../Group/Boxes/AddGroupBox'
 import GroupBox from '../Group/Boxes/GroupBox'
-// import styles from './Dashboard.css'
+import styles from './Dashboard.css'
 
 class Dashboard extends Component {
+
     state = {
 
     }
 
-    render() {
+    render = () => {
         return (
             <div>
                 <Navbar />
-                <div>
-                   <AddGroupBox />
-                   <GroupBox />
+                <div className = "row">
+                    <div className = {styles.groupContainer}>
+                        <div className = "col s6">
+                            <AddGroupBox />
+                        </div>
+                        <div className = "col s6">
+                            <GroupBox />
+                        </div>
+                        <div className = "col s6">
+                            <GroupBox />
+                        </div>
+                        <div className = "col s6">
+                            <GroupBox />
+                        </div>
+                    </div>
                 </div>
             </div>
         )

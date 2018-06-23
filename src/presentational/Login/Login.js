@@ -11,7 +11,7 @@ class Login extends Component {
         console.log(response)
       })
   }
-  render(){
+  render = () => {
     return (
       <div className={styles.loginContainer}>
         <h1>Login...if you dare.</h1> 

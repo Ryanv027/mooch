@@ -5,11 +5,12 @@ import Dashboard from './presentational/Dashboard/Dashboard'
 
 
 class App extends Component {
-  componentDidMount() {
+  
+  componentDidMount = () => {
     
   }
 
-  render() {
+  render = () => {
     return (
         <BrowserRouter>
           <Switch>
