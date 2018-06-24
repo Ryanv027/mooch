@@ -6,6 +6,6 @@
   background-color: grey;
   height: 100px;
   width: 80%;
-  margin: 0 auto;
+  margin: 100px auto;
   flex-flow: column;
 }
