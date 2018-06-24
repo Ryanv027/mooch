@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Link, Switch, NavLink } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import createHistory from "history/createBrowserHistory";
 
