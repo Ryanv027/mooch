@@ -7,6 +7,10 @@ class Navbar extends Component {
         console.log("hello!")
     }
 
+    sayGoodbye = () => {
+        console.log("goodbye!")
+    }
+
     render = () => {
         return (
             <nav>
@@ -22,7 +26,7 @@ class Navbar extends Component {
                     <div className = "right">
                         <ul>
                             <li>
-                                <a className = {styles.padR} onClick = {this.sayHello}>logout</a>
+                                <a className = {styles.padR} onClick = {this.sayGoodbye}>logout</a>
                             </li>
                         </ul>
                     </div>
