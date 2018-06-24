@@ -1,25 +1,20 @@
-import React, { Component } from 'react'
-import { BrowserRouter , Switch , Route } from 'react-router-dom'
-import Login from './presentational/Login/Login'
-import Dashboard from './presentational/Dashboard/Dashboard'
+import React, { Component } from 'react';
+
+import Login from './presentational/Login/Login';
 
 
 class App extends Component {
-  
-  componentDidMount = () => {
+  componentDidMount() {
     
   }
 
-  render = () => {
+  render() {
     return (
-        <BrowserRouter>
-          <Switch>
-            <Route exact path = "/" component = {Login}  />
-            <Route exact path = "/dashboard" component = {Dashboard} />
-          </Switch>
-        </BrowserRouter>
-    )
+      <div>
+        <Login />
+      </div>
+    );
   }
 }
 
-export default App
+export default App;
