@@ -2,12 +2,16 @@ import React, { Component } from "react";
 //import axios from 'axios';
 import { login } from "./../../actions/auth";
 import { connect } from "react-redux";
-
+import SignUp from './SignUp'
+import LogUser from './LogUser'
 import styles from "./Login.css";
 
 class Login extends Component {
   state = {
-    user: {}
+    user: {} ,
+    signUp : false ,
+    logIn : false ,
+    neither : true
   };
 
   componentDidMount = () => {
@@ -19,19 +23,35 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    this.props.Login("User ID");
+    this.setState({
+      logIn : true ,
+      neither : false
+    })
   };
 
-  handleCheck = () => {
-    const user = this.props.data;
-    this.setState({ user });
+  handleSignUp = () => {
+    this.setState({
+      signUp : true ,
+      neither : false})
   };
   render = () => {
     return (
-      <div className={styles.loginContainer}>
-        <h1>Login...if you dare.</h1>
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={this.handleCheck}>Check</button>
+      <div>
+        {this.state.signUp ? 
+          <SignUp /> : null }
+        {this.state.logIn ?
+          <LogUser /> : null}
+        { this.state.neither ? 
+          <div className = "row">
+            <div className = "col s8">
+              <div className={styles.loginContainer}>
+                <h1>Login...if you dare.</h1>
+                <button onClick={this.handleLogin}>Login</button>
+                <button onClick={this.handleSignUp}>sign up</button>
+              </div>
+            </div>
+          </div>
+          : null }
       </div>
     );
   };
