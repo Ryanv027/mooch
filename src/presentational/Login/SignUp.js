@@ -34,14 +34,14 @@ class SignUp extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    // axios
-    //   .post("/api/users", info)
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    axios
+      .post("/api/users", info)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
   render = () => {
     return (

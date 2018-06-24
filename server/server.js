@@ -10,6 +10,9 @@ const PORT = process.env.PORT || 8080;
 var DB_USER = process.env.RDS_USERNAME;
 var DB_NAME = process.env.RDS_DB_NAME;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/ping", function(req, res) {
