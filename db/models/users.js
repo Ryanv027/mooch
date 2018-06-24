@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define("users", {
-    user_name: {
+    userName: {
       type: DataTypes.STRING(50)
       // validate: {
       //   len: [2, 50],
@@ -15,12 +15,11 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
-    bio: {
-      type: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING(30)
     },
-    fuid: {
-      type: DataTypes.STRING
-      // notNull: true
+    name: {
+      type: DataTypes.STRING(30)
     }
   });
 
