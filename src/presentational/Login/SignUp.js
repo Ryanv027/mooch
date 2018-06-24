@@ -46,7 +46,8 @@ class SignUp extends Component {
   render = () => {
     return (
       <div className="row">
-        <form className="col s12" onSubmit={this.handleSubmit}>
+        <div className = "col s10 offset-s1 center">
+        <form className="col s10" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s6">
               <input
@@ -87,8 +88,9 @@ class SignUp extends Component {
               />
             </div>
           </div>
-          <button>submit</button>
+          <button className = "btn waves-effect waves light">submit</button>
         </form>
+        </div>
       </div>
     );
   };

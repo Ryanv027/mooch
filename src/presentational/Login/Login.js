@@ -45,8 +45,14 @@ class Login extends Component {
             <div className="col s8">
               <div className={styles.loginContainer}>
                 <h1>Login...if you dare.</h1>
-                <button onClick={this.handleLogin}>Login</button>
-                <button onClick={this.handleSignUp}>sign up</button>
+                <div className = "row">
+                  <div className = "col s6">
+                    <button className = "btn waves-effect waves-light" onClick={this.handleLogin}>Login</button>
+                  </div>
+                  <div className = "col s6">
+                    <button className = "btn waves-effect waves-light" onClick={this.handleSignUp}>sign up</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
