@@ -4,7 +4,8 @@ class LogUser extends Component {
     render = () => {
         return (
             <div className="row">
-                <form className="col s12">
+                <div className = "col s10 offset-s1 center">
+                <form className="col s10">
                     <div className="row">
                         <div className="input-field col s6">
                             <input placeholder = "username" type="text" className="validate" />
@@ -13,7 +14,9 @@ class LogUser extends Component {
                             <input placeholder = "password" type="password" className="validate" />
                         </div>
                     </div>
+                    <button className = "btn waves-effect waves light">submit</button>
                 </form>
+                </div>
             </div>
         )
     }
