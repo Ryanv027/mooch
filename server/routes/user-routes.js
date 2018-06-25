@@ -1,8 +1,20 @@
 const path = require("path");
-const db = require("./../../db/models/index");
+const db = require("./../../db/schemas/index");
+const crud = require("./../../db/models/crud");
 
-module.exports = function(app) {
-  app.post("/api/users", function(req, res) {
-    console.log("req body", req.body);
+module.exports = app => {
+  app.post("/api/users", (req, res) => {
+    const info = req.body;
+    crud.create(info, response => {
+      res.send(response);
+    });
+  });
+  app.get("/api/users", (req, res) => {
+    const info = req.query;
+    crud.read(info, response => {
+      if (response === "found") {
+        res.send("confirmed");
+      }
+    });
   });
 };

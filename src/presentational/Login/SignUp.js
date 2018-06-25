@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { login } from "./../../actions/auth";
 import axios from "axios";
 
 class SignUp extends Component {
@@ -6,8 +8,12 @@ class SignUp extends Component {
     name: "",
     username: "",
     email: "",
-    password: ""
+    password: "",
+    loading: false
   };
+  componentDidMount() {
+    console.log(this.props);
+  }
   onChangeName = e => {
     const name = e.target.value;
     console.log(name);
@@ -30,70 +36,105 @@ class SignUp extends Component {
     console.log("hit submit");
     const info = {
       name: this.state.name,
-      username: this.state.username,
+      userName: this.state.username,
       email: this.state.email,
       password: this.state.password
     };
     axios
       .post("/api/users", info)
       .then(response => {
-        console.log(response);
+        this.setState({ loading: true });
+        if (response.data === "confirmed") {
+          this.handleLogin();
+        }
       })
       .catch(error => {
         console.log(error);
       });
   };
+  handleLogin = () => {
+    console.log("handle login");
+    const info = {
+      name: this.state.name,
+      userName: this.state.username,
+      email: this.state.email,
+      password: this.state.password
+    };
+    axios
+      .get("/api/users", {
+        params: {
+          userName: this.state.username,
+          password: this.state.password
+        }
+      })
+      .then(response => {
+        if (response.data === "confirmed") {
+          this.props.login(info);
+          this.props.history.push("/dashboard");
+        }
+      })
+      .catch();
+  };
   render = () => {
     return (
       <div className="row">
-        <div className = "col s10 offset-s1 center">
-        <form className="col s10" onSubmit={this.handleSubmit}>
-          <div className="row">
-            <div className="input-field col s6">
-              <input
-                placeholder="name"
-                type="text"
-                className="validate"
-                value={this.state.name}
-                onChange={this.onChangeName}
-              />
+        <div className="col s10 offset-s1 center">
+          <form className="col s10" onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="input-field col s6">
+                <input
+                  placeholder="name"
+                  type="text"
+                  className="validate"
+                  value={this.state.name}
+                  onChange={this.onChangeName}
+                />
+              </div>
+              <div className="input-field col s6">
+                <input
+                  placeholder="username"
+                  type="text"
+                  className="validate"
+                  value={this.state.username}
+                  onChange={this.onChangeUsername}
+                />
+              </div>
             </div>
-            <div className="input-field col s6">
-              <input
-                placeholder="username"
-                type="text"
-                className="validate"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-              />
+            <div className="row">
+              <div className="input-field col s6">
+                <input
+                  placeholder="email"
+                  type="email"
+                  className="validate"
+                  value={this.state.email}
+                  onChange={this.onChangeEmail}
+                />
+              </div>
+              <div className="input-field col s6">
+                <input
+                  placeholder="password"
+                  type="password"
+                  className="validate"
+                  value={this.state.password}
+                  onChange={this.onChangePassword}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s6">
-              <input
-                placeholder="email"
-                type="email"
-                className="validate"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-              />
-            </div>
-            <div className="input-field col s6">
-              <input
-                placeholder="password"
-                type="password"
-                className="validate"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-              />
-            </div>
-          </div>
-          <button className = "btn waves-effect waves light">submit</button>
-        </form>
+            <button className="btn waves-effect waves light">submit</button>
+          </form>
         </div>
       </div>
     );
   };
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  login: info => {
+    return dispatch(login(info));
+  }
+});
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(SignUp);

@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cmd = require("node-cmd");
 require("dotenv").config();
-var db = require("./../db/models/index");
+var db = require("./../db/schemas/index");
 
 const PORT = process.env.PORT || 8080;
 var DB_USER = process.env.RDS_USERNAME;
