@@ -11,7 +11,6 @@ module.exports = app => {
   });
   app.get("/api/users", (req, res) => {
     const info = req.query;
-    console.log("user api hit");
     crud.read(info, response => {
       if (response === "found") {
         res.send("confirmed");

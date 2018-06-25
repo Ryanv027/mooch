@@ -9,7 +9,6 @@ class Navbar extends Component {
   };
 
   logout = () => {
-    console.log("hit logout");
     this.props.logout();
   };
 
@@ -21,9 +20,7 @@ class Navbar extends Component {
           <div className="left">
             <ul>
               <li>
-                <a className={styles.padL} onClick={this.logout}>
-                  home
-                </a>
+                <a className={styles.padL}>home</a>
               </li>
             </ul>
           </div>

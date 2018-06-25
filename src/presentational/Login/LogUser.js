@@ -10,18 +10,15 @@ class LogUser extends Component {
   };
   onChangeUsername = e => {
     const username = e.target.value;
-    console.log(username);
     this.setState({ username });
   };
   onChangePassword = e => {
     const password = e.target.value;
-    console.log(password);
     this.setState({ password });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("handle login");
     const info = {
       userName: this.state.username,
       password: this.state.password
@@ -37,6 +34,8 @@ class LogUser extends Component {
         if (response.data === "confirmed") {
           this.props.login(info);
           this.props.history.push("/dashboard");
+        } else {
+          this.props.history.push("/");
         }
       })
       .catch();
