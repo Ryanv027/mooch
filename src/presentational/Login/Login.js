@@ -38,19 +38,34 @@ class Login extends Component {
   render = () => {
     return (
       <div>
-        {this.state.signUp ? <SignUp handleSignUp={this.handleSignUp} /> : null}
+        {this.state.signUp ? (
+          <SignUp
+            handleSignUp={this.handleSignUp}
+            history={this.props.history}
+          />
+        ) : null}
         {this.state.logIn ? <LogUser /> : null}
         {this.state.neither ? (
           <div className="row">
             <div className="col s8">
               <div className={styles.loginContainer}>
                 <h1>Login...if you dare.</h1>
-                <div className = "row">
-                  <div className = "col s6">
-                    <button className = "btn waves-effect waves-light" onClick={this.handleLogin}>Login</button>
+                <div className="row">
+                  <div className="col s6">
+                    <button
+                      className="btn waves-effect waves-light"
+                      onClick={this.handleLogin}
+                    >
+                      Login
+                    </button>
                   </div>
-                  <div className = "col s6">
-                    <button className = "btn waves-effect waves-light" onClick={this.handleSignUp}>sign up</button>
+                  <div className="col s6">
+                    <button
+                      className="btn waves-effect waves-light"
+                      onClick={this.handleSignUp}
+                    >
+                      sign up
+                    </button>
                   </div>
                 </div>
               </div>

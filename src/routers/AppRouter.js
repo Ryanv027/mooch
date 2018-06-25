@@ -3,6 +3,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import createHistory from "history/createBrowserHistory";
 
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
 import Login from "./../presentational/Login/Login";
 import Dashboard from "./../presentational/Dashboard/Dashboard";
 import Group from "./../presentational/Group/Group";
@@ -15,14 +17,8 @@ class AppRouter extends React.Component {
       <Router history={history}>
         <div>
           <Switch>
-            {this.props.data.length > 1 ? (
-              <Switch>
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/group" component={Group} />
-              </Switch>
-            ) : (
-              <Route exact path="/" component={Login} />
-            )}
+            <PublicRoute path="/" component={Login} exact />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </Router>
@@ -30,8 +26,4 @@ class AppRouter extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  data: state.auth
-});
-
-export default connect(mapStateToProps)(AppRouter);
+export default connect()(AppRouter);

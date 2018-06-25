@@ -3,15 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 //import App from "./App";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./store/configureStore";
 import registerServiceWorker from "./registerServiceWorker";
 import AppRouter from "./routers/AppRouter";
 
-const store = configureStore();
+const store = configureStore().store;
+const persistor = configureStore().persistor;
 
 const jsx = (
   <Provider store={store}>
-    <AppRouter />
+    <PersistGate loading={null} persistor={persistor}>
+      <AppRouter />
+    </PersistGate>
   </Provider>
 );
 
