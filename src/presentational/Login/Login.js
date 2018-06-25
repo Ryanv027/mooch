@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 //import axios from 'axios';
-import { login } from "./../../actions/auth";
-import { connect } from "react-redux";
 import SignUp from "./SignUp";
 import LogUser from "./LogUser";
 import styles from "./Login.css";
