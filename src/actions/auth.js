@@ -6,5 +6,8 @@ export const login = info => ({
 });
 
 export const logout = () => ({
-  type: "LOGOUT"
+  type: "LOGOUT",
+  user: {
+    userName: undefined
+  }
 });

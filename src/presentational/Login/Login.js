@@ -14,14 +14,6 @@ class Login extends Component {
     neither: true
   };
 
-  componentDidMount = () => {
-    console.log(this.state.user);
-  };
-
-  componentDidUpdate = () => {
-    console.log(this.state.user);
-  };
-
   handleLogin = () => {
     this.setState({
       logIn: true,
@@ -44,7 +36,7 @@ class Login extends Component {
             history={this.props.history}
           />
         ) : null}
-        {this.state.logIn ? <LogUser /> : null}
+        {this.state.logIn ? <LogUser history={this.props.history} /> : null}
         {this.state.neither ? (
           <div className="row">
             <div className="col s8">
@@ -77,18 +69,4 @@ class Login extends Component {
   };
 }
 
-const mapStateToProps = (state, props) => ({
-  data: state.auth
-});
-
-const mapDispatchToProps = dispatch => ({
-  Login: id => {
-    console.log("hit login dispatch");
-    return dispatch(login(id));
-  }
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default Login;

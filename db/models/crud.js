@@ -17,12 +17,16 @@ module.exports = {
       });
   },
   read: (info, cb) => {
+    console.log("read hit");
     db.users
       .findOne({ where: { userName: info.userName, password: info.password } })
       .then(project => {
-        console.log(project.dataValues);
-        if (project.dataValues !== null) {
+        console.log("PROJECTSDSDAFDLASKJFAS", project);
+        //console.log(project.dataValues);
+        if (project !== null) {
           cb("found");
+        } else {
+          cb("Not Found");
         }
       })
       .catch(error => {
