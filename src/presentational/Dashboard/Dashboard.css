@@ -3,3 +3,7 @@
   width: 100%;
   display: inline-flex;
 }
+
+.dashboardMargin {
+  margin: 0 auto;
+}

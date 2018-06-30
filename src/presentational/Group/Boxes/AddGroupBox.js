@@ -1,19 +1,18 @@
-import React , { Component } from 'react'
-import styles from '../Group.css'
+import React, { Component } from "react";
+import "../Group.css";
 
 class AddGroupBox extends Component {
+  directToCreateGroup = () => {
+    this.props.history.push("/createGroup");
+  };
 
-    sayPow = () => {
-        console.log("pow")
-    }
-
-    render = () => {
-        return (
-            <div className = {styles.addGroupBox} onClick = {this.sayPow}>
-                <h5 className = "center">Yo-Yo Ma's Mama's yo-yo, yo</h5>
-            </div>
-        )
-    }
+  render = () => {
+    return (
+      <div className="addGroupBox" onClick={this.directToCreateGroup}>
+        <h1 className="center plus">+</h1>
+      </div>
+    );
+  };
 }
 
-export default AddGroupBox
+export default AddGroupBox;
