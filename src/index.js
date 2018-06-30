@@ -18,7 +18,7 @@ const jsx = (
     </PersistGate>
   </Provider>
 );
-
+//object-hash
 ReactDOM.render(jsx, document.getElementById("root"));
 registerServiceWorker();
 

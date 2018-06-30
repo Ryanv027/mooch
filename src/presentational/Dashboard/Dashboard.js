@@ -1,38 +1,35 @@
-import React , { Component } from 'react'
-import Navbar from '../Navbar/Navbar'
-import AddGroupBox from '../Group/Boxes/AddGroupBox'
-import GroupBox from '../Group/Boxes/GroupBox'
-import styles from './Dashboard.css'
+import React, { Component } from "react";
+import Navbar from "../Navbar/Navbar";
+import AddGroupBox from "../Group/Boxes/AddGroupBox";
+import GroupBox from "../Group/Boxes/GroupBox";
+import "./Dashboard.css";
 
 class Dashboard extends Component {
+  state = {};
 
-    state = {
-
-    }
-
-    render = () => {
-        return (
-            <div>
-                <Navbar />
-                <div className = "row">
-                    <div className = {styles.groupContainer}>
-                        <div className = "col s6">
-                            <AddGroupBox />
-                        </div>
-                        <div className = "col s6">
-                            <GroupBox />
-                        </div>
-                        <div className = "col s6">
-                            <GroupBox />
-                        </div>
-                        <div className = "col s6">
-                            <GroupBox />
-                        </div>
-                    </div>
-                </div>
+  render = () => {
+    return (
+      <div>
+        <Navbar />
+        <div className="row">
+          <div className="groupContainer">
+            <div className="col s6">
+              <AddGroupBox />
             </div>
-        )
-    }
+            <div className="col s6">
+              <GroupBox />
+            </div>
+            <div className="col s6">
+              <GroupBox />
+            </div>
+            <div className="col s6">
+              <GroupBox />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 }
 
-export default Dashboard
+export default Dashboard;
