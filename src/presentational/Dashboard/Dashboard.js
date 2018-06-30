@@ -10,7 +10,7 @@ class Dashboard extends Component {
   render = () => {
     return (
       <div>
-        <Navbar />
+        <Navbar history={this.props.history} />
         <div className="row">
           <div className="groupContainer">
             <div className="col s6 dashboardMargin">
