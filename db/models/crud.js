@@ -1,7 +1,7 @@
 const db = require("./../schemas/index");
 
 module.exports = {
-  create: (info, cb) => {
+  createUser: (info, cb) => {
     db.users
       .create({
         userName: info.userName,
@@ -16,7 +16,7 @@ module.exports = {
         cb(error);
       });
   },
-  read: (info, cb) => {
+  readUser: (info, cb) => {
     db.users
       .findOne({ where: { userName: info.userName, password: info.password } })
       .then(project => {
@@ -25,6 +25,17 @@ module.exports = {
         } else {
           cb("Not Found");
         }
+      })
+      .catch(error => {
+        cb(error);
+      });
+  },
+  readGroup: (info, cb) => {
+    db.groups
+      .find({ where: {} })
+      .then(response => {
+        if (response !== null) cb("found it!");
+        else cb("does not exist");
       })
       .catch(error => {
         cb(error);

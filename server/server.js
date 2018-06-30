@@ -23,7 +23,7 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-require("./routes/user-routes")(app);
+require("./routes/userRoutes")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
   cmd.run(`psql -U ${DB_USER} ${DB_NAME} < db/seeds.sql`);
