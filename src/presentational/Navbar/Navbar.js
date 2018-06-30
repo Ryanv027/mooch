@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import styles from "./Navbar.css";
+import "./Navbar.css";
 import { connect } from "react-redux";
 import { logout } from "./../../actions/auth";
 
 class Navbar extends Component {
-  sayHello = () => {
-    console.log("hello!");
+  goHome = () => {
+    this.props.history.push("/");
   };
 
   logout = () => {
@@ -20,14 +20,16 @@ class Navbar extends Component {
           <div className="left">
             <ul>
               <li>
-                <a className={styles.padL}>home</a>
+                <a className="padL" onClick={this.goHome}>
+                  home
+                </a>
               </li>
             </ul>
           </div>
           <div className="right">
             <ul>
               <li>
-                <a className={styles.padR} onClick={this.logout}>
+                <a className="padR" onClick={this.logout}>
                   logout
                 </a>
               </li>
