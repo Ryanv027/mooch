@@ -1,11 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var user = sequelize.define("users", {
-    userID: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
-    },
-    userName: {
+  var expense = sequelize.define("expenses", {
+    groupID: {
       type: DataTypes.STRING(50)
       // validate: {
       //   len: [2, 50],
@@ -13,20 +8,23 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
-    email: {
+    mooch: {
       type: DataTypes.STRING(30)
       // validate: {
       //   isEmail: true,
       //   notNull: true
       // }
     },
-    password: {
+    shark: {
       type: DataTypes.STRING(30)
     },
-    name: {
+    amount: {
+      type: DataTypes.STRING(30)
+    },
+    statesExpense: {
       type: DataTypes.STRING(30)
     }
   });
 
-  return user;
+  return expense;
 };

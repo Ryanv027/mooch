@@ -16,7 +16,6 @@ class SignUp extends Component {
   }
   onChangeName = e => {
     const name = e.target.value;
-    console.log(name);
     this.setState({ name });
   };
   onChangeUsername = e => {
@@ -33,7 +32,6 @@ class SignUp extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    console.log("hit submit");
     const info = {
       name: this.state.name,
       userName: this.state.username,
@@ -45,6 +43,7 @@ class SignUp extends Component {
       .then(response => {
         this.setState({ loading: true });
         if (response.data === "confirmed") {
+          console.log(response);
           this.handleLogin();
         }
       })
@@ -53,7 +52,6 @@ class SignUp extends Component {
       });
   };
   handleLogin = () => {
-    console.log("handle login");
     const info = {
       name: this.state.name,
       userName: this.state.username,
