@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-  var user = sequelize.define("users", {
-    userID: {
+  var group = sequelize.define("groups", {
+    groupID: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    userName: {
+    groupName: {
       type: DataTypes.STRING(50)
       // validate: {
       //   len: [2, 50],
@@ -13,20 +13,14 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
-    email: {
+    type: {
       type: DataTypes.STRING(30)
       // validate: {
       //   isEmail: true,
       //   notNull: true
       // }
-    },
-    password: {
-      type: DataTypes.STRING(30)
-    },
-    name: {
-      type: DataTypes.STRING(30)
     }
   });
 
-  return user;
+  return group;
 };
