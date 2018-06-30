@@ -32,7 +32,7 @@ export default class CreateGroup extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar history={this.props.history} />
         <form>
           Group Name
           <input
