@@ -13,17 +13,8 @@ class Dashboard extends Component {
         <Navbar />
         <div className="row">
           <div className="groupContainer">
-            <div className="col s6">
-              <AddGroupBox />
-            </div>
-            <div className="col s6">
-              <GroupBox />
-            </div>
-            <div className="col s6">
-              <GroupBox />
-            </div>
-            <div className="col s6">
-              <GroupBox />
+            <div className="col s6 dashboardMargin">
+              <AddGroupBox history={this.props.history} />
             </div>
           </div>
         </div>
