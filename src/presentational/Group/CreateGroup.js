@@ -1,5 +1,7 @@
 import React from "react";
 import Navbar from "./../Navbar/Navbar";
+import axios from "axios";
+import uuid from "uuid";
 
 export default class CreateGroup extends React.Component {
   state = {
@@ -27,13 +29,33 @@ export default class CreateGroup extends React.Component {
     console.log("add user hit");
     const user = this.state.userName;
     const users = [...this.state.users, user];
+    // axios.get("/api/users").then(response => {
+    //   if (response === "confirm") {
+    //     this.setState({ users: users, userName: "" });
+    //   }
+    // });
     this.setState({ users: users, userName: "" });
   };
+
+  handleSubmit = () => {
+    const groupInfo = {
+      groupName: this.state.groupName,
+      groupType: this.state.groupType,
+      users: this.state.users
+    };
+    axios
+      .post("/api/createGroup", groupInfo)
+      .then(response => {})
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div>
         <Navbar history={this.props.history} />
-        <form>
+        <form onSubmit={this.handleSubmit}>
           Group Name
           <input
             type="text"

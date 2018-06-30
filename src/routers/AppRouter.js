@@ -7,7 +7,7 @@ import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./../presentational/Login/Login";
 import Dashboard from "./../presentational/Dashboard/Dashboard";
-//import Group from "./../presentational/Group/Group";
+import Group from "./../presentational/Group/Group";
 import NotFound from "./../presentational/Login/NotFound";
 import CreateGroup from "./../presentational/Group/CreateGroup";
 
@@ -21,6 +21,7 @@ class AppRouter extends React.Component {
           <PublicRoute path="/" component={Login} exact />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/createGroup" component={CreateGroup} />
+          <PrivateRoute path="/group/:id" component={Group} />
           <Route component={NotFound} />
         </Switch>
       </Router>
