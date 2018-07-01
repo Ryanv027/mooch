@@ -7,7 +7,8 @@ module.exports = {
         userName: info.userName,
         email: info.email,
         password: info.password,
-        name: info.name
+        name: info.name,
+        groups: info.groups
       })
       .then(response => {
         cb(response);
@@ -19,12 +20,29 @@ module.exports = {
   findUser: (info, cb) => {
     db.users
       .findOne({ where: { userName: info.userName, password: info.password } })
+      .then(user => {
+        cb(user);
+      })
+      .catch(error => {
+        cb(error);
+      });
+  },
+  verifyUser: (userName, cb) => {
+    db.users
+      .findOne({ where: { userName: userName } })
       .then(project => {
         cb(project);
       })
       .catch(error => {
         cb(error);
       });
+  },
+  addGroup: info => {
+    const groups = { groups: info.groups };
+    const userID = info.userID;
+    db.users.update(groups, { where: { userID: userID } }).then(response => {
+      console.log(response);
+    });
   },
   readGroup: (info, cb) => {
     db.groups

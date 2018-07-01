@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "./../../actions/auth";
+import { groups } from "./../../actions/groups";
 import axios from "axios";
 
 class SignUp extends Component {
@@ -12,7 +13,7 @@ class SignUp extends Component {
     loading: false
   };
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   onChangeName = e => {
@@ -36,20 +37,24 @@ class SignUp extends Component {
   };
 
   handleSubmit = e => {
-    console.log("submit");
     e.preventDefault();
     const info = {
       name: this.state.name,
       userName: this.state.username,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      groups: []
     };
     axios
       .post("/api/users", info)
       .then(response => {
         if (response) {
-          const id = { userID: response.data.userID };
-          this.props.login(id);
+          const userID = {
+            userID: response.data
+          };
+          const groupIDs = [];
+          this.props.login(userID);
+          this.props.groups(groupIDs);
           this.props.history.push("/dashboard");
         }
       })
@@ -112,8 +117,11 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: info => {
-    return dispatch(login(info));
+  login: userID => {
+    return dispatch(login(userID));
+  },
+  groups: groupIDs => {
+    return dispatch(groups(groupIDs));
   }
 });
 

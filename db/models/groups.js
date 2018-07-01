@@ -2,7 +2,6 @@ const db = require("./../schemas/index");
 
 module.exports = {
   createGroup: (info, cb) => {
-    //console.log(info);
     db.groups
       .create({
         groupName: info.groupName,

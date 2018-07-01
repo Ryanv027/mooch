@@ -5,7 +5,7 @@ import { logout } from "./../../actions/auth";
 
 class Navbar extends Component {
   goHome = () => {
-    this.props.history.push("/");
+    this.props.history.push("/dashboard");
   };
 
   logout = () => {

@@ -25,7 +25,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING(30)
-    }
+    },
+    groups: DataTypes.ARRAY(DataTypes.TEXT)
   });
 
   return user;
