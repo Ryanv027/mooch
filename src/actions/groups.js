@@ -1,4 +1,9 @@
-export const groups = groups => ({
+export const groups = groupIDs => ({
   type: "SET_GROUPS",
-  groups: groups
+  groups: groupIDs
+});
+
+export const addGroup = groupID => ({
+  type: "ADD_GROUP",
+  group: groupID
 });

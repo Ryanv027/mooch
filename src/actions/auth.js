@@ -1,7 +1,7 @@
 export const login = info => ({
   type: "LOGIN",
   user: {
-    userName: info.userName
+    userID: info.userID
   }
 });
 

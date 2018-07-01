@@ -24,6 +24,7 @@ app.get("/", function(req, res) {
 });
 
 require("./routes/userRoutes")(app);
+require("./routes/groupRoutes")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
   cmd.run(`psql -U ${DB_USER} ${DB_NAME} < db/seeds.sql`);

@@ -1,22 +1,13 @@
 const path = require("path");
 const db = require("./../../db/schemas/index");
-const crud = require("./../../db/models/crud");
+const groups = require("./../../db/models/groups");
+const users = require("./../../db/models/users");
 
 module.exports = app => {
-  app.post("/api/users", (req, res) => {
+  app.post("/api/createGroup", (req, res) => {
     const info = req.body;
-    crud.create(info, response => {
-      res.send(response);
-    });
-  });
-  app.get("/api/users", (req, res) => {
-    const info = req.query;
-    crud.read(info, response => {
-      if (response === "found") {
-        res.send("confirmed");
-      } else {
-        res.send("not found");
-      }
+    groups.createGroup(info, response => {
+      res.send(response.dataValues.groupID);
     });
   });
 };

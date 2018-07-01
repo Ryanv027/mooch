@@ -1,12 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 import Navbar from "./../Navbar/Navbar";
+import axios from "axios";
+import { addGroup } from "./../../actions/groups";
 
-export default class CreateGroup extends React.Component {
+class CreateGroup extends React.Component {
   state = {
     groupName: "",
     groupType: "",
     userName: "",
-    users: []
+    users: [],
+    error: ""
   };
   handleGroupName = e => {
     const groupName = e.target.value;
@@ -24,29 +28,55 @@ export default class CreateGroup extends React.Component {
   };
 
   handleAddUser = () => {
-    console.log("add user hit");
     const user = this.state.userName;
-    const users = [...this.state.users, user];
-    this.setState({ users: users, userName: "" });
+    axios.get(`/api/${user}`).then(response => {
+      if (response.data === user) {
+        const users = [...this.state.users, user];
+        this.setState({ users: users, userName: "", error: "" });
+      } else {
+        this.setState({ error: "Please enter a valid username" });
+      }
+    });
   };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const groupInfo = {
+      groupName: this.state.groupName,
+      groupType: this.state.groupType,
+      users: this.state.users
+    };
+    axios
+      .post("/api/createGroup", groupInfo)
+      .then(response => {
+        const groupID = response.data;
+        this.props.addGroup(groupID);
+        this.props.history.push(`/group/${groupID}`);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div>
         <Navbar history={this.props.history} />
-        <form>
-          Group Name
+        <form onSubmit={this.handleSubmit}>
+          <h6>Group Name</h6>
           <input
             type="text"
             value={this.state.groupName}
             onChange={this.handleGroupName}
           />
-          Type
+          <h6>Type</h6>
           <input
             type="text"
             value={this.state.groupType}
             onChange={this.handleGroupType}
           />
-          Username
+          <h6>Username</h6>
+          <p>{this.state.error}</p>
           <input
             type="text"
             value={this.state.userName}
@@ -61,8 +91,24 @@ export default class CreateGroup extends React.Component {
           </button>
           <button type="submit">Submit</button>
         </form>
-        {this.state.users}
+        <br />
+
+        <h1>{this.state.users}</h1>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  addGroup: groupID => {
+    return dispatch(addGroup(groupID));
+  }
+});
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(CreateGroup);
+
+//need to validate users
+//need to update redux as well as create a new table in the groups database

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "./../../actions/auth";
+import { groups } from "./../../actions/groups";
 import axios from "axios";
 
 class SignUp extends Component {
@@ -12,67 +13,56 @@ class SignUp extends Component {
     loading: false
   };
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
+
   onChangeName = e => {
     const name = e.target.value;
     this.setState({ name });
   };
+
   onChangeUsername = e => {
     const username = e.target.value;
     this.setState({ username });
   };
+
   onChangeEmail = e => {
     const email = e.target.value;
     this.setState({ email });
   };
+
   onChangePassword = e => {
     const password = e.target.value;
     this.setState({ password });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const info = {
       name: this.state.name,
       userName: this.state.username,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      groups: []
     };
     axios
       .post("/api/users", info)
       .then(response => {
-        this.setState({ loading: true });
-        if (response.data === "confirmed") {
-          console.log(response);
-          this.handleLogin();
+        if (response) {
+          const userID = {
+            userID: response.data
+          };
+          const groupIDs = [];
+          this.props.login(userID);
+          this.props.groups(groupIDs);
+          this.props.history.push("/dashboard");
         }
       })
       .catch(error => {
         console.log(error);
       });
   };
-  handleLogin = () => {
-    const info = {
-      name: this.state.name,
-      userName: this.state.username,
-      email: this.state.email,
-      password: this.state.password
-    };
-    axios
-      .get("/api/users", {
-        params: {
-          userName: this.state.username,
-          password: this.state.password
-        }
-      })
-      .then(response => {
-        if (response.data === "confirmed") {
-          this.props.login(info);
-          this.props.history.push("/dashboard");
-        }
-      })
-      .catch();
-  };
+
   render = () => {
     return (
       <div className="row">
@@ -127,8 +117,11 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: info => {
-    return dispatch(login(info));
+  login: userID => {
+    return dispatch(login(userID));
+  },
+  groups: groupIDs => {
+    return dispatch(groups(groupIDs));
   }
 });
 
