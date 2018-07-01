@@ -37,7 +37,9 @@ export default class CreateGroup extends React.Component {
     this.setState({ users: users, userName: "" });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    console.log("hit submit");
+    e.preventDefault();
     const groupInfo = {
       groupName: this.state.groupName,
       groupType: this.state.groupType,
@@ -45,7 +47,9 @@ export default class CreateGroup extends React.Component {
     };
     axios
       .post("/api/createGroup", groupInfo)
-      .then(response => {})
+      .then(response => {
+        console.log(response);
+      })
       .catch(error => {
         console.log(error);
       });

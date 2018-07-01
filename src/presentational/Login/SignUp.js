@@ -14,23 +14,29 @@ class SignUp extends Component {
   componentDidMount() {
     console.log(this.props);
   }
+
   onChangeName = e => {
     const name = e.target.value;
     this.setState({ name });
   };
+
   onChangeUsername = e => {
     const username = e.target.value;
     this.setState({ username });
   };
+
   onChangeEmail = e => {
     const email = e.target.value;
     this.setState({ email });
   };
+
   onChangePassword = e => {
     const password = e.target.value;
     this.setState({ password });
   };
+
   handleSubmit = e => {
+    console.log("submit");
     e.preventDefault();
     const info = {
       name: this.state.name,
@@ -41,38 +47,17 @@ class SignUp extends Component {
     axios
       .post("/api/users", info)
       .then(response => {
-        this.setState({ loading: true });
-        if (response.data === "confirmed") {
-          console.log(response);
-          this.handleLogin();
+        if (response) {
+          const id = { userID: response.data.userID };
+          this.props.login(id);
+          this.props.history.push("/dashboard");
         }
       })
       .catch(error => {
         console.log(error);
       });
   };
-  handleLogin = () => {
-    const info = {
-      name: this.state.name,
-      userName: this.state.username,
-      email: this.state.email,
-      password: this.state.password
-    };
-    axios
-      .get("/api/users", {
-        params: {
-          userName: this.state.username,
-          password: this.state.password
-        }
-      })
-      .then(response => {
-        if (response.data === "confirmed") {
-          this.props.login(info);
-          this.props.history.push("/dashboard");
-        }
-      })
-      .catch();
-  };
+
   render = () => {
     return (
       <div className="row">

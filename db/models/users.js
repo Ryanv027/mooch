@@ -9,22 +9,18 @@ module.exports = {
         password: info.password,
         name: info.name
       })
-      .then(() => {
-        cb("confirmed");
+      .then(response => {
+        cb(response);
       })
       .catch(error => {
         cb(error);
       });
   },
-  readUser: (info, cb) => {
+  findUser: (info, cb) => {
     db.users
       .findOne({ where: { userName: info.userName, password: info.password } })
       .then(project => {
-        if (project !== null) {
-          cb("found");
-        } else {
-          cb("Not Found");
-        }
+        cb(project);
       })
       .catch(error => {
         cb(error);

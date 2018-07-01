@@ -31,12 +31,9 @@ class LogUser extends Component {
         }
       })
       .then(response => {
-        if (response.data === "confirmed") {
-          this.props.login(info);
-          this.props.history.push("/dashboard");
-        } else {
-          this.props.history.push("/");
-        }
+        const id = { userID: response.data };
+        this.props.login(id);
+        this.props.history.push("/dashboard");
       })
       .catch();
   };
