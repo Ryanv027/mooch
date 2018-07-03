@@ -98,11 +98,11 @@ class LogUser extends Component {
                   <div className="input-field col s12">
                     <input
                       className="validate"
-                      type="email"
-                      name="email"
-                      id="email"
+                      type="text"
+                      name="username"
+                      id="username"
                     />
-                    <label for="email">Enter your email</label>
+                    <label for="username">Enter your username</label>
                   </div>
                 </div>
 
@@ -131,7 +131,7 @@ class LogUser extends Component {
                       type="submit"
                       name="btn_login"
                       className="col s12 btn btn-large waves-effect waves-light green-accent-2"
-                      onClick={this.handleHome}
+                      onClick={this.props.handleHome}
                     >
                       Home
                     </button>

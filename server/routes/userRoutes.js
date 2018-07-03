@@ -49,4 +49,26 @@ module.exports = app => {
     users.addGroup(info);
     res.send("confirm");
   });
+
+  app.get("/api/checkUsername", (req, res) => {
+    const userName = req.query;
+    users.findUser(userName, response => {
+      if (response === null) {
+        res.send("valid");
+      } else {
+        res.send("invalid");
+      }
+    });
+  });
+
+  app.get("/api/checkEmail", (req, res) => {
+    const email = req.query;
+    users.findEmail(email, response => {
+      if (response === null) {
+        res.send("valid");
+      } else {
+        res.send("invalid");
+      }
+    });
+  });
 };

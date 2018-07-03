@@ -25,6 +25,14 @@ class Login extends Component {
       neither: false
     });
   };
+
+  handleHome = () => {
+    this.setState({
+      signUp: false,
+      logIn: false,
+      neither: true
+    });
+  };
   render = () => {
     return (
       <div className="container">
@@ -34,9 +42,12 @@ class Login extends Component {
           <SignUp
             handleSignUp={this.handleSignUp}
             history={this.props.history}
+            handleHome={this.handleHome}
           />
         ) : null}
-        {this.state.logIn ? <LogUser history={this.props.history} /> : null}
+        {this.state.logIn ? (
+          <LogUser history={this.props.history} handleHome={this.handleHome} />
+        ) : null}
         {this.state.neither ? (
           <center>
             <div className="z-depth-5 grey lighten-4 row prime">

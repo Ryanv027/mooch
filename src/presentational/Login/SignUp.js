@@ -12,7 +12,10 @@ class SignUp extends Component {
     email: "",
     password: "",
     hashedPassword: "",
-    loading: false
+    loading: false,
+    passwordError: "",
+    usernameError: "",
+    emailError: ""
   };
   componentDidMount() {
     // console.log(this.props);
@@ -45,6 +48,53 @@ class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    this.checkUsername();
+  };
+
+  checkUsername = () => {
+    axios
+      .get("/api/checkUsername", {
+        params: { username: this.state.username }
+      })
+      .then(response => {
+        if (response.data === "valid") {
+          this.setState({ usernameError: false });
+          this.checkPassword();
+        } else {
+          this.setState({ usernameError: "Username already exists" });
+          this.checkPassword();
+        }
+      });
+  };
+
+  checkPassword = () => {
+    if (this.state.password.length > 5) {
+      this.setState({ passwordError: false });
+      this.checkEmail();
+    } else {
+      this.setState({
+        passwordError:
+          "Please enter a valid password length (6 or more characters)"
+      });
+      this.checkEmail();
+    }
+  };
+
+  checkEmail = () => {
+    axios
+      .get("/api/checkEmail", { params: { email: this.state.email } })
+      .then(response => {
+        if (response.data === "valid") {
+          this.setState({ emailError: false });
+          this.sendInfo();
+        } else {
+          this.setState({ emailError: "Email already exists!" });
+        }
+      });
+  };
+
+  sendInfo = () => {
     const info = {
       name: this.state.name,
       userName: this.state.username,
@@ -52,22 +102,28 @@ class SignUp extends Component {
       password: this.state.hashedPassword,
       groups: []
     };
-    axios
-      .post("/api/users", info)
-      .then(response => {
-        if (response) {
-          const userID = {
-            userID: response.data
-          };
-          const groupIDs = [];
-          this.props.login(userID);
-          this.props.groups(groupIDs);
-          this.props.history.push("/dashboard");
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    if (
+      !this.state.passwordError &&
+      !this.state.emailError &&
+      !this.state.usernameError
+    ) {
+      axios
+        .post("/api/users", info)
+        .then(response => {
+          if (response) {
+            const userID = {
+              userID: response.data
+            };
+            const groupIDs = [];
+            this.props.login(userID);
+            this.props.groups(groupIDs);
+            this.props.history.push("/dashboard");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   };
 
   render = () => {
@@ -87,7 +143,7 @@ class SignUp extends Component {
               Take The Hassle Out Of Settling Debts
             </h6>
             <div className="section" />
-            <form className="col s12" method="post">
+            <div className="col s12">
               <br />
               <center>
                 <div className="row">
@@ -105,6 +161,7 @@ class SignUp extends Component {
                         </div>
                       </div>
                       <div className="row">
+                        {this.state.usernameError}
                         <div className="input-field">
                           <input
                             placeholder="username"
@@ -116,6 +173,7 @@ class SignUp extends Component {
                         </div>
                       </div>
                       <div className="row">
+                        {this.state.emailError}
                         <div className="input-field">
                           <input
                             placeholder="email"
@@ -127,6 +185,7 @@ class SignUp extends Component {
                         </div>
                       </div>
                       <div className="row">
+                        {this.state.passwordError}
                         <div className="input-field">
                           <input
                             placeholder="password"
@@ -144,7 +203,7 @@ class SignUp extends Component {
                   </div>
                 </div>
               </center>
-            </form>
+            </div>
           </div>
         </center>
       </div>

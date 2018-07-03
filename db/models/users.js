@@ -18,8 +18,19 @@ module.exports = {
       });
   },
   findUser: (info, cb) => {
+    console.log(info);
     db.users
-      .findOne({ where: { userName: info.userName } })
+      .findOne({ where: { userName: info.username } })
+      .then(user => {
+        cb(user);
+      })
+      .catch(error => {
+        cb(error);
+      });
+  },
+  findEmail: (info, cb) => {
+    db.users
+      .findOne({ where: { email: info.email } })
       .then(user => {
         cb(user);
       })
