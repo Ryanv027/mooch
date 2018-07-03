@@ -27,7 +27,9 @@ class Login extends Component {
   };
   render = () => {
     return (
-      <div>
+      <div className="container">
+        <div className="section" />
+
         {this.state.signUp ? (
           <SignUp
             handleSignUp={this.handleSignUp}
@@ -36,31 +38,46 @@ class Login extends Component {
         ) : null}
         {this.state.logIn ? <LogUser history={this.props.history} /> : null}
         {this.state.neither ? (
-          <div className="row">
-            <div className="col s8">
-              <div className={styles.loginContainer}>
-                <h1>Login...if you dare.</h1>
-                <div className="row">
-                  <div className="col s6">
+          <center>
+            <div className="z-depth-5 grey lighten-4 row prime">
+              <img
+                className="responsive-img"
+                alt="moneyMan"
+                src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
+              />
+              <div className="section" />
+              <h5 className="black-text">WELCOME TO MOOCH</h5>
+              <h6 className="black-text">
+                Take The Hassle Out Of Settling Debts
+              </h6>
+              <div className="section" />
+              <form className="col s12" method="post">
+                <br />
+                <center>
+                  <div className="row">
                     <button
-                      className="btn waves-effect waves-light"
+                      type="submit"
+                      name="btn_login"
+                      className="col s12 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.handleLogin}
                     >
                       Login
                     </button>
                   </div>
-                  <div className="col s6">
+                  <div className="row">
                     <button
-                      className="btn waves-effect waves-light"
+                      type="submit"
+                      name="btn_login"
+                      className="col s12 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.handleSignUp}
                     >
-                      sign up
+                      Create Account
                     </button>
                   </div>
-                </div>
-              </div>
+                </center>
+              </form>
             </div>
-          </div>
+          </center>
         ) : null}
       </div>
     );
