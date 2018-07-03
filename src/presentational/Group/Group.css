@@ -1,8 +1,26 @@
 .groupBox {
-  border: 1mm solid;
+  border: 1mm solid #ee6e73;
+  background-color: #ee6e72bf;
   width: 300px;
   height: 300px;
   margin: 25px 25px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgb(73, 73, 73);
+}
+
+.groupBox:hover {
+  transform: scale(1.05);
+  box-shadow: 0 7px 25px rgb(73, 73, 73);
+}
+
+.groupBoxName {
+  font-family: "Lato", sans-serif;
+  font-size: 28px;
+  margin: auto;
+
+  /* font-family: 'Markazi Text', serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Source Sans Pro', sans-serif; */
 }
 
 .addGroupBox {
