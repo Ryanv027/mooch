@@ -31,7 +31,7 @@ main {
 }
 
 body {
-  background: #fff;
+  background: lightgrey;
 }
 
 .input-field input[type=date]:focus + label,
