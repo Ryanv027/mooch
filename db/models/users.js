@@ -38,11 +38,17 @@ module.exports = {
       });
   },
   addGroup: info => {
+    //console.log(info);
     const groups = { groups: info.groups };
     const userID = info.userID;
-    db.users.update(groups, { where: { userID: userID } }).then(response => {
-      console.log(response);
-    });
+    db.users
+      .update(groups, { where: { userID: userID } })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log("ERROR", error);
+      });
   },
   readGroup: (info, cb) => {
     db.groups

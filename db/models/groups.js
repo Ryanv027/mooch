@@ -5,7 +5,8 @@ module.exports = {
     db.groups
       .create({
         groupName: info.groupName,
-        type: info.groupType
+        type: info.groupType,
+        users: info.users
       })
       .then(response => {
         cb(response);
@@ -13,6 +14,11 @@ module.exports = {
       .catch(error => {
         cb(error);
       });
+  },
+  groupData: (id, cb) => {
+    db.groups.find({ where: { groupID: id } }).then(response => {
+      cb(response);
+    });
   }
   // findUser: (info, cb) => {
   //   db.users

@@ -19,21 +19,13 @@ module.exports = app => {
       };
       res.send(userData);
     });
-    // const info = {
-    //   userID: response.dataValues.userID,
-    //   groups: response.dataValues.groups
-    // };
-    // if (response) {
-    // res.send(info);
-    //}
-    //});
   });
 
-  app.get("/api/:user", (req, res) => {
+  app.get("/api/user/:user", (req, res) => {
     const info = req.params.user;
     users.verifyUser(info, response => {
       if (response) {
-        res.send(response.dataValues.userName);
+        res.send(response);
       } else {
         res.send("invalid");
       }
@@ -42,6 +34,8 @@ module.exports = app => {
 
   app.put("/api/addGroupToUser", (req, res) => {
     const info = req.body;
+    //console.log("ROUTES", info);
     users.addGroup(info);
+    res.send("confirm");
   });
 };

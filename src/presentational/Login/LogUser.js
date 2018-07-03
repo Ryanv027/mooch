@@ -18,6 +18,35 @@ class LogUser extends Component {
     this.setState({ password });
   };
 
+  setReduxState = response => {
+    const userID = response.data.userID;
+    const groupInfo = response.data.groups;
+
+    this.props.login(userID);
+    this.props.groups(groupInfo);
+    this.props.history.push("/dashboard");
+  };
+
+  // getGroupNames = data => {
+  //   const id = data.data.groups[0];
+  //   console.log(id);
+  //   axios
+  //     .get("/api/getGroupData", { params: { groupID: id } })
+  //     .then(response => {
+  //       console.log(response);
+  //       const userInfo = {
+  //         userID: data.data.userID,
+  //         group: [
+  //           {
+  //             id: data.data.groups[0],
+  //             name: response.data
+  //           }
+  //         ]
+  //       };
+  //       this.setReduxState(userInfo);
+  //     });
+  // };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -29,18 +58,14 @@ class LogUser extends Component {
         }
       })
       .then(response => {
+        //console.log(response);
         if (response) {
-          const userID = {
-            userID: response.data.userID
-          };
-          const groupIDs = response.data.groups;
-
-          this.props.login(userID);
-          this.props.groups(groupIDs);
-          this.props.history.push("/dashboard");
+          this.setReduxState(response);
         }
       })
-      .catch();
+      .catch(error => {
+        console.log(error);
+      });
   };
   render = () => {
     return (
@@ -71,6 +96,7 @@ class LogUser extends Component {
 
             <button className="btn waves-effect waves light">submit</button>
           </form>
+          <button onClick={this.getGroupNames}>test</button>
         </div>
       </div>
     );
@@ -78,11 +104,11 @@ class LogUser extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: info => {
-    return dispatch(login(info));
+  login: userID => {
+    return dispatch(login(userID));
   },
-  groups: groupIDs => {
-    return dispatch(groups(groupIDs));
+  groups: groupInfo => {
+    return dispatch(groups(groupInfo));
   }
 });
 

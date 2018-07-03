@@ -19,7 +19,8 @@ module.exports = function(sequelize, DataTypes) {
       //   isEmail: true,
       //   notNull: true
       // }
-    }
+    },
+    users: DataTypes.ARRAY(DataTypes.TEXT)
   });
 
   return group;

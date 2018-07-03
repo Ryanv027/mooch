@@ -27,7 +27,7 @@ class Group extends Component {
 
 const mapStateToProps = state => ({
   groups: state.groups,
-  id: state.auth.userID
+  id: state.auth.userID.userID
 });
 
 export default connect(mapStateToProps)(Group);

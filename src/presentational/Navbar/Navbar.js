@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Navbar.css";
 import { connect } from "react-redux";
 import { logout } from "./../../actions/auth";
+import { logoutGroups } from "./../../actions/groups";
 
 class Navbar extends Component {
   goHome = () => {
@@ -42,7 +43,8 @@ class Navbar extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  logoutGroups: () => dispatch(logoutGroups())
 });
 
 export default connect(

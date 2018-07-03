@@ -10,4 +10,15 @@ module.exports = app => {
       res.send(response.dataValues.groupID);
     });
   });
+
+  app.get("/api/getGroupData", (req, res) => {
+    const groupID = req.query.groupID;
+    groups.groupData(groupID, response => {
+      const groupData = {
+        groupName: response.dataValues.groupName,
+        groupType: response.dataValues.type
+      };
+      res.send(groupData);
+    });
+  });
 };
