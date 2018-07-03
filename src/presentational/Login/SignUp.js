@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { login } from "./../../actions/auth";
 import { groups } from "./../../actions/groups";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 class SignUp extends Component {
   state = {
@@ -10,6 +11,7 @@ class SignUp extends Component {
     username: "",
     email: "",
     password: "",
+    hashedPassword: "",
     loading: false
   };
   componentDidMount() {
@@ -34,6 +36,11 @@ class SignUp extends Component {
   onChangePassword = e => {
     const password = e.target.value;
     this.setState({ password });
+    const salt = "$2a$10$psHwfCgWu.Zw2dh3Xk/swu";
+
+    bcrypt.hash(password, salt, (error, hash) => {
+      this.setState({ hashedPassword: hash });
+    });
   };
 
   handleSubmit = e => {
@@ -42,7 +49,7 @@ class SignUp extends Component {
       name: this.state.name,
       userName: this.state.username,
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.hashedPassword,
       groups: []
     };
     axios
@@ -102,8 +109,8 @@ class SignUp extends Component {
                 <input
                   placeholder="password"
                   type="password"
-                  className="validate"
                   value={this.state.password}
+                  className="validate"
                   onChange={this.onChangePassword}
                 />
               </div>
