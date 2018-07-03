@@ -97,7 +97,7 @@ class SignUp extends Component {
   sendInfo = () => {
     const info = {
       name: this.state.name,
-      userName: this.state.username,
+      userName: this.state.username.toLowerCase(),
       email: this.state.email,
       password: this.state.hashedPassword,
       groups: []

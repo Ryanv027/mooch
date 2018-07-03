@@ -9,7 +9,8 @@ class LogUser extends Component {
   state = {
     userName: "",
     password: "",
-    hashedPassword: ""
+    hashedPassword: "",
+    loginError: ""
   };
   onChangeUsername = e => {
     const userName = e.target.value;
@@ -25,7 +26,7 @@ class LogUser extends Component {
     });
   };
 
-  setReduxState = response => {
+  handleLogin = response => {
     const userID = response.data.userID;
     const groupInfo = response.data.groups;
 
@@ -34,40 +35,23 @@ class LogUser extends Component {
     this.props.history.push("/dashboard");
   };
 
-  // getGroupNames = data => {
-  //   const id = data.data.groups[0];
-  //   console.log(id);
-  //   axios
-  //     .get("/api/getGroupData", { params: { groupID: id } })
-  //     .then(response => {
-  //       console.log(response);
-  //       const userInfo = {
-  //         userID: data.data.userID,
-  //         group: [
-  //           {
-  //             id: data.data.groups[0],
-  //             name: response.data
-  //           }
-  //         ]
-  //       };
-  //       this.setReduxState(userInfo);
-  //     });
-  // };
-
   handleSubmit = e => {
     e.preventDefault();
-
     axios
       .get("/api/users", {
         params: {
-          userName: this.state.userName,
+          userName: this.state.userName.toLowerCase(),
           password: this.state.password
         }
       })
       .then(response => {
-        //console.log(response);
-        if (response) {
-          this.setReduxState(response);
+        console.log(response);
+        if (response.data === "user not found") {
+          this.setState({ loginError: "Username not found" });
+        } else if (response.data === "password invalid") {
+          this.setState({ loginError: "Password invalid" });
+        } else {
+          this.handleLogin(response);
         }
       })
       .catch(error => {
@@ -91,18 +75,21 @@ class LogUser extends Component {
               Take The Hassle Out Of Settling Debts
             </h6>
             <div className="section" />
-            <form className="col s12" method="post">
+            <form className="col s12" onSubmit={this.handleSubmit}>
               <br />
               <center>
                 <div className="row">
+                  {this.state.loginError}
                   <div className="input-field col s12">
                     <input
                       className="validate"
                       type="text"
                       name="username"
                       id="username"
+                      onChange={this.onChangeUsername}
+                      value={this.state.username}
                     />
-                    <label for="username">Enter your username</label>
+                    <label htmlFor="username">Enter your username</label>
                   </div>
                 </div>
 
@@ -113,22 +100,23 @@ class LogUser extends Component {
                       type="password"
                       name="password"
                       id="password"
+                      onChange={this.onChangePassword}
+                      value={this.state.password}
                     />
-                    <label for="password">Enter your password</label>
+                    <label htmlFor="password">Enter your password</label>
                   </div>
                   <div className="row">
                     <button
                       type="submit"
                       name="btn_login"
                       className="col s12 btn btn-large waves-effect waves-light green-accent-2"
-                      onClick={this.handleLogin}
                     >
                       Submit
                     </button>
                   </div>
                   <div className="row">
                     <button
-                      type="submit"
+                      type="button"
                       name="btn_login"
                       className="col s12 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.props.handleHome}

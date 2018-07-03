@@ -13,22 +13,25 @@ module.exports = app => {
 
   app.get("/api/users", (req, res) => {
     const info = req.query;
-    // console.log(info);
-    users.findUser(info, response => {
-      // console.log(response);
-      const password = response.dataValues.password;
-      console.log(password);
-      console.log(info.password);
-      bcrypt.compare(info.password, password, (error, respsonse) => {
-        console.log(response);
-        if (response) {
-          const userData = {
-            userID: response.dataValues.userID,
-            groups: response.dataValues.groups
-          };
-          res.send(userData);
-        }
-      });
+    users.findUser(info, userResponse => {
+      console.log("RESPONSE", userResponse);
+      if (userResponse !== null) {
+        const password = userResponse.dataValues.password;
+        bcrypt.compare(info.password, password, (error, result) => {
+          console.log(result);
+          if (result) {
+            const userData = {
+              userID: userResponse.dataValues.userID,
+              groups: userResponse.dataValues.groups
+            };
+            res.send(userData);
+          } else {
+            res.send("password invalid");
+          }
+        });
+      } else {
+        res.send("user not found");
+      }
     });
   });
 

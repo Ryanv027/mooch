@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import axios from 'axios';
 import SignUp from "./SignUp";
 import LogUser from "./LogUser";
-import styles from "./Login.css";
+import "./Login.css";
 
 class Login extends Component {
   state = {
