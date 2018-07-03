@@ -46,7 +46,13 @@ class LogUser extends Component {
   //       this.setReduxState(userInfo);
   //     });
   // };
-
+  
+  handleHome = () => {
+    this.setState({
+      logIn: false,
+      neither: true
+    });
+  };
   handleSubmit = e => {
     e.preventDefault();
 
@@ -69,35 +75,42 @@ class LogUser extends Component {
   };
   render = () => {
     return (
-      <div className="row">
-        <div className="col s10 offset-s1 center">
-          <form className="col s10" onSubmit={this.handleSubmit}>
-            <div className="row">
-              <div className="input-field col s6">
-                <input
-                  placeholder="username"
-                  type="text"
-                  className="validate"
-                  onChange={this.onChangeUsername}
-                  value={this.state.userName}
-                />
-              </div>
+      <div className="container">
+        <div className="section"></div>
+        <center>
+          <div className="z-depth-5 grey lighten-4 row prime">
+            <img className="responsive-img" src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png" />
+            <div className="section"></div>
+            <h5 className="black-text">WELCOME TO MOOCH</h5>
+            <h6 className="black-text">Take The Hassle Out Of Settling Debts</h6>
+            <div className="section"></div>
+            <form className="col s12" method="post">
+              <br />
+              <center>
+                <div className='row'>
+                  <div className='input-field col s12'>
+                    <input className='validate' type='email' name='email' id='email' />
+                    <label for='email'>Enter your email</label>
+                  </div>
+                </div>
 
-              <div className="input-field col s6">
-                <input
-                  placeholder="password"
-                  type="password"
-                  className="validate"
-                  onChange={this.onChangePassword}
-                  value={this.state.password}
-                />
-              </div>
-            </div>
-
-            <button className="btn waves-effect waves light">submit</button>
-          </form>
-          <button onClick={this.getGroupNames}>test</button>
-        </div>
+                <div className='row'>
+                  <div className='input-field col s12'>
+                    <input className='validate' type='password' name='password' id='password' />
+                    <label for='password'>Enter your password</label>
+                  </div>
+                  <div className='row'>
+                    <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-light green-accent-2' onClick={this.handleLogin}>Submit</button>
+                  </div>
+                  <div className='row'>
+                    <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-light green-accent-2' onClick={this.handleHome}>Home</button>
+                  </div>
+                  </div>
+                </center>
+              </form>
+            
+          </div>
+          </center>
       </div>
     );
   };

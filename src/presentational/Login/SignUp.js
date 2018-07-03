@@ -65,52 +65,74 @@ class SignUp extends Component {
 
   render = () => {
     return (
-      <div className="row">
-        <div className="col s10 offset-s1 center">
-          <form className="col s10" onSubmit={this.handleSubmit}>
-            <div className="row">
-              <div className="input-field col s6">
-                <input
-                  placeholder="name"
-                  type="text"
-                  className="validate"
-                  value={this.state.name}
-                  onChange={this.onChangeName}
-                />
-              </div>
-              <div className="input-field col s6">
-                <input
-                  placeholder="username"
-                  type="text"
-                  className="validate"
-                  value={this.state.username}
-                  onChange={this.onChangeUsername}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-field col s6">
-                <input
-                  placeholder="email"
-                  type="email"
-                  className="validate"
-                  value={this.state.email}
-                  onChange={this.onChangeEmail}
-                />
-              </div>
-              <div className="input-field col s6">
-                <input
-                  placeholder="password"
-                  type="password"
-                  className="validate"
-                  value={this.state.password}
-                  onChange={this.onChangePassword}
-                />
-              </div>
-            </div>
-            <button className="btn waves-effect waves light">submit</button>
-          </form>
-        </div>
+      <div className="container">
+        <div className="section"></div>
+        <center>
+          <div className="z-depth-5 grey lighten-4 row prime">
+            <img className="responsive-img" src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png" />
+            <div className="section"></div>
+            <h5 className="black-text">WELCOME TO MOOCH</h5>
+            <h6 className="black-text">Take The Hassle Out Of Settling Debts</h6>
+            <div className="section"></div>
+            <form className="col s12" method="post">
+              <br />
+              <center>
+                <div className="row">
+                  <div className="col s12 center">
+                    <form className="col s12" onSubmit={this.handleSubmit}>
+                      <div className="row">
+                        <div className="input-field">
+                          <input
+                            placeholder="name"
+                            type="text"
+                            className="validate"
+                            value={this.state.name}
+                            onChange={this.onChangeName}
+                          />
+                        </div>
+                        </div>
+                        <div className="row">
+                        <div className="input-field">
+                          <input
+                            placeholder="username"
+                            type="text"
+                            className="validate"
+                            value={this.state.username}
+                            onChange={this.onChangeUsername}
+                          />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="input-field">
+                          <input
+                            placeholder="email"
+                            type="email"
+                            className="validate"
+                            value={this.state.email}
+                            onChange={this.onChangeEmail}
+                          />
+                        </div>
+                        </div>
+                        <div className="row">
+                        <div className="input-field">
+                          <input
+                            placeholder="password"
+                            type="password"
+                            className="validate"
+                            value={this.state.password}
+                            onChange={this.onChangePassword}
+                          />
+                        </div>
+                      </div>
+                      <button className="btn waves-effect waves light">submit</button>
+                    </form>
+                  </div>
+                </div>
+              </center>
+            </form>
+
+          </div>
+        </center>
       </div>
     );
   };
