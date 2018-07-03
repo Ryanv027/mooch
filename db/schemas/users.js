@@ -3,28 +3,37 @@ module.exports = function(sequelize, DataTypes) {
     userID: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false
     },
     userName: {
-      type: DataTypes.STRING(50)
-      // validate: {
-      //   len: [2, 50],
-      //   // isAlphanumeric: true,
-      //   notNull: true
-      // }
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      validate: {
+        len: [2, 50],
+        isAlphanumeric: true,
+        notEmpty: true
+      }
     },
     email: {
-      type: DataTypes.STRING(30)
-      // validate: {
-      //   isEmail: true,
-      //   notNull: true
-      // }
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      validate: {
+        isEmail: true,
+        notEmpty: true
+      }
     },
     password: {
-      type: DataTypes.STRING(30)
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      validate: {
+        len: [6, 50],
+        notEmpty: true
+      }
     },
     name: {
-      type: DataTypes.STRING(30)
+      type: DataTypes.STRING(30),
+      allowNull: false
     },
     groups: DataTypes.ARRAY(DataTypes.TEXT)
   });
