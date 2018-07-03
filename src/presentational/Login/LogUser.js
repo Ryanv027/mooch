@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { login } from "./../../actions/auth";
 import { groups } from "./../../actions/groups";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 class LogUser extends Component {
   state = {
     userName: "",
-    password: ""
+    password: "",
+    hashedPassword: ""
   };
   onChangeUsername = e => {
     const userName = e.target.value;
@@ -16,6 +18,11 @@ class LogUser extends Component {
   onChangePassword = e => {
     const password = e.target.value;
     this.setState({ password });
+
+    const salt = "$2a$10$psHwfCgWu.Zw2dh3Xk/swu";
+    bcrypt.hash(password, salt, (error, hash) => {
+      this.setState({ hashedPassword: hash });
+    });
   };
 
   setReduxState = response => {

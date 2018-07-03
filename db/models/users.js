@@ -19,7 +19,7 @@ module.exports = {
   },
   findUser: (info, cb) => {
     db.users
-      .findOne({ where: { userName: info.userName, password: info.password } })
+      .findOne({ where: { userName: info.userName } })
       .then(user => {
         cb(user);
       })

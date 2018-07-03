@@ -1,6 +1,7 @@
 const path = require("path");
 const db = require("./../../db/schemas/index");
 const users = require("./../../db/models/users");
+const bcrypt = require("bcryptjs");
 
 module.exports = app => {
   app.post("/api/users", (req, res) => {
@@ -12,12 +13,22 @@ module.exports = app => {
 
   app.get("/api/users", (req, res) => {
     const info = req.query;
+    // console.log(info);
     users.findUser(info, response => {
-      const userData = {
-        userID: response.dataValues.userID,
-        groups: response.dataValues.groups
-      };
-      res.send(userData);
+      // console.log(response);
+      const password = response.dataValues.password;
+      console.log(password);
+      console.log(info.password);
+      bcrypt.compare(info.password, password, (error, respsonse) => {
+        console.log(response);
+        if (response) {
+          const userData = {
+            userID: response.dataValues.userID,
+            groups: response.dataValues.groups
+          };
+          res.send(userData);
+        }
+      });
     });
   });
 

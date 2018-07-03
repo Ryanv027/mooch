@@ -3,8 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     userID: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false
+      primaryKey: true
     },
     userName: {
       type: DataTypes.STRING(50),
@@ -24,10 +23,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     password: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING(255),
       allowNull: false,
       validate: {
-        len: [6, 50],
+        len: [6, 255],
         notEmpty: true
       }
     },
