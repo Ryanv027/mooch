@@ -27,10 +27,13 @@ class LogUser extends Component {
   };
 
   handleLogin = response => {
-    const userID = response.data.userID;
+    const userInfo = {
+      userID: response.data.userID,
+      userName: response.data.userName
+    };
     const groupInfo = response.data.groups;
 
-    this.props.login(userID);
+    this.props.login(userInfo);
     this.props.groups(groupInfo);
     this.props.history.push("/dashboard");
   };

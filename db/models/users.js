@@ -37,11 +37,11 @@ module.exports = {
         cb(error);
       });
   },
-  verifyUser: (userName, cb) => {
+  groupUserData: (userID, cb) => {
     db.users
-      .findOne({ where: { userName: userName } })
-      .then(project => {
-        cb(project);
+      .findOne({ where: { userID: userID } })
+      .then(data => {
+        cb(data);
       })
       .catch(error => {
         cb(error);

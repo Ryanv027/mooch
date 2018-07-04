@@ -21,4 +21,15 @@ module.exports = app => {
       res.send(groupData);
     });
   });
+
+  app.get("/api/groupData", (req, res) => {
+    const groupID = req.query;
+    groups.findGroup(groupID, response => {
+      if (response) {
+        res.send(response);
+      } else {
+        res.send("group not found");
+      }
+    });
+  });
 };
