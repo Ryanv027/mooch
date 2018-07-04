@@ -10,6 +10,7 @@ import Dashboard from "./../presentational/Dashboard/Dashboard";
 import Group from "./../presentational/Group/Group";
 import NotFound from "./../presentational/Login/NotFound";
 import CreateGroup from "./../presentational/Group/CreateGroup";
+import AddExpense from "./../presentational/Group/AddExpense";
 
 export const history = createHistory();
 
