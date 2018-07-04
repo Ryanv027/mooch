@@ -111,11 +111,12 @@ class SignUp extends Component {
         .post("/api/users", info)
         .then(response => {
           if (response) {
-            const userID = {
-              userID: response.data
+            const userInfo = {
+              userID: response.data.userID,
+              userName: response.data.userName
             };
             const groupIDs = [];
-            this.props.login(userID);
+            this.props.login(userInfo);
             this.props.groups(groupIDs);
             this.props.history.push("/dashboard");
           }
@@ -212,8 +213,8 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: userID => {
-    return dispatch(login(userID));
+  login: userInfo => {
+    return dispatch(login(userInfo));
   },
   groups: groupIDs => {
     return dispatch(groups(groupIDs));

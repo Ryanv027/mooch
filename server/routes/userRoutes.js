@@ -7,22 +7,21 @@ module.exports = app => {
   app.post("/api/users", (req, res) => {
     const info = req.body;
     users.createUser(info, response => {
-      res.send(response.dataValues.userID);
+      res.send(response.dataValues);
     });
   });
 
   app.get("/api/users", (req, res) => {
     const info = req.query;
     users.findUser(info, userResponse => {
-      console.log("RESPONSE", userResponse);
       if (userResponse !== null) {
         const password = userResponse.dataValues.password;
         bcrypt.compare(info.password, password, (error, result) => {
-          console.log(result);
           if (result) {
             const userData = {
               userID: userResponse.dataValues.userID,
-              groups: userResponse.dataValues.groups
+              groups: userResponse.dataValues.groups,
+              userName: userResponse.dataValues.userName
             };
             res.send(userData);
           } else {
@@ -36,13 +35,26 @@ module.exports = app => {
   });
 
   app.get("/api/user/:user", (req, res) => {
-    const info = req.params.user;
-    users.verifyUser(info, response => {
+    const info = { userName: req.params.user };
+    users.findUser(info, response => {
       if (response) {
         res.send(response);
       } else {
         res.send("invalid");
       }
+    });
+  });
+
+  app.get("/api/groupUsers/:user", (req, res) => {
+    console.log("HIT GROUP USER ROUTE");
+    const userID = req.params.user;
+    users.groupUserData(userID, response => {
+      const userInfo = {
+        userID: response.dataValues.userID,
+        userName: response.dataValues.userName,
+        email: response.dataValues.email
+      };
+      res.send(userInfo);
     });
   });
 

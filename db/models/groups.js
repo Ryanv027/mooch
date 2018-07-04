@@ -19,6 +19,11 @@ module.exports = {
     db.groups.find({ where: { groupID: id } }).then(response => {
       cb(response);
     });
+  },
+  findGroup: (data, cb) => {
+    db.groups.findOne({ where: { groupID: data.groupID } }).then(group => {
+      cb(group);
+    });
   }
   // findUser: (info, cb) => {
   //   db.users

@@ -13,6 +13,7 @@ class CreateGroup extends React.Component {
     usersInfo: [],
     error: ""
   };
+
   handleGroupName = e => {
     const groupName = e.target.value;
     this.setState({ groupName });
@@ -31,6 +32,7 @@ class CreateGroup extends React.Component {
   handleAddUser = () => {
     const user = this.state.userName;
     if (user.length > 0) {
+      console.log("user length valid");
       axios.get(`/api/user/${user}`).then(response => {
         //console.log(response);
         if (response.data.userName === user) {
@@ -56,17 +58,12 @@ class CreateGroup extends React.Component {
     }
   };
 
-  // addGroupsToDatabase = () => {
-  //   const info = { groups: this.props.groups, userID: this.props.id };
-  //   axios.put("/api/addGroupToUser", info);
-  // };
-
   handleSubmit = e => {
     e.preventDefault();
     const groupInfo = {
       groupName: this.state.groupName,
       groupType: this.state.groupType,
-      users: this.state.userIDs
+      users: [...this.state.userIDs, this.props.userInfo.userID]
     };
     axios
       .post("/api/createGroup", groupInfo)
@@ -158,8 +155,11 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+const mapStateToProps = state => ({
+  userInfo: state.auth
+});
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(CreateGroup);
 
