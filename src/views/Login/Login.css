@@ -10,6 +10,10 @@ body {
   border: 1px solid #eee;
 }
 
+.section-adjustment {
+  padding-top: 0;
+}
+
 .responsive-img {
   width: 250px;
 }

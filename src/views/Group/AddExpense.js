@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import axios from "axios";
 
 class AddExpense extends React.Component {
@@ -22,11 +21,11 @@ class AddExpense extends React.Component {
   handleExpenseSubmit = e => {
     e.preventDefault();
     const filteredUserIDs = [];
-    const filteredUsers = this.state.users.filter(user => {
-      if (user.checked === true) {
-        filteredUserIDs.push(user.userID);
-      }
-    });
+    // const filteredUsers = this.state.users.filter(user => {
+    //   if (user.checked === true) {
+    //     filteredUserIDs.push(user.userID);
+    //   }
+    // });
     console.log(filteredUserIDs);
     const info = {
       groupID: this.state.groupID,

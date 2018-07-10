@@ -17,6 +17,7 @@ module.exports = {
         cb(error);
       });
   },
+
   findUser: (info, cb) => {
     db.users
       .findOne({ where: { userName: info.userName } })
@@ -27,6 +28,7 @@ module.exports = {
         cb(error);
       });
   },
+
   findEmail: (info, cb) => {
     db.users
       .findOne({ where: { email: info.email } })
@@ -37,6 +39,7 @@ module.exports = {
         cb(error);
       });
   },
+
   groupUserData: (userID, cb) => {
     db.users
       .findOne({ where: { userID: userID } })
@@ -47,6 +50,7 @@ module.exports = {
         cb(error);
       });
   },
+
   addGroup: info => {
     //console.log(info);
     const groups = { groups: info.groups };

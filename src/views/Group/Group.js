@@ -32,7 +32,9 @@ class Group extends Component {
           groupName: response.data.groupName,
           groupID: response.data.groupID
         });
-        this.setUsersData(response.data.users);
+        if (response.data.users !== undefined) {
+          this.setUsersData(response.data.users);
+        }
       });
   };
 
@@ -94,7 +96,8 @@ class Group extends Component {
   setDebt = expenses => {
     console.log("EXPENSES- ", expenses);
     const users = this.state.users;
-    for (let i = 0; i < expenses.length; i++) {
+    console.log(users.length);
+    for (let i = 0; i < users.length; i++) {
       console.log(expenses[i]);
       // for (let i = 0; i < expenses.length; i++) {
       //   console.log("Shark - ", expenses[i].shark);

@@ -16,26 +16,28 @@ class Dashboard extends Component {
         />
       );
     });
+
     return (
       <div>
         <Navbar history={this.props.history} />
-            <div className="section">
+
+        <div className="section">
           <div className="container">
             <center>
               <div className="z-depth-5 grey lighten-4 row prime">
                 <div className="row">
                   <div className="groupContainer">
-            <div className="dashboardMargin">
-              <AddGroupBox history={this.props.history} />
-              {groups}
-            </div>
+                    <div className="dashboardMargin">
+                      <AddGroupBox history={this.props.history} />
+                      {groups}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </center>
           </div>
         </div>
-        </div>
-        </center>
-        </div>
       </div>
-      </div>              
     );
   };
 }
