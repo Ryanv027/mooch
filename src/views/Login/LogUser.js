@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "./../../actions/auth";
-import { groups } from "./../../actions/groups";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+
+import { login } from "./../../actions/auth";
+import { groups } from "./../../actions/groups";
 
 class LogUser extends Component {
   state = {
@@ -12,10 +13,12 @@ class LogUser extends Component {
     hashedPassword: "",
     loginError: ""
   };
+
   onChangeUsername = e => {
     const userName = e.target.value;
     this.setState({ userName });
   };
+
   onChangePassword = e => {
     const password = e.target.value;
     this.setState({ password });
@@ -26,7 +29,7 @@ class LogUser extends Component {
     });
   };
 
-  handleLogin = response => {
+  settingUserReduxState = response => {
     const userInfo = {
       userID: response.data.userID,
       userName: response.data.userName
@@ -41,26 +44,26 @@ class LogUser extends Component {
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .get("/api/users", {
+      .get("/api/getUserData", {
         params: {
           userName: this.state.userName.toLowerCase(),
           password: this.state.password
         }
       })
       .then(response => {
-        console.log(response);
         if (response.data === "user not found") {
           this.setState({ loginError: "Username not found" });
         } else if (response.data === "password invalid") {
           this.setState({ loginError: "Password invalid" });
         } else {
-          this.handleLogin(response);
+          this.settingUserReduxState(response);
         }
       })
       .catch(error => {
         console.log(error);
       });
   };
+
   render = () => {
     return (
       <div className="container">
@@ -124,7 +127,7 @@ class LogUser extends Component {
                       className="col s12 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.props.handleHome}
                     >
-                      Home
+                      Back
                     </button>
                   </div>
                 </div>

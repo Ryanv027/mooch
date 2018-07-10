@@ -18,7 +18,7 @@ class Group extends Component {
   };
 
   componentDidMount = () => {
-    this.addGroupsToDatabase();
+    this.addGroupToUser();
     this.setGroupData();
   };
 
@@ -32,7 +32,9 @@ class Group extends Component {
           groupName: response.data.groupName,
           groupID: response.data.groupID
         });
-        this.setUsersData(response.data.users);
+        if (response.data.users !== undefined) {
+          this.setUsersData(response.data.users);
+        }
       });
   };
 
@@ -67,26 +69,44 @@ class Group extends Component {
       })
     ).then(response => {
       console.log(response);
-      const users = response.filter(user => {
-        if (user.data.userID !== this.props.id) {
-          return user;
-        }
-      });
-
-      const usersWithoutLoggedInUser = users.map(user => {
+      const users = response.map(user => {
         return {
           userID: user.data.userID,
           userName: user.data.userName,
           email: user.data.email,
-          checked: true
+          checked: true,
+          debt: 0
         };
       });
-
-      this.setState({ users: usersWithoutLoggedInUser });
+      this.setState({ users });
+      this.getGroupExpenses();
     });
   };
 
-  addGroupsToDatabase = () => {
+  getGroupExpenses = () => {
+    axios
+      .get("/api/groupExpenses", {
+        params: { groupID: this.state.groupID }
+      })
+      .then(response => {
+        this.setDebt(response);
+      });
+  };
+
+  setDebt = expenses => {
+    console.log("EXPENSES- ", expenses);
+    const users = this.state.users;
+    console.log(users.length);
+    for (let i = 0; i < users.length; i++) {
+      console.log(expenses[i]);
+      // for (let i = 0; i < expenses.length; i++) {
+      //   console.log("Shark - ", expenses[i].shark);
+      //   console.log("UserID - ", users[i].userID);
+      // }
+    }
+  };
+
+  addGroupToUser = () => {
     const info = { groups: this.props.groups, userID: this.props.id };
     axios.put("/api/addGroupToUser", info);
   };

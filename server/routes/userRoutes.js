@@ -4,24 +4,25 @@ const users = require("./../../db/models/users");
 const bcrypt = require("bcryptjs");
 
 module.exports = app => {
-  app.post("/api/users", (req, res) => {
+  app.post("/api/userSignUpInfo", (req, res) => {
     const info = req.body;
     users.createUser(info, response => {
       res.send(response.dataValues);
     });
   });
 
-  app.get("/api/users", (req, res) => {
+  app.get("/api/getUserData", (req, res) => {
     const info = req.query;
-    users.findUser(info, userResponse => {
-      if (userResponse !== null) {
-        const password = userResponse.dataValues.password;
+
+    users.findUser(info, response => {
+      if (response !== null) {
+        const password = response.dataValues.password;
         bcrypt.compare(info.password, password, (error, result) => {
           if (result) {
             const userData = {
-              userID: userResponse.dataValues.userID,
-              groups: userResponse.dataValues.groups,
-              userName: userResponse.dataValues.userName
+              userID: response.dataValues.userID,
+              groups: response.dataValues.groups,
+              userName: response.dataValues.userName
             };
             res.send(userData);
           } else {
@@ -64,9 +65,11 @@ module.exports = app => {
     res.send("confirm");
   });
 
-  app.get("/api/checkUsername", (req, res) => {
+  app.get("/api/checkUserName", (req, res) => {
     const userName = req.query;
+    console.log(userName);
     users.findUser(userName, response => {
+      console.log(response);
       if (response === null) {
         res.send("valid");
       } else {

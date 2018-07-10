@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import axios from 'axios';
 import SignUp from "./SignUp";
 import LogUser from "./LogUser";
 import "./Login.css";
@@ -33,6 +32,7 @@ class Login extends Component {
       neither: true
     });
   };
+
   render = () => {
     return (
       <div className="container">
@@ -45,9 +45,11 @@ class Login extends Component {
             handleHome={this.handleHome}
           />
         ) : null}
+
         {this.state.logIn ? (
           <LogUser history={this.props.history} handleHome={this.handleHome} />
         ) : null}
+
         {this.state.neither ? (
           <center>
             <div className="z-depth-5 grey lighten-4 row prime">
@@ -67,7 +69,7 @@ class Login extends Component {
                 <center>
                   <div className="row">
                     <button
-                      type="submit"
+                      type="button"
                       name="btn_login"
                       className="col s12 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.handleLogin}
@@ -77,7 +79,7 @@ class Login extends Component {
                   </div>
                   <div className="row">
                     <button
-                      type="submit"
+                      type="button"
                       name="btn_login"
                       className="col s12 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.handleSignUp}

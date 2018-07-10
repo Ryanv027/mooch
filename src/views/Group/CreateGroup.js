@@ -13,26 +13,27 @@ class CreateGroup extends React.Component {
     usersInfo: [],
     error: ""
   };
-  handleGroupName = e => {
+
+  onChangeGroupName = e => {
     const groupName = e.target.value;
     this.setState({ groupName });
   };
 
-  handleGroupType = e => {
+  onChangeGroupType = e => {
     const groupType = e.target.value;
     this.setState({ groupType });
   };
 
-  handleUserName = e => {
+  onChangeUserName = e => {
     const userName = e.target.value;
     this.setState({ userName });
   };
 
   handleAddUser = () => {
     const user = this.state.userName;
+
     if (user.length > 0) {
       axios.get(`/api/user/${user}`).then(response => {
-        //console.log(response);
         if (response.data.userName === user) {
           //setting userdata to state to access later for our axios.put call
           const userData = {
@@ -90,12 +91,12 @@ class CreateGroup extends React.Component {
     const filteredUserInfo = this.state.usersInfo.filter(user => {
       if (user.userID !== userID) {
         return user;
-      }
+      } else return null;
     });
     const filteredUserIDs = this.state.userIDs.filter(user => {
       if (user !== userID) {
         return user;
-      }
+      } else return null;
     });
     this.setState({ usersInfo: filteredUserInfo, userIDs: filteredUserIDs });
   };
@@ -109,6 +110,7 @@ class CreateGroup extends React.Component {
         </div>
       );
     });
+
     return (
       <div>
         <Navbar history={this.props.history} />
@@ -162,5 +164,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CreateGroup);
-
-//ADD USERS TO A USER STATE AND THEN WHEN THE GROUP IS CREATED USE THOSE USER IDS TO ADD THIS GROUP ID TO THEIR INDIVIDUAL TABLE.

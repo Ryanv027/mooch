@@ -31,34 +31,34 @@ class GroupBox extends Component {
           <div className="xyz col s12">
             <div className="card">
               <div className="card-image">
-                <img src="http://wallpaperheart.com/wp-content/uploads/2018/03/scenery-wallpaper-hd-2.jpg" />
+                <img
+                  src="http://wallpaperheart.com/wp-content/uploads/2018/03/scenery-wallpaper-hd-2.jpg"
+                  alt="wallpaper"
+                />
                 <span className="card-title groupBox-name">
-                  <p>{this.state.groupName.length > 0 ? this.state.groupName : null}</p>
+                  <p>
+                    {this.state.groupName.length > 0
+                      ? this.state.groupName
+                      : null}
+                  </p>
                 </span>
-                <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+                <a className="btn-floating halfway-fab waves-effect waves-light red">
+                  <i className="material-icons">add</i>
+                </a>
               </div>
               <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                <p>
+                  I am a very simple card. I am good at containing small bits of
+                  information. I am convenient because I require little markup
+                  to use effectively.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
-    // <div className="groupBox" onClick={this.renderGroup}>
-    //     <h5 className="groupBox-name">
-    //       <p>{this.state.groupName.length > 0 ? this.state.groupName : null}</p>
-    //     </h5>
-    //   </div>
     );
   };
 }
 
 export default GroupBox;
-
-// .get("/api/users", {
-//         params: {
-//           userName: this.state.userName,
-//           password: this.state.password
-//         }
-//       })

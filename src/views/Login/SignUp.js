@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "./../../actions/auth";
-import { groups } from "./../../actions/groups";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+
+import { login } from "./../../actions/auth";
 
 class SignUp extends Component {
   state = {
@@ -17,9 +17,6 @@ class SignUp extends Component {
     usernameError: "",
     emailError: ""
   };
-  componentDidMount() {
-    // console.log(this.props);
-  }
 
   onChangeName = e => {
     const name = e.target.value;
@@ -53,17 +50,17 @@ class SignUp extends Component {
   };
 
   checkUsername = () => {
+    const userName = this.state.username.toLowerCase();
     axios
-      .get("/api/checkUsername", {
-        params: { username: this.state.username }
+      .get("/api/checkUserName", {
+        params: { userName: userName }
       })
       .then(response => {
         if (response.data === "valid") {
           this.setState({ usernameError: false });
           this.checkPassword();
-        } else {
+        } else if (response.data === "invalid") {
           this.setState({ usernameError: "Username already exists" });
-          this.checkPassword();
         }
       });
   };
@@ -77,7 +74,6 @@ class SignUp extends Component {
         passwordError:
           "Please enter a valid password length (6 or more characters)"
       });
-      this.checkEmail();
     }
   };
 
@@ -102,35 +98,28 @@ class SignUp extends Component {
       password: this.state.hashedPassword,
       groups: []
     };
-    if (
-      !this.state.passwordError &&
-      !this.state.emailError &&
-      !this.state.usernameError
-    ) {
-      axios
-        .post("/api/users", info)
-        .then(response => {
-          if (response) {
-            const userInfo = {
-              userID: response.data.userID,
-              userName: response.data.userName
-            };
-            const groupIDs = [];
-            this.props.login(userInfo);
-            this.props.groups(groupIDs);
-            this.props.history.push("/dashboard");
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+
+    axios
+      .post("/api/userSignUpInfo", info)
+      .then(response => {
+        if (response) {
+          const userInfo = {
+            userID: response.data.userID,
+            userName: response.data.userName
+          };
+          this.props.login(userInfo);
+          this.props.history.push("/dashboard");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render = () => {
     return (
       <div className="container">
-        <div className="section" />
+        <div className="section section-adjustment" />
         <center>
           <div className="z-depth-5 grey lighten-4 row prime">
             <img
@@ -197,9 +186,25 @@ class SignUp extends Component {
                           />
                         </div>
                       </div>
-                      <button className="btn waves-effect waves light">
-                        submit
-                      </button>
+                      <div className="row">
+                        <button
+                          type="submit"
+                          name="btn_login"
+                          className="col s12 btn btn-large waves-effect waves-light green-accent-2"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                      <div className="row">
+                        <button
+                          type="button"
+                          name="btn_login"
+                          className="col s12 btn btn-large waves-effect waves-light green-accent-2"
+                          onClick={this.props.handleHome}
+                        >
+                          Back
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -215,9 +220,6 @@ class SignUp extends Component {
 const mapDispatchToProps = dispatch => ({
   login: userInfo => {
     return dispatch(login(userInfo));
-  },
-  groups: groupIDs => {
-    return dispatch(groups(groupIDs));
   }
 });
 
