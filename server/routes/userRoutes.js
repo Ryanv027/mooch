@@ -46,7 +46,6 @@ module.exports = app => {
   });
 
   app.get("/api/groupUsers/:user", (req, res) => {
-    console.log("HIT GROUP USER ROUTE");
     const userID = req.params.user;
     users.groupUserData(userID, response => {
       const userInfo = {
