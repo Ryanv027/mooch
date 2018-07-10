@@ -15,7 +15,7 @@ class Navbar extends Component {
 
   render = () => {
     return (
-      <nav>
+      <nav className="navvy">
         <div className="nav-wrapper">
           <a className="brand-logo center">mooch</a>
           <div className="left">

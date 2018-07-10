@@ -9,7 +9,7 @@ class AddGroupBox extends Component {
   render = () => {
     return (
       <div className="addGroupBox" onClick={this.directToCreateGroup}>
-        <h1 className="center plus">+</h1>
+        <h3 className="center plus">+</h3>
       </div>
     );
   };
