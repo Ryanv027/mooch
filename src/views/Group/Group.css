@@ -45,3 +45,7 @@ font-family: 'Source Sans Pro', sans-serif; */
 .plus:active {
   transform: scale(2.4);
 }
+
+input {
+  color: black;
+}

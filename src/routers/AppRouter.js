@@ -5,12 +5,11 @@ import createHistory from "history/createBrowserHistory";
 
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
-import Login from "./../presentational/Login/Login";
-import Dashboard from "./../presentational/Dashboard/Dashboard";
-import Group from "./../presentational/Group/Group";
-import NotFound from "./../presentational/Login/NotFound";
-import CreateGroup from "./../presentational/Group/CreateGroup";
-import AddExpense from "./../presentational/Group/AddExpense";
+import Login from "./../views/Login/Login";
+import Dashboard from "./../views/Dashboard/Dashboard";
+import Group from "./../views/Group/Group";
+import NotFound from "./../views/Login/NotFound";
+import CreateGroup from "./../views/Group/CreateGroup";
 
 export const history = createHistory();
 

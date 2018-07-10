@@ -8,21 +8,21 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
-    mooch: {
-      type: DataTypes.STRING(30)
+    mooches: {
+      type: DataTypes.ARRAY(DataTypes.TEXT)
       // validate: {
       //   isEmail: true,
       //   notNull: true
       // }
     },
     shark: {
-      type: DataTypes.STRING(30)
+      type: DataTypes.STRING(50)
     },
     amount: {
       type: DataTypes.STRING(30)
     },
-    statesExpense: {
-      type: DataTypes.STRING(30)
+    description: {
+      type: DataTypes.STRING(100)
     }
   });
 
