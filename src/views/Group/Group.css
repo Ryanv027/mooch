@@ -1,16 +1,16 @@
 .groupBox {
-  border: 1mm solid #ee6e73;
-  background-color: #ee6e72bf;
+  /* border: 1mm solid #ee6e73; */
+  /* background-color: #ee6e72bf; */
   width: 300px;
   height: 300px;
   margin: 25px 25px;
   cursor: pointer;
-  box-shadow: 0 5px 20px rgb(73, 73, 73);
+  /* box-shadow: 0 5px 20px rgb(73, 73, 73); */
 }
 
 .groupBox:hover {
   transform: scale(1.05);
-  box-shadow: 0 7px 25px rgb(73, 73, 73);
+  /* box-shadow: 0 7px 25px rgb(73, 73, 73); */
 }
 
 .groupBoxName {
@@ -48,4 +48,9 @@ font-family: 'Source Sans Pro', sans-serif; */
 
 input {
   color: black;
+}
+
+.xyz {
+  padding-left: 0px;
+  padding-right: 0px;
 }
