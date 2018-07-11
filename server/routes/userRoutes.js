@@ -11,7 +11,7 @@ module.exports = app => {
     });
   });
 
-  app.get("/api/getUserData", (req, res) => {
+  app.get("/api/getUserLoginInfo", (req, res) => {
     const info = req.query;
 
     users.findUser(info, response => {
@@ -35,8 +35,8 @@ module.exports = app => {
     });
   });
 
-  app.get("/api/user/:user", (req, res) => {
-    const info = { userName: req.params.user };
+  app.get("/api/userCheckCreateGroup", (req, res) => {
+    const info = req.query;
     users.findUser(info, response => {
       if (response) {
         res.send(response);
