@@ -34,17 +34,17 @@ class LogUser extends Component {
       userID: response.data.userID,
       userName: response.data.userName
     };
-    const groupInfo = response.data.groups;
+    const groups = response.data.groups;
 
     this.props.login(userInfo);
-    this.props.groups(groupInfo);
+    this.props.groups(groups);
     this.props.history.push("/dashboard");
   };
 
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .get("/api/getUserData", {
+      .get("/api/getUserLoginInfo", {
         params: {
           userName: this.state.userName.toLowerCase(),
           password: this.state.password

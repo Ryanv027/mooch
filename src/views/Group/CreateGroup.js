@@ -9,9 +9,19 @@ class CreateGroup extends React.Component {
     groupName: "",
     groupType: "",
     userName: "",
-    userIDs: [],
-    usersInfo: [],
-    error: ""
+    groupUserData: [],
+    invalidUsernameError: ""
+  };
+
+  componentDidMount = () => {
+    const loggedUserData = [
+      {
+        userName: this.props.userName,
+        userID: this.props.userID,
+        groups: this.props.userGroups
+      }
+    ];
+    this.setState({ groupUserData: loggedUserData });
   };
 
   onChangeGroupName = e => {
@@ -29,57 +39,69 @@ class CreateGroup extends React.Component {
     this.setState({ userName });
   };
 
-  handleAddUser = () => {
-    const user = this.state.userName;
+  checkUserNameValidity = () => {
+    const userName = this.state.userName.toLowerCase();
 
-    if (user.length > 0) {
-      axios.get(`/api/user/${user}`).then(response => {
-        if (response.data.userName === user) {
-          //setting userdata to state to access later for our axios.put call
-          const userData = {
-            user: user,
-            userID: response.data.userID,
-            groups: response.data.groups
-          };
-          const usersInfo = [...this.state.usersInfo, userData];
-          //setting up this array to use when creating the group, we will add an array of user id's to the groups table.
-          const userIDs = [...this.state.userIDs, response.data.userID];
-          this.setState({
-            userName: "",
-            error: "",
-            userIDs: userIDs,
-            usersInfo: usersInfo
-          });
-        } else {
-          this.setState({ error: "Please enter a valid username" });
-        }
-      });
+    if (userName.length > 0) {
+      axios
+        .get(`/api/userNameValidity`, { params: { userName: userName } })
+        .then(response => {
+          if (response.data.userName === this.props.userName) {
+            this.setState({
+              invalidUsernameError: "You cannot enter your own username!"
+            });
+          } else if (response.data !== "invalid") {
+            //setting userdata to state to access later for our axios.put call
+            const userData = {
+              userName: userName,
+              userID: response.data.userID,
+              groups: response.data.groups
+            };
+            const usersInfo = [...this.state.groupUserData, userData];
+            //setting up this array to use when creating the group, we will add an array of user id's to the groups table.
+            // const userIDs = [...this.state.userIDs, response.data.userID];
+            this.setState({
+              userName: "",
+              error: "",
+              groupUserData: usersInfo
+            });
+          } else {
+            this.setState({
+              invalidUsernameError: "Please enter a valid username"
+            });
+          }
+        });
+    } else {
+      this.setState({ invalidUsernameError: "Please enter a username" });
     }
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    const groupUserData = this.state.groupUserData.map(user => {
+      return user.userID;
+    });
+
     const groupInfo = {
       groupName: this.state.groupName,
       groupType: this.state.groupType,
-      users: [...this.state.userIDs, this.props.userInfo.userID]
+      users: groupUserData
     };
     axios
       .post("/api/createGroup", groupInfo)
       .then(response => {
-        const group = response.data;
+        const groupID = response.data;
         Promise.all(
-          this.state.usersInfo.map(user => {
+          this.state.groupUserData.map(user => {
             //creating an updated version of the users groups and including the brand new group
-            const updatedGroups = [...user.groups, group];
+            const updatedGroups = [...user.groups, groupID];
             //adding the updated groups array to each individual user
             const info = { groups: updatedGroups, userID: user.userID };
             return axios.put("/api/addGroupToUser", info);
           })
         ).then(response => {
-          console.log(response);
-          this.props.addGroup(group);
-          this.props.history.push(`/group/${group}`);
+          this.props.addGroup(groupID);
+          this.props.history.push(`/group/${groupID}`);
         });
       })
       .catch(error => {
@@ -88,27 +110,30 @@ class CreateGroup extends React.Component {
   };
 
   deleteUser = userID => {
-    const filteredUserInfo = this.state.usersInfo.filter(user => {
+    const filteredGroupData = this.state.groupUserData.filter(user => {
+      console.log(user);
       if (user.userID !== userID) {
         return user;
       } else return null;
     });
-    const filteredUserIDs = this.state.userIDs.filter(user => {
-      if (user !== userID) {
-        return user;
-      } else return null;
-    });
-    this.setState({ usersInfo: filteredUserInfo, userIDs: filteredUserIDs });
+    this.setState({ groupUserData: filteredGroupData });
   };
 
   render() {
-    const users = this.state.usersInfo.map((user, index) => {
-      return (
-        <div key={index}>
-          <h1>{user.user}</h1>
-          <button onClick={() => this.deleteUser(user.userID)}>X</button>
-        </div>
-      );
+    const users = this.state.groupUserData.map((user, index) => {
+      if (user.userID !== this.props.userID) {
+        return (
+          <div key={index}>
+            <h6>{user.userName}</h6>
+            <button
+              onClick={() => this.deleteUser(user.userID)}
+              className="deleteButton"
+            >
+              X
+            </button>
+          </div>
+        );
+      } else return null;
     });
 
     return (
@@ -119,25 +144,19 @@ class CreateGroup extends React.Component {
           <input
             type="text"
             value={this.state.groupName}
-            onChange={this.handleGroupName}
-          />
-          <h6>Type</h6>
-          <input
-            type="text"
-            value={this.state.groupType}
-            onChange={this.handleGroupType}
+            onChange={this.onChangeGroupName}
           />
           <h6>Username</h6>
-          <p>{this.state.error}</p>
+          <p>{this.state.invalidUsernameError}</p>
           <input
             type="text"
             value={this.state.userName}
-            onChange={this.handleUserName}
+            onChange={this.onChangeUserName}
           />
           <button
             type="button"
-            className="add-user-button"
-            onClick={this.handleAddUser}
+            className="addUserButton"
+            onClick={this.checkUserNameValidity}
           >
             +
           </button>
@@ -145,7 +164,7 @@ class CreateGroup extends React.Component {
         </form>
         <br />
 
-        <h1>{users}</h1>
+        <h6>{users}</h6>
       </div>
     );
   }
@@ -158,8 +177,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  userInfo: state.auth
+  userName: state.auth.userName,
+  userID: state.auth.userID,
+  userGroups: state.groups
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

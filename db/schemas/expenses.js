@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var expense = sequelize.define("expenses", {
+    expenseID: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
     groupID: {
       type: DataTypes.STRING(50)
       // validate: {
