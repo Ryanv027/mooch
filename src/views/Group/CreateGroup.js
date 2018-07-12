@@ -44,9 +44,8 @@ class CreateGroup extends React.Component {
 
     if (userName.length > 0) {
       axios
-        .get(`/api/userCheckCreateGroup`, { params: { userName: userName } })
+        .get(`/api/userNameValidity`, { params: { userName: userName } })
         .then(response => {
-          console.log(response);
           if (response.data.userName === this.props.userName) {
             this.setState({
               invalidUsernameError: "You cannot enter your own username!"
@@ -101,7 +100,6 @@ class CreateGroup extends React.Component {
             return axios.put("/api/addGroupToUser", info);
           })
         ).then(response => {
-          console.log(response);
           this.props.addGroup(groupID);
           this.props.history.push(`/group/${groupID}`);
         });
