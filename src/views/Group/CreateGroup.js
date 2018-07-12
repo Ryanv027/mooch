@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Navbar from "./../Navbar/Navbar";
 import axios from "axios";
 import { addGroup } from "./../../actions/groups";
+import "./CreateGroup.css";
 
 class CreateGroup extends React.Component {
   state = {
@@ -114,6 +115,11 @@ class CreateGroup extends React.Component {
     return (
       <div>
         <Navbar history={this.props.history} />
+        <div className="section">
+          <div className="container">
+            <center>
+              <div className="z-depth-5 grey lighten-4 row prime">
+                <div className="row">
         <form onSubmit={this.handleSubmit}>
           <h6>Group Name</h6>
           <input
@@ -141,11 +147,18 @@ class CreateGroup extends React.Component {
           >
             +
           </button>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="col s12 btn btn-large waves-effect waves-light green-accent-2">Submit</button>
         </form>
         <br />
 
         <h1>{users}</h1>
+        </div>
+        </div>
+        </center>
+        </div>
+        </div>
       </div>
     );
   }
