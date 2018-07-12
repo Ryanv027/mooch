@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 
 class AddExpense extends React.Component {
   state = {
-    users: [],
+    groupUserData: [],
     groupID: "",
     userID: "",
     description: "",
@@ -12,21 +13,21 @@ class AddExpense extends React.Component {
 
   componentWillMount = () => {
     this.setState({
-      users: this.props.users,
+      groupUserData: this.props.groupUserData,
       groupID: this.props.groupID,
       userID: this.props.userID
     });
   };
 
-  handleExpenseSubmit = e => {
+  expenseSubmit = e => {
     e.preventDefault();
     const filteredUserIDs = [];
-    // const filteredUsers = this.state.users.filter(user => {
-    //   if (user.checked === true) {
-    //     filteredUserIDs.push(user.userID);
-    //   }
-    // });
-    console.log(filteredUserIDs);
+    this.state.groupUserData.filter(user => {
+      if (user.checked === true && user.userID !== this.state.userID) {
+        filteredUserIDs.push(user.userID);
+        return true;
+      } else return null;
+    });
     const info = {
       groupID: this.state.groupID,
       users: filteredUserIDs,
@@ -34,28 +35,40 @@ class AddExpense extends React.Component {
       description: this.state.description,
       amount: this.state.amount
     };
-    axios.post("/api/addExpense", info);
+    axios
+      .post("/api/addExpense", info)
+      .then(response => {
+        console.log(response);
+        if (response.data === "confirm") {
+          this.props.groupDashboardView();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
-  handleDescriptionChange = e => {
+  onChangeDescription = e => {
     const description = e.target.value;
     this.setState({ description });
   };
 
-  handleAmountChange = e => {
+  onChangeAmount = e => {
     const amount = e.target.value;
     this.setState({ amount });
   };
 
-  handleCheck = userID => {
-    console.log(userID);
-    const users = this.state.users;
+  checkboxToggle = userID => {
+    const users = this.state.groupUserData;
+
     const userIndex = users.findIndex(user => {
       return user.userID === userID;
     });
     const userObjectToUpdate = users[userIndex];
+
     if (userObjectToUpdate.checked === true) {
       const updatedUserObject = { ...userObjectToUpdate, checked: false };
+
       users[userIndex] = updatedUserObject;
     } else {
       const updatedUserObject = { ...userObjectToUpdate, checked: true };
@@ -65,40 +78,42 @@ class AddExpense extends React.Component {
   };
 
   render() {
-    const userCheckboxes = this.state.users.map((user, index) => {
-      return (
-        <p key={index}>
-          <label htmlFor={user.userName}>
-            <input
-              type="checkbox"
-              id={user.userName}
-              className="filled-in"
-              checked={user.checked}
-              onChange={() => this.handleCheck(user.userID)}
-            />
-            <span>{user.userName}</span>
-          </label>
-        </p>
-      );
+    const userCheckboxes = this.state.groupUserData.map((user, index) => {
+      if (user.userID !== this.props.userID) {
+        return (
+          <p key={index}>
+            <label htmlFor={user.userName}>
+              <input
+                type="checkbox"
+                id={user.userName}
+                className="filled-in"
+                checked={user.checked}
+                onChange={() => this.checkboxToggle(user.userID)}
+              />
+              <span>{user.userName}</span>
+            </label>
+          </p>
+        );
+      } else return null;
     });
-    //console.log(userCheckboxes);
+
     return (
       <div>
         <h1>Add Expense</h1>
-        <button onClick={this.props.groupDashboardView}>GroupDashboard</button>
+        <button className="col s12 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.groupDashboardView}>Back To Group Dashboard</button>
 
-        <form onSubmit={this.handleExpenseSubmit}>
+        <form onSubmit={this.expenseSubmit}>
           <h6>Description</h6>
           <input
             type="text"
             value={this.state.description}
-            onChange={this.handleDescriptionChange}
+            onChange={this.onChangeDescription}
           />
           <h6>Amount</h6>
           <input
             type="number"
             value={this.state.amount}
-            onChange={this.handleAmountChange}
+            onChange={this.onChangeAmount}
           />
           {userCheckboxes}
           <button>Submit</button>
@@ -108,4 +123,8 @@ class AddExpense extends React.Component {
   }
 }
 
-export default AddExpense;
+const mapStateToProps = state => ({
+  userID: state.auth.userID
+});
+
+export default connect(mapStateToProps)(AddExpense);

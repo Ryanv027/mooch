@@ -13,13 +13,13 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
-    type: {
-      type: DataTypes.STRING(30)
-      // validate: {
-      //   isEmail: true,
-      //   notNull: true
-      // }
-    },
+    //type: {
+    //type: DataTypes.STRING(30)
+    // validate: {
+    //   isEmail: true,
+    //   notNull: true
+    // }
+    //},
     users: DataTypes.ARRAY(DataTypes.TEXT)
   });
 

@@ -63,16 +63,16 @@ module.exports = {
       .catch(error => {
         console.log("ERROR", error);
       });
-  },
-  readGroup: (info, cb) => {
-    db.groups
-      .find({ where: {} })
-      .then(response => {
-        if (response !== null) cb("found it!");
-        else cb("does not exist");
-      })
-      .catch(error => {
-        cb(error);
-      });
   }
+  // readGroup: (info, cb) => {
+  //   db.groups
+  //     .find({ where: {} })
+  //     .then(response => {
+  //       if (response !== null) cb("found it!");
+  //       else cb("does not exist");
+  //     })
+  //     .catch(error => {
+  //       cb(error);
+  //     });
+  // }
 };

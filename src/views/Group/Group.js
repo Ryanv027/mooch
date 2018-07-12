@@ -11,14 +11,13 @@ class Group extends Component {
   state = {
     groupName: "",
     groupID: "",
-    users: [],
+    groupUserData: [],
     groupDashboard: true,
     addExpenseView: false,
     debtOverview: false
   };
 
   componentDidMount = () => {
-    this.addGroupToUser();
     this.setGroupData();
   };
 
@@ -33,9 +32,28 @@ class Group extends Component {
           groupID: response.data.groupID
         });
         if (response.data.users !== undefined) {
-          this.setUsersData(response.data.users);
+          this.setGroupUserData(response.data.users);
         }
       });
+  };
+
+  setGroupUserData = users => {
+    Promise.all(
+      users.map(user => {
+        return axios.get(`/api/groupUsers/${user}`);
+      })
+    ).then(response => {
+      const users = response.map(user => {
+        return {
+          userID: user.data.userID,
+          userName: user.data.userName,
+          email: user.data.email,
+          checked: true,
+          balance: 0
+        };
+      });
+      this.setState({ groupUserData: users });
+    });
   };
 
   groupDashboardView = () => {
@@ -62,78 +80,62 @@ class Group extends Component {
     });
   };
 
-  setUsersData = users => {
-    Promise.all(
-      users.map(user => {
-        return axios.get(`/api/groupUsers/${user}`);
-      })
-    ).then(response => {
-      console.log(response);
-      const users = response.map(user => {
-        return {
-          userID: user.data.userID,
-          userName: user.data.userName,
-          email: user.data.email,
-          checked: true,
-          debt: 0
-        };
+  calculateGroupDebts = newGroupUserData => {
+    console.log("CALCULATE GROUP DEBTS", newGroupUserData);
+
+    const final = this.state.groupUserData.map(user => {
+      newGroupUserData.forEach(newUser => {
+        if (user.userID === newUser.userID) {
+          console.log("OLD", user.balance);
+          console.log("NEW", newUser.balance);
+          const newUserBalance =
+            parseInt(user.balance, 10) + parseInt(newUser.balance, 10);
+          const newUserComplete = { ...user, balance: newUserBalance };
+          console.log(newUserComplete);
+        }
       });
-      this.setState({ users });
-      this.getGroupExpenses();
     });
-  };
-
-  getGroupExpenses = () => {
-    axios
-      .get("/api/groupExpenses", {
-        params: { groupID: this.state.groupID }
-      })
-      .then(response => {
-        this.setDebt(response);
-      });
-  };
-
-  setDebt = expenses => {
-    console.log("EXPENSES- ", expenses);
-    const users = this.state.users;
-    console.log(users.length);
-    for (let i = 0; i < users.length; i++) {
-      console.log(expenses[i]);
-      // for (let i = 0; i < expenses.length; i++) {
-      //   console.log("Shark - ", expenses[i].shark);
-      //   console.log("UserID - ", users[i].userID);
-      // }
-    }
-  };
-
-  addGroupToUser = () => {
-    const info = { groups: this.props.groups, userID: this.props.id };
-    axios.put("/api/addGroupToUser", info);
+    console.log(final);
   };
 
   render = () => {
     return (
       <div>
         <Navbar history={this.props.history} />
+        <div className="section">
+          <div className="container">
+            <center>
+              <div className="z-depth-5 grey lighten-4 row prime">
+                <div className="row">
         {this.state.groupDashboard ? (
           <GroupDashboard
             addExpenseView={this.addExpenseView}
             debtOverview={this.debtOverview}
             groupName={this.state.groupName}
-            users={this.state.users}
+            groupUserData={this.state.groupUserData}
+            calculateGroupDebts={this.calculateGroupDebts}
+            match={this.props.match}
           />
         ) : null}
         {this.state.addExpenseView ? (
           <AddExpense
             groupDashboardView={this.groupDashboardView}
-            users={this.state.users}
+            groupUserData={this.state.groupUserData}
             groupID={this.state.groupID}
             userID={this.props.id}
           />
         ) : null}
         {this.state.debtOverview ? (
-          <DebtOverview groupDashboardView={this.groupDashboardView} />
+          <DebtOverview
+            groupDashboardView={this.groupDashboardView}
+            groupUserData={this.state.groupUserData}
+          />
         ) : null}
+        </div>
+              </div>
+            </center>
+          </div>
+        </div>
       </div>
     );
   };

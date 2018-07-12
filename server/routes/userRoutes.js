@@ -11,7 +11,7 @@ module.exports = app => {
     });
   });
 
-  app.get("/api/getUserData", (req, res) => {
+  app.get("/api/getUserLoginInfo", (req, res) => {
     const info = req.query;
 
     users.findUser(info, response => {
@@ -35,8 +35,8 @@ module.exports = app => {
     });
   });
 
-  app.get("/api/user/:user", (req, res) => {
-    const info = { userName: req.params.user };
+  app.get("/api/userNameValidity", (req, res) => {
+    const info = req.query;
     users.findUser(info, response => {
       if (response) {
         res.send(response);
@@ -60,16 +60,15 @@ module.exports = app => {
 
   app.put("/api/addGroupToUser", (req, res) => {
     const info = req.body;
-    //console.log("ROUTES", info);
+
     users.addGroup(info);
     res.send("confirm");
   });
 
   app.get("/api/checkUserName", (req, res) => {
     const userName = req.query;
-    console.log(userName);
+
     users.findUser(userName, response => {
-      console.log(response);
       if (response === null) {
         res.send("valid");
       } else {
