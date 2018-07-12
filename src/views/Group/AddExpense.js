@@ -100,7 +100,7 @@ class AddExpense extends React.Component {
     return (
       <div>
         <h1>Add Expense</h1>
-        <button onClick={this.props.groupDashboardView}>GroupDashboard</button>
+        <button className="col s12 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.groupDashboardView}>Back To Group Dashboard</button>
 
         <form onSubmit={this.expenseSubmit}>
           <h6>Description</h6>

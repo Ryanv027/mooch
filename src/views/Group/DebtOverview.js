@@ -5,7 +5,7 @@ class DebtOverview extends React.Component {
     return (
       <div>
         <h1>DEBT OVERVIEW</h1>
-        <button onClick={this.props.groupDashboardView}>GroupDashboard</button>
+        <button className="col s12 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.groupDashboardView}>Back To Group Dashboard</button>
       </div>
     );
   }

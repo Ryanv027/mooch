@@ -67,8 +67,8 @@ class GroupDashboard extends React.Component {
     return (
       <div>
         <h1>{this.props.groupName}</h1>
-        <button onClick={this.props.addExpenseView}>Add Expense</button>
-        <button onClick={this.props.debtOverview}>Debt Overview</button>
+        <button className="col s6 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.addExpenseView}>Add Expense</button>
+        <button className="col s6 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.debtOverview}>Debt Overview</button>
         <h4>Expenses</h4>
         {expenses}
       </div>
