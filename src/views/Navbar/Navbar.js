@@ -22,7 +22,7 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a className="padL" onClick={this.goHome}>
-                  home
+                  HOME
                 </a>
               </li>
             </ul>
@@ -31,7 +31,7 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a className="padR" onClick={this.logout}>
-                  logout
+                  LOGOUT
                 </a>
               </li>
             </ul>

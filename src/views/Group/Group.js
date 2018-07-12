@@ -102,6 +102,11 @@ class Group extends Component {
     return (
       <div>
         <Navbar history={this.props.history} />
+        <div className="section">
+          <div className="container">
+            <center>
+              <div className="z-depth-5 grey lighten-4 row prime">
+                <div className="row">
         {this.state.groupDashboard ? (
           <GroupDashboard
             addExpenseView={this.addExpenseView}
@@ -126,6 +131,11 @@ class Group extends Component {
             groupUserData={this.state.groupUserData}
           />
         ) : null}
+        </div>
+              </div>
+            </center>
+          </div>
+        </div>
       </div>
     );
   };

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Navbar from "./../Navbar/Navbar";
 import axios from "axios";
 import { addGroup } from "./../../actions/groups";
+import "./CreateGroup.css";
 
 class CreateGroup extends React.Component {
   state = {
@@ -139,32 +140,46 @@ class CreateGroup extends React.Component {
     return (
       <div>
         <Navbar history={this.props.history} />
-        <form onSubmit={this.handleSubmit}>
-          <h6>Group Name</h6>
-          <input
-            type="text"
-            value={this.state.groupName}
-            onChange={this.onChangeGroupName}
-          />
-          <h6>Username</h6>
-          <p>{this.state.invalidUsernameError}</p>
-          <input
-            type="text"
-            value={this.state.userName}
-            onChange={this.onChangeUserName}
-          />
-          <button
-            type="button"
-            className="addUserButton"
-            onClick={this.checkUserNameValidity}
-          >
-            +
+        <div className="section">
+          <div className="container">
+            <center>
+              <div className="z-depth-5 grey lighten-4 row prime">
+                <div className="row">
+                  <form onSubmit={this.handleSubmit}>
+                    <h6>Group Name</h6>
+                    <input
+                      type="text"
+                      value={this.state.groupName}
+                      onChange={this.onChangeGroupName}
+                    />
+                    <h6>Add Your Mooches</h6>
+                    <p>{this.state.invalidUsernameError}</p>
+                    <input
+                      type="text"
+                      value={this.state.userName}
+                      onChange={this.onChangeUserName}
+                    />
+                    <button
+                      type="button"
+                      className="col s6 btn btn-large waves-effect waves-light green-accent-2"
+                      onClick={this.checkUserNameValidity}
+                    >
+                      Add New User
           </button>
-          <button type="submit">Submit</button>
-        </form>
-        <br />
-
-        <h6>{users}</h6>
+                    <button
+                      type="submit"
+                      className="col s6 btn btn-large waves-effect waves-light green-accent-2"
+                    >
+                      Create Group
+            </button>
+                  </form>
+                  <br />
+                  <h6>{users}</h6>
+                </div>
+              </div>
+            </center>
+          </div>
+        </div>
       </div>
     );
   }
