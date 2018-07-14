@@ -12,7 +12,7 @@ class Group extends Component {
     groupName: "",
     groupID: "",
     groupUserData: [],
-    groupDashboard: true,
+    groupDashboard: false,
     addExpenseView: false,
     debtOverview: false
   };
@@ -52,7 +52,7 @@ class Group extends Component {
           balance: 0
         };
       });
-      this.setState({ groupUserData: users });
+      this.setState({ groupUserData: users, groupDashboard: true });
     });
   };
 
@@ -80,33 +80,28 @@ class Group extends Component {
     });
   };
 
-  calculateGroupDebts = newGroupUserData => {
-    console.log("CALCULATE GROUP DEBTS", newGroupUserData);
+  // calculateGroupDebts = newGroupUserData => {
+  //   console.log("CALCULATE GROUP DEBTS", newGroupUserData);
 
-    const final = this.state.groupUserData.map(user => {
-      newGroupUserData.forEach(newUser => {
-        if (user.userID === newUser.userID) {
-          console.log("OLD", user.balance);
-          console.log("NEW", newUser.balance);
-          const newUserBalance =
-            parseInt(user.balance, 10) + parseInt(newUser.balance, 10);
-          const newUserComplete = { ...user, balance: newUserBalance };
-          console.log(newUserComplete);
-        }
-      });
-    });
-    console.log(final);
-  };
+  //   const final = this.state.groupUserData.map(user => {
+  //     newGroupUserData.forEach(newUser => {
+  //       if (user.userID === newUser.userID) {
+  //         console.log("OLD", user.balance);
+  //         console.log("NEW", newUser.balance);
+  //         const newUserBalance =
+  //           parseInt(user.balance, 10) + parseInt(newUser.balance, 10);
+  //         const newUserComplete = { ...user, balance: newUserBalance };
+  //         console.log(newUserComplete);
+  //       }
+  //     });
+  //   });
+  //   console.log(final);
+  // };
 
   render = () => {
     return (
       <div>
         <Navbar history={this.props.history} />
-        <div className="section">
-          <div className="container">
-            <center>
-              <div className="z-depth-5 grey lighten-4 row prime">
-                <div className="row">
         {this.state.groupDashboard ? (
           <GroupDashboard
             addExpenseView={this.addExpenseView}
@@ -131,11 +126,6 @@ class Group extends Component {
             groupUserData={this.state.groupUserData}
           />
         ) : null}
-        </div>
-              </div>
-            </center>
-          </div>
-        </div>
       </div>
     );
   };
