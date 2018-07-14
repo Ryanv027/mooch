@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(50)
     },
     amount: {
-      type: DataTypes.STRING(30)
+      type: DataTypes.DECIMAL(30)
     },
     description: {
       type: DataTypes.STRING(100)

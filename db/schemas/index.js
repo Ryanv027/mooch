@@ -14,9 +14,8 @@ var sequelize = new Sequelize(
   {
     dialect: "postgres",
     host: process.env.RDS_HOSTNAME
-  
   }
-  // `postgres://${process.env.RDS_USERNAME}:${process.env.RDS_PASSWORD}@${process.env.RDS_HOSTNAME}:${process.env.RDS_PORT}/${process.env.RDS_DB_NAME}`
+  //`postgres://${process.env.RDS_USERNAME}:${process.env.RDS_PASSWORD}@${process.env.RDS_HOSTNAME}:${process.env.RDS_PORT}/${process.env.RDS_DB_NAME}`
 );
 
 fs.readdirSync(__dirname)
