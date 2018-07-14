@@ -9,7 +9,12 @@ class GroupDashboard extends React.Component {
   };
 
   componentDidMount = () => {
+    console.log("component mounted dashboard");
     this.getGroupExpenses();
+  };
+
+  componentDidUpdate = () => {
+    console.log("component did update");
   };
 
   getGroupExpenses = () => {
@@ -49,7 +54,10 @@ class GroupDashboard extends React.Component {
   getMyCredits = (userID, expenses) => {
     return expenses
       .filter(expense => expense.shark === userID)
-      .reduce((acc, cv) => acc + parseInt(cv.amount, 10), 0);
+      .reduce(
+        (acc, cv) => acc + parseInt(cv.amount, 10) / (cv.mooches.length + 1),
+        0
+      );
   };
 
   render() {
@@ -67,8 +75,18 @@ class GroupDashboard extends React.Component {
     return (
       <div>
         <h1>{this.props.groupName}</h1>
-        <button className="col s6 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.addExpenseView}>Add Expense</button>
-        <button className="col s6 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.debtOverview}>Debt Overview</button>
+        <button
+          className="col s6 btn btn-large waves-effect waves-light green-accent-2"
+          onClick={this.props.addExpenseView}
+        >
+          Add Expense
+        </button>
+        <button
+          className="col s6 btn btn-large waves-effect waves-light green-accent-2"
+          onClick={this.props.debtOverview}
+        >
+          Debt Overview
+        </button>
         <h4>Expenses</h4>
         {expenses}
       </div>
