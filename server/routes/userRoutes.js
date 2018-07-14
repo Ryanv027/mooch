@@ -1,5 +1,5 @@
-// const path = require("path");
-// const db = require("./../../db/schemas/index");
+const path = require("path");
+const db = require("./../../db/schemas/index");
 const users = require("./../models/users");
 const bcrypt = require("bcryptjs");
 
