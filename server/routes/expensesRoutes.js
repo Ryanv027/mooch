@@ -1,4 +1,4 @@
-const expenses = require("./../../db/models/expenses");
+const expenses = require("./../models/expenses");
 
 module.exports = app => {
   app.post("/api/addExpense", (req, res) => {

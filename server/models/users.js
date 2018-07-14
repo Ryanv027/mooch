@@ -1,4 +1,4 @@
-const db = require("./../schemas/index");
+const db = require("./../../db/schemas/index");
 
 module.exports = {
   createUser: (info, cb) => {

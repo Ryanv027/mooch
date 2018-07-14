@@ -13,7 +13,7 @@ var DB_NAME = process.env.RDS_DB_NAME;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-server.use(function(req, res, next) {
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header(
