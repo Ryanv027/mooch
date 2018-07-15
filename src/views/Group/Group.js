@@ -107,31 +107,31 @@ class Group extends Component {
             <center>
               <div className="z-depth-5 grey lighten-4 row prime">
                 <div className="row">
-        {this.state.groupDashboard ? (
-          <GroupDashboard
-            addExpenseView={this.addExpenseView}
-            debtOverview={this.debtOverview}
-            groupName={this.state.groupName}
-            groupUserData={this.state.groupUserData}
-            calculateGroupDebts={this.calculateGroupDebts}
-            match={this.props.match}
-          />
-        ) : null}
-        {this.state.addExpenseView ? (
-          <AddExpense
-            groupDashboardView={this.groupDashboardView}
-            groupUserData={this.state.groupUserData}
-            groupID={this.state.groupID}
-            userID={this.props.id}
-          />
-        ) : null}
-        {this.state.debtOverview ? (
-          <DebtOverview
-            groupDashboardView={this.groupDashboardView}
-            groupUserData={this.state.groupUserData}
-          />
-        ) : null}
-        </div>
+                  {this.state.groupDashboard ? (
+                    <GroupDashboard
+                      addExpenseView={this.addExpenseView}
+                      debtOverview={this.debtOverview}
+                      groupName={this.state.groupName}
+                      groupUserData={this.state.groupUserData}
+                      calculateGroupDebts={this.calculateGroupDebts}
+                      match={this.props.match}
+                    />
+                  ) : null}
+                  {this.state.addExpenseView ? (
+                    <AddExpense
+                      groupDashboardView={this.groupDashboardView}
+                      groupUserData={this.state.groupUserData}
+                      groupID={this.state.groupID}
+                      userID={this.props.id}
+                    />
+                  ) : null}
+                  {this.state.debtOverview ? (
+                    <DebtOverview
+                      groupDashboardView={this.groupDashboardView}
+                      groupUserData={this.state.groupUserData}
+                    />
+                  ) : null}
+                </div>
               </div>
             </center>
           </div>
