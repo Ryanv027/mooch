@@ -1,7 +1,7 @@
 //const path = require("path");
 //const db = require("./../../db/schemas/index");
-const groups = require("./../../db/models/groups");
-const users = require("./../../db/models/users");
+const groups = require("./../models/groups");
+const users = require("./../models/users");
 
 module.exports = app => {
   app.post("/api/createGroup", (req, res) => {
