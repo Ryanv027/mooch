@@ -23,7 +23,8 @@ main {
 }
 
 body {
-    background: lightgrey;
+    background-color: rgb(170, 212, 211);
+    /* background: url(../../images/background_mooch.jpg); */
 }
 
 .input-field input[type="date"]:focus+label,
