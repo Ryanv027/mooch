@@ -2,7 +2,7 @@
   /* border: 1mm solid #ee6e73; */
   /* background-color: #ee6e72bf; */
   width: 300px;
-  height: 300px;
+  height: 100px;
   margin: 25px 25px;
   cursor: pointer;
   /* box-shadow: 0 5px 20px rgb(73, 73, 73); */
@@ -17,10 +17,10 @@
   font-family: "Lato", sans-serif;
   font-size: 28px;
   margin: auto;
-
+  
   /* font-family: 'Markazi Text', serif;
-font-family: 'Montserrat', sans-serif;
-font-family: 'Source Sans Pro', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif; */
 }
 
 .addGroupBox {
@@ -28,6 +28,7 @@ font-family: 'Source Sans Pro', sans-serif; */
   width: 300px;
   height: 100px;
   margin: 25px auto;
+  border-radius: 25px;
 }
 
 .plus {
@@ -59,4 +60,14 @@ input {
 }
 
 .addUserButton {
+}
+
+.card {
+  box-shadow: 10px 10px #0c0c0c;
+  border-radius: 20px 20px;
+}
+
+.img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
