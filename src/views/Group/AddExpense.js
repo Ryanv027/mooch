@@ -33,13 +33,14 @@ class AddExpense extends React.Component {
       users: filteredUserIDs,
       userID: this.state.userID,
       description: this.state.description,
-      amount: this.state.amount
+      amount: parseFloat(this.state.amount) * 100
     };
+    console.log(info.amount);
     axios
-      .post("/api/addExpense", info)
+      .post("/api/createExpense", info)
       .then(response => {
         console.log(response);
-        if (response.data === "confirm") {
+        if (response.data.length > 0) {
           this.props.groupDashboardView();
         }
       })
@@ -55,7 +56,9 @@ class AddExpense extends React.Component {
 
   onChangeAmount = e => {
     const amount = e.target.value;
-    this.setState({ amount });
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
+      this.setState(() => ({ amount }));
+    }
   };
 
   checkboxToggle = userID => {
@@ -100,7 +103,12 @@ class AddExpense extends React.Component {
     return (
       <div>
         <h1>Add Expense</h1>
-        <button className="col s12 btn btn-large waves-effect waves-light green-accent-2" onClick={this.props.groupDashboardView}>Back To Group Dashboard</button>
+        <button
+          className="col s12 btn btn-large waves-effect waves-light green-accent-2"
+          onClick={this.props.groupDashboardView}
+        >
+          Back To Group Dashboard
+        </button>
 
         <form onSubmit={this.expenseSubmit}>
           <h6>Description</h6>

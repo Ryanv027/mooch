@@ -13,6 +13,9 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
+    description: {
+      type: DataTypes.STRING(250)
+    },
     //type: {
     //type: DataTypes.STRING(30)
     // validate: {

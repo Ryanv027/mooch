@@ -1,25 +1,27 @@
 const db = require("./../../db/schemas/index");
 
 module.exports = {
-  addExpense: (info, cb) => {
-    db.expenses
-      .create({
-        groupID: info.groupID,
-        mooches: info.users,
-        shark: info.userID,
-        amount: info.amount,
-        description: info.description
-      })
-      .then(response => {
-        cb(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  createExpense: (info, cb) => {
+    // console.log("AMOUNT", info.amount);
+    return db.expenses.create({
+      groupID: info.groupID,
+      mooches: info.users,
+      shark: info.userID,
+      amount: info.amount,
+      description: info.description
+    });
   },
   findExpenses: (info, cb) => {
     db.expenses.findAll({ where: { groupID: info.groupID } }).then(response => {
       cb(response);
+    });
+  },
+  findSingleExpense: expenseID => {
+    return db.expenses.findOne({ where: { expenseID: expenseID } });
+  },
+  deleteExpense: (expenseID, cbController) => {
+    db.expenses.destroy({ where: { expenseID: expenseID } }).then(response => {
+      cbController(response);
     });
   }
 };

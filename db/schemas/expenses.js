@@ -20,11 +20,18 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
+    moochesPaid: {
+      type: DataTypes.ARRAY(DataTypes.TEXT)
+      // validate: {
+      //   isEmail: true,
+      //   notNull: true
+      // }
+    },
     shark: {
       type: DataTypes.STRING(50)
     },
     amount: {
-      type: DataTypes.DECIMAL(30)
+      type: DataTypes.FLOAT(30)
     },
     description: {
       type: DataTypes.STRING(100)

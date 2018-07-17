@@ -102,6 +102,33 @@ class Group extends Component {
     return (
       <div>
         <Navbar history={this.props.history} />
+<<<<<<< HEAD
+        {this.state.groupDashboard ? (
+          <GroupDashboard
+            addExpenseView={this.addExpenseView}
+            debtOverview={this.debtOverview}
+            groupName={this.state.groupName}
+            groupUserData={this.state.groupUserData}
+            calculateGroupDebts={this.calculateGroupDebts}
+            match={this.props.match}
+            history={this.props.history}
+          />
+        ) : null}
+        {this.state.addExpenseView ? (
+          <AddExpense
+            groupDashboardView={this.groupDashboardView}
+            groupUserData={this.state.groupUserData}
+            groupID={this.state.groupID}
+            userID={this.props.id}
+          />
+        ) : null}
+        {this.state.debtOverview ? (
+          <DebtOverview
+            groupDashboardView={this.groupDashboardView}
+            groupUserData={this.state.groupUserData}
+          />
+        ) : null}
+=======
         <div className="section">
           <div className="container">
             <center>
@@ -136,6 +163,7 @@ class Group extends Component {
             </center>
           </div>
         </div>
+>>>>>>> master
       </div>
     );
   };

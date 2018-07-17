@@ -13,6 +13,9 @@ module.exports = function(sequelize, DataTypes) {
       //   notNull: true
       // }
     },
+    groupID: {
+      type: DataTypes.STRING(50)
+    },
     expenseID: {
       type: DataTypes.STRING(50)
       // validate: {

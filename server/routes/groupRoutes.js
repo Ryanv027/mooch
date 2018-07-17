@@ -14,8 +14,10 @@ module.exports = app => {
   app.get("/api/getGroupData", (req, res) => {
     const groupID = req.query.groupID;
     groups.groupData(groupID, response => {
+      console.log(response);
       const groupData = {
         groupName: response.dataValues.groupName,
+        groupDescription: response.dataValues.description,
         groupType: response.dataValues.type
       };
       res.send(groupData);

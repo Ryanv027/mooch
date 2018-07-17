@@ -1,51 +1,68 @@
 import React from "react";
+import axios from "axios";
+import { connect } from "react-redux";
 
 class SingleExpense extends React.Component {
-  componentDidMount = () => {
-    // setTimeout(() => {
-    //   this.calculateSharkCredit();
-    // }, 500);
+  state = {
+    error: ""
   };
 
-  // calculateSharkCredit = () => {
-  //   console.log(this.props.groupUserData);
-  //   const groupUserData = this.props.groupUserData.map(user => {
-  //     if (user.userID === this.props.expense.shark) {
-  //       const amount = this.props.expense.amount;
-  //       const updatedUser = { ...user, balance: amount };
-  //       return updatedUser;
-  //     } else return user;
-  //   });
-  //   this.calculateMoochDebt(groupUserData);
-  // };
+  editExpense = () => {
+    this.props.history.push(`/expense/${this.props.expense.expenseID}`);
+  };
 
-  // calculateMoochDebt = groupUserData => {
-  //   const amount =
-  //     -this.props.expense.amount / this.props.expense.mooches.length;
-
-  //   const newGroupUserData = groupUserData;
-
-  //   groupUserData.map((user, index) => {
-  //     return this.props.expense.mooches.forEach(mooch => {
-  //       if (user.userID === mooch) {
-  //         const updatedUser = { ...user, balance: amount };
-  //         newGroupUserData[index] = updatedUser;
-  //         return true;
-  //       } else return null;
-  //     });
-  //   });
-
-  //   this.props.calculateGroupDebts(newGroupUserData);
-  // };
+  deleteExpense = () => {
+    if (this.props.userID === this.props.expense.shark) {
+      axios
+        .delete("/api/deleteExpense", {
+          params: { id: this.props.expense.expenseID }
+        })
+        .then(response => {
+          if (response.data === "confirm") {
+            this.setState({ error: "" });
+            this.props.getGroupExpenses();
+          }
+        });
+    } else {
+      this.setState({
+        error: "Only original creator can delete this expense!"
+      });
+    }
+  };
 
   render() {
+    const userName = this.props.groupUserData.map(user => {
+      if (user.userID === this.props.expense.shark) {
+        return user.userName;
+      }
+    });
+
+    const mooches = this.props.groupUserData.map(user => {
+      let userName = "";
+      for (let i = 0; i < this.props.expense.mooches.length; i++) {
+        if (user.userID === this.props.expense.mooches[i]) {
+          userName = user.userName;
+        }
+      }
+      return `${userName} `;
+    });
+    const amount = (this.props.expense.amount / 100).toFixed(2);
     return (
       <div>
-        <h5>{this.props.expense.description}</h5>
-        <p>{this.props.expense.amount}</p>
+        {this.state.error}
+        <h6>Expense: {this.props.expense.description}</h6>
+        <p>Created By: {userName}</p>
+        <p>Amount: {amount}</p>
+        <p>Mooches: {mooches}</p>
+        <button onClick={this.deleteExpense}>delete expense</button>
+        <button onClick={this.editExpense}>EDIT MEH</button>
       </div>
     );
   }
 }
 
-export default SingleExpense;
+const mapStateToProps = state => ({
+  userID: state.auth.userID
+});
+
+export default connect(mapStateToProps)(SingleExpense);

@@ -5,7 +5,7 @@ module.exports = {
     db.groups
       .create({
         groupName: info.groupName,
-        type: info.groupType,
+        description: info.groupDescription,
         users: info.users
       })
       .then(response => {
