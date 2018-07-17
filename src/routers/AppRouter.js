@@ -10,6 +10,7 @@ import Dashboard from "./../views/Dashboard/Dashboard";
 import Group from "./../views/Group/Group";
 import NotFound from "./../views/Login/NotFound";
 import CreateGroup from "./../views/Group/CreateGroup";
+import ExpenseOverview from "./../views/Group/ExpenseOverview";
 
 export const history = createHistory();
 
@@ -22,6 +23,7 @@ class AppRouter extends React.Component {
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/createGroup" component={CreateGroup} />
           <PrivateRoute path="/group/:id" component={Group} />
+          <PrivateRoute path="/expense/:id" component={ExpenseOverview} />
           <Route component={NotFound} />
         </Switch>
       </Router>

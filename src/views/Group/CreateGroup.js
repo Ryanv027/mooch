@@ -9,6 +9,7 @@ class CreateGroup extends React.Component {
   state = {
     groupName: "",
     groupType: "",
+    groupDescription: "",
     userName: "",
     groupUserData: [],
     invalidUsernameError: ""
@@ -38,6 +39,11 @@ class CreateGroup extends React.Component {
   onChangeUserName = e => {
     const userName = e.target.value;
     this.setState({ userName });
+  };
+
+  onChangeDescription = e => {
+    const groupDescription = e.target.value;
+    this.setState({ groupDescription });
   };
 
   checkUserNameValidity = () => {
@@ -86,7 +92,8 @@ class CreateGroup extends React.Component {
     const groupInfo = {
       groupName: this.state.groupName,
       groupType: this.state.groupType,
-      users: groupUserData
+      users: groupUserData,
+      groupDescription: this.state.groupDescription
     };
     axios
       .post("/api/createGroup", groupInfo)
@@ -145,7 +152,7 @@ class CreateGroup extends React.Component {
             <center>
               <div className="z-depth-5 grey lighten-4 row prime">
                 <div className="row">
-                  <form onSubmit={this.handleSubmit}>
+                  <form onSubmit={this.handleSubmit} id="createGroup">
                     <h6>Group Name</h6>
                     <input
                       type="text"
@@ -159,19 +166,24 @@ class CreateGroup extends React.Component {
                       value={this.state.userName}
                       onChange={this.onChangeUserName}
                     />
+                    <h6>Group Description</h6>
+                    <textarea
+                      onChange={this.onChangeDescription}
+                      value={this.state.groupDescription}
+                    />
                     <button
                       type="button"
                       className="col s6 btn btn-large waves-effect waves-light green-accent-2"
                       onClick={this.checkUserNameValidity}
                     >
                       Add New User
-          </button>
+                    </button>
                     <button
                       type="submit"
                       className="col s6 btn btn-large waves-effect waves-light green-accent-2"
                     >
                       Create Group
-            </button>
+                    </button>
                   </form>
                   <br />
                   <h6>{users}</h6>

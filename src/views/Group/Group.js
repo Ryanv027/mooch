@@ -110,6 +110,7 @@ class Group extends Component {
             groupUserData={this.state.groupUserData}
             calculateGroupDebts={this.calculateGroupDebts}
             match={this.props.match}
+            history={this.props.history}
           />
         ) : null}
         {this.state.addExpenseView ? (

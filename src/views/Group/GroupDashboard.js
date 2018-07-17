@@ -38,8 +38,8 @@ class GroupDashboard extends React.Component {
     console.log(userID, "AND", expenses);
     const credits = this.getMyCredits(userID, expenses);
     const debits = this.getMyDebits(userID, expenses);
-    console.log(credits);
-    console.log(debits);
+    console.log((credits / 100).toFixed(2));
+    console.log((debits / 100).toFixed(2));
   };
 
   getMyDebits = (userID, expenses) => {
@@ -68,6 +68,8 @@ class GroupDashboard extends React.Component {
           expense={expense}
           groupUserData={this.props.groupUserData}
           calculateGroupDebts={this.props.calculateGroupDebts}
+          history={this.props.history}
+          getGroupExpenses={this.getGroupExpenses}
         />
       );
     });
@@ -87,8 +89,14 @@ class GroupDashboard extends React.Component {
         >
           Debt Overview
         </button>
-        <h4>Expenses</h4>
-        {expenses}
+        {expenses.length > 0 ? (
+          <div>
+            <h4>Expenses</h4>
+            {expenses}
+          </div>
+        ) : (
+          <h1>No expenses found! Add one to get started!</h1>
+        )}
       </div>
     );
   }
