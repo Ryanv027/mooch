@@ -80,6 +80,10 @@ class Group extends Component {
     });
   };
 
+  setGroupDebts = groupUserData => {
+    this.setState({ groupUserData });
+  };
+
   // calculateGroupDebts = newGroupUserData => {
   //   console.log("CALCULATE GROUP DEBTS", newGroupUserData);
 
@@ -111,6 +115,7 @@ class Group extends Component {
             calculateGroupDebts={this.calculateGroupDebts}
             match={this.props.match}
             history={this.props.history}
+            setGroupDebts={this.setGroupDebts}
           />
         ) : null}
         {this.state.addExpenseView ? (
