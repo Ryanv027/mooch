@@ -17,11 +17,11 @@ class Navbar extends Component {
     return (
       <nav className="navvy">
         <div className="nav-wrapper">
-          <a className="brand-logo center">mooch</a>
+          <a className="brand-logo center large-size">MOOCH</a>
           <div className="left">
             <ul>
               <li>
-                <a className="padL" onClick={this.goHome}>
+                <a className="padL medium-size" onClick={this.goHome}>
                   HOME
                 </a>
               </li>
@@ -30,7 +30,7 @@ class Navbar extends Component {
           <div className="right">
             <ul>
               <li>
-                <a className="padR" onClick={this.logout}>
+                <a className="padR medium-size" onClick={this.logout}>
                   LOGOUT
                 </a>
               </li>

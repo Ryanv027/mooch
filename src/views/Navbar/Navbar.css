@@ -1,11 +1,23 @@
 .padR {
-    padding-right: 100px ;
+  padding-right: 100px;
 }
 
 .padL {
-    padding-left: 100px ;
+  padding-left: 100px;
 }
 
 .navvy {
-    background: lightseagreen;
+  /* background: rgb(22, 102, 61); */
+  background: linear-gradient(to bottom, rgb(4, 29, 16), rgb(8, 73, 41));
+  font-family: "Poiret One", cursive;
+
+  /* height: 10vh; */
+}
+
+.medium-size {
+  font-size: 20px;
+}
+
+.large-size {
+  font-size: 40px;
 }

@@ -18,12 +18,12 @@ class Dashboard extends Component {
     });
 
     return (
-      <div className="row bgmain">
-        <Navbar history={this.props.history} />
+      <div className="dashboard-container">
+        <div className="row">
+          <Navbar history={this.props.history} />
           <AddGroupBox history={this.props.history} />
-            <center>
-            {groups}
-          </center>
+          <center>{groups}</center>
+        </div>
       </div>
     );
   };
