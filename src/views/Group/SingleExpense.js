@@ -12,10 +12,19 @@ class SingleExpense extends React.Component {
   };
 
   deleteExpense = () => {
+    console.log(this.props.expense);
     if (this.props.userID === this.props.expense.shark) {
       axios
         .delete("/api/deleteExpense", {
-          params: { id: this.props.expense.expenseID }
+          params: {
+            id: this.props.expense.expenseID,
+            description: this.props.expense.description,
+            groupID: this.props.expense.groupID,
+            mooches: this.props.expense.mooches,
+            moochesPaid: this.props.expense.moochesPaid,
+            amount: this.props.expense.amount,
+            shark: this.props.expense.shark
+          }
         })
         .then(response => {
           if (response.data === "confirm") {
@@ -54,8 +63,8 @@ class SingleExpense extends React.Component {
         <p>Created By: {userName}</p>
         <p>Amount: {amount}</p>
         <p>Mooches: {mooches}</p>
-        <button onClick={this.deleteExpense}>delete expense</button>
-        <button onClick={this.editExpense}>EDIT MEH</button>
+        <button onClick={this.deleteExpense}>Delete Expense</button>
+        <button onClick={this.editExpense}>Expense Overview</button>
       </div>
     );
   }

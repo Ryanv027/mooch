@@ -29,24 +29,33 @@ class GroupDashboard extends React.Component {
   };
 
   calculateUserBalances = expenses => {
-    this.props.groupUserData.map(user => {
-      this.getUserBalance(user.userID, expenses);
+    const newGroupUsers = this.props.groupUserData.map(user => {
+      const balance = this.getUserBalance(user.userID, expenses);
+      const newUser = { ...user, balance: balance };
+      return newUser;
     });
+    console.log(newGroupUsers);
+    this.props.setGroupDebts(newGroupUsers);
   };
 
   getUserBalance = (userID, expenses) => {
     console.log(userID, "AND", expenses);
     const credits = this.getMyCredits(userID, expenses);
     const debits = this.getMyDebits(userID, expenses);
-    console.log((credits / 100).toFixed(2));
-    console.log((debits / 100).toFixed(2));
+    const calculatedCredit = credits;
+    const calculatedDebits = -debits;
+
+    return ((calculatedDebits + calculatedCredit) / 100).toFixed(2);
   };
 
   getMyDebits = (userID, expenses) => {
     return expenses
       .filter(expense => expense.mooches.includes(userID))
       .reduce(
-        (acc, cv) => acc + parseInt(cv.amount, 10) / (cv.mooches.length + 1),
+        (acc, cv) =>
+          acc +
+          parseInt(cv.amount, 10) /
+            (cv.mooches.length + cv.moochesPaid.length + 1),
         0
       );
   };
@@ -55,7 +64,11 @@ class GroupDashboard extends React.Component {
     return expenses
       .filter(expense => expense.shark === userID)
       .reduce(
-        (acc, cv) => acc + parseInt(cv.amount, 10) / (cv.mooches.length + 1),
+        (acc, cv) =>
+          acc +
+          (parseInt(cv.amount, 10) /
+            (cv.mooches.length + cv.moochesPaid.length + 1)) *
+            cv.mooches.length,
         0
       );
   };

@@ -1,4 +1,5 @@
 const expenses = require("./../models/expenses");
+const archivedExpenses = require("./../models/archivedExpenses");
 const expensesController = require("./../controllers/expenses");
 
 module.exports = app => {
@@ -27,8 +28,18 @@ module.exports = app => {
 
   app.delete("/api/deleteExpense", (req, res) => {
     const expenseID = req.query.id;
+    const info = req.query;
+    archivedExpenses.createArchivedExpense(info).then(response => {
+      console.log(response);
+    });
     expensesController.deleteExpense(expenseID, response => {
       res.send("confirm");
     });
+  });
+
+  app.put("/api/updateMooches", (req, res) => {
+    const info = req.body;
+    expenses.updateMooches(info);
+    res.send("confirm");
   });
 };
