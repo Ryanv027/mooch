@@ -14,10 +14,15 @@ class Navbar extends Component {
   };
 
   render = () => {
+    const divStyle = {
+      color: "black"
+    };
     return (
       <nav className="navvy">
         <div className="nav-wrapper">
-          <a className="brand-logo center large-size">MOOCH</a>
+          <a className="brand-logo center" style={divStyle}>
+            MOOCH
+          </a>
           <div className="left">
             <ul>
               <li>

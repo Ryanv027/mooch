@@ -2,15 +2,49 @@
   /* border: 1mm solid #ee6e73; */
   /* background-color: #ee6e72bf; */
   width: 300px;
-  height: 100px;
+  height: 250px;
   margin: 25px 25px;
+  background: linear-gradient(to bottom right, white, rgb(177, 177, 177));
   cursor: pointer;
-  /* box-shadow: 0 5px 20px rgb(73, 73, 73); */
+  border-radius: 15px;
+  border: 5px solid rgb(22, 102, 61);
+  box-shadow: 2px 5px 15px black;
 }
 
 .groupBox:hover {
-  transform: scale(1.05);
-  /* box-shadow: 0 7px 25px rgb(73, 73, 73); */
+  transform: scale(1.02);
+  box-shadow: 4px 7px 30px black;
+}
+
+.groupBox:active {
+  transform: scale(0.99);
+  box-shadow: 1px 5px 10px black;
+}
+
+.group-title {
+  font-family: "Passion One", cursive;
+  /* font-family: "Fredoka One", cursive; */
+  /* font-family: "Prosto One", cursive; */
+  /* font-family: "Cabin Sketch", cursive; */
+  font-size: 48px;
+  letter-spacing: 2px;
+  text-decoration: underline;
+  /* font-family: "Bubblegum Sans", cursive; */
+  /* font-family: "Pompiere", cursive; */
+  /* font-family: "Londrina Solid", cursive; */
+}
+
+.group-description {
+  font-family: "Passion One", cursive;
+  font-weight: 100;
+  /* font-family: "Fredoka One", cursive; */
+  /* font-family: "Prosto One", cursive; */
+  /* font-family: "Cabin Sketch", cursive; */
+  font-size: 34px;
+
+  /* font-family: "Bubblegum Sans", cursive; */
+  /* font-family: "Pompiere", cursive; */
+  /* font-family: "Londrina Solid", cursive; */
 }
 
 .groupBoxName {
@@ -24,16 +58,28 @@
 }
 
 .addGroupBox {
-  border: 1mm solid;
-  color: white;
-  font-family: "Poiret One", cursive;
-  background: linear-gradient(to bottom, rgb(22, 102, 61), rgb(105, 181, 142));
-  border: 1px solid black;
+  /* color: white; */
+  /* font-family: "Passion One", cursive; */
+  /* font-family: "Fredoka One", cursive; */
+  /* font-family: "Prosto One", cursive; */
+  font-family: "Cabin Sketch", cursive;
+  border: 2px solid rgb(22, 102, 61);
+  /* font-family: "Press Start 2P", cursive; */
+  /* font-family: "Bubblegum Sans", cursive; */
+  /* font-family: "Pompiere", cursive; */
+  /* font-family: "Londrina Solid", cursive; */
+  /* background: linear-gradient(to bottom, rgb(22, 102, 61), rgb(105, 181, 142)); */
+  background: linear-gradient(to bottom right, white, rgb(177, 177, 177));
   width: 300px;
   height: 90px;
   margin: 25px auto;
   border-radius: 25px;
   box-shadow: 3px 9px 15px black;
+}
+
+.addGroupBox:hover {
+  transform: scale(1.02);
+  cursor: pointer;
 }
 
 .addGroupBox:active {
@@ -43,7 +89,7 @@
 
 .plus {
   /* transform: scale(2.2); */
-  margin-top: 6%;
+  margin-top: 7%;
   /* margin-left: 45%; */
   /* display: inline-block; */
 }
@@ -75,4 +121,54 @@ input {
 
 .paidMooch {
   text-decoration: line-through;
+}
+
+.card-body {
+  /* background: blue; */
+}
+
+.createGroup-background {
+  border-radius: 30px;
+  border: 6px solid black;
+  padding: 50px 50px;
+  box-shadow: 1px 3px 15px black;
+  font-family: "Passion One", cursive;
+  font-size: 20px;
+}
+
+.font-medium {
+  font-size: 29px;
+}
+
+.underline {
+  text-decoration: underline;
+  margin-top: 70px;
+}
+
+.login-button {
+  background-color: rgb(22, 102, 61);
+  border-radius: 15px;
+  margin-top: 25px;
+  /* margin: 25px 0 0 100px; */
+}
+
+.button-user {
+  margin: 10px 0px 10px 10px;
+}
+
+textarea {
+  height: 5rem;
+}
+
+.createGroup-username {
+  margin: 0;
+}
+
+.deleteButton {
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
 }
