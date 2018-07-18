@@ -69,15 +69,15 @@ class LogUser extends Component {
       <div className="container">
         <div className="section" />
         <center>
-          <div className="z-depth-5 grey lighten-4 row prime">
+          <div className="z-depth-5 grey lighten-4 row prime login-background">
             <img
               className="responsive-img"
               alt="moneyMan"
               src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
             />
             <div className="section" />
-            <h5 className="black-text">WELCOME TO MOOCH</h5>
-            <h6 className="black-text">
+            <h5 className="black-text login-font font-top">WELCOME TO MOOCH</h5>
+            <h6 className="black-text login-font font-bottom">
               Take The Hassle Out Of Settling Debts
             </h6>
             <div className="section" />
@@ -115,7 +115,7 @@ class LogUser extends Component {
                     <button
                       type="submit"
                       name="btn_login"
-                      className="col s12 btn btn-large waves-effect waves-light green-accent-2"
+                      className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
                     >
                       Submit
                     </button>
@@ -124,7 +124,7 @@ class LogUser extends Component {
                     <button
                       type="button"
                       name="btn_login"
-                      className="col s12 btn btn-large waves-effect waves-light green-accent-2"
+                      className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
                       onClick={this.props.handleHome}
                     >
                       Back

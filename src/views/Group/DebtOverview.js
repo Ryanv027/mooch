@@ -14,11 +14,26 @@ class DebtOverview extends React.Component {
     });
     return debits;
   };
+
+  calculateSomeShit = (credits, debits) => {
+    const list = credits.map(user => {
+      const balance = user.balance;
+      let updatingBalance = 0;
+      for (let i = 0; i < debits.length; i++) {
+        if (debits[i].balance < balance) {
+        }
+      }
+    });
+  };
+
   render() {
     const credits = this.getCreditUsers();
     const debits = this.getDebitUsers();
     console.log(credits);
     console.log(debits);
+
+    const calculateSomeShit = this.calculateSomeShit(credits, debits);
+
     const users = this.props.groupUserData.map(user => {
       return (
         <li>

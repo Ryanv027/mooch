@@ -24,11 +24,21 @@
 }
 
 .addGroupBox {
-  border: 1mm dashed;
+  border: 1mm solid;
+  color: white;
+  font-family: "Poiret One", cursive;
+  background: linear-gradient(to bottom, rgb(22, 102, 61), rgb(105, 181, 142));
+  border: 1px solid black;
   width: 300px;
-  height: 100px;
+  height: 90px;
   margin: 25px auto;
   border-radius: 25px;
+  box-shadow: 3px 9px 15px black;
+}
+
+.addGroupBox:active {
+  box-shadow: 1px 5px 10px black;
+  transform: scale(0.95);
 }
 
 .plus {
@@ -36,15 +46,6 @@
   margin-top: 6%;
   /* margin-left: 45%; */
   /* display: inline-block; */
-}
-
-.plus:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.plus:active {
-  transform: scale(2.4);
 }
 
 input {
