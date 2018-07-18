@@ -149,6 +149,11 @@ class ExpenseOverview extends React.Component {
   };
 
   findMooches = shark => {
+    const buttonStyle = {
+      marginTop: "0px",
+      color: "white",
+      padding: "5px"
+    };
     return this.state.groupUserData.map(user => {
       let mooch = "";
       for (let i = 0; i < this.state.mooches.length; i++) {
@@ -158,21 +163,39 @@ class ExpenseOverview extends React.Component {
       }
       if (mooch.length > 0) {
         return (
-          <li>
-            {mooch} owes {shark} -{" "}
-            {(
-              this.state.amount /
-              100 /
-              (this.state.mooches.length + this.state.moochesPaid.length + 1)
-            ).toFixed(2)}
-            <button onClick={() => this.payButton(user.userID)}>Pay</button>
-          </li>
+          <div className="row">
+            <h6 className="col s3 offset-s4 moochList">
+              {mooch} owes {shark} -{" "}
+              {(
+                this.state.amount /
+                100 /
+                (this.state.mooches.length + this.state.moochesPaid.length + 1)
+              ).toFixed(2)}
+            </h6>
+            <button
+              onClick={() => this.payButton(user.userID)}
+              className="col s1 paid-button"
+              style={buttonStyle}
+            >
+              Paid
+            </button>
+          </div>
         );
       } else return null;
     });
   };
 
   findMoochesPaid = shark => {
+    const buttonStyle = {
+      marginTop: "0px",
+      color: "white",
+      padding: "5px"
+    };
+
+    const dash = {
+      marginTop: "-12px"
+    };
+
     return this.state.groupUserData.map(user => {
       let paidMooch = "";
       for (let i = 0; i < this.state.moochesPaid.length; i++) {
@@ -182,18 +205,34 @@ class ExpenseOverview extends React.Component {
       }
       if (paidMooch.length > 0) {
         return (
-          <li className="paidMooch">
-            {paidMooch} owes {shark} -{" "}
-            {(
-              this.state.amount /
-              100 /
-              (this.state.mooches.length + this.state.moochesPaid.length + 1)
-            ).toFixed(2)}
-            <button disabled={true}>Paid</button>
-            <button onClick={() => this.undoPayment(user.userID)}>
+          <div className="row">
+            <h6 className="col s3 offset-s4 moochList paidMooch">
+              {paidMooch} owes {shark} -{" "}
+              {(
+                this.state.amount /
+                100 /
+                (this.state.mooches.length + this.state.moochesPaid.length + 1)
+              ).toFixed(2)}
+            </h6>
+            <button
+              disabled={true}
+              className="col s1 paid-button__disabled"
+              style={buttonStyle}
+            >
+              Paid
+            </button>
+            <h3 className="col s1 center-align" style={dash}>
+              {" "}
+              -{" "}
+            </h3>
+            <button
+              onClick={() => this.undoPayment(user.userID)}
+              className="col s2 undoPayment-button"
+              style={buttonStyle}
+            >
               Undo Payment
             </button>
-          </li>
+          </div>
         );
       } else return null;
     });
@@ -210,18 +249,42 @@ class ExpenseOverview extends React.Component {
     return (
       <div>
         <Navbar history={this.props.history} />
-        <button onClick={this.goBack}>Go Back</button>
-        <h1>EXPENSE OVERVIEW</h1>
-        <h6>Expense: {this.state.description}</h6>
-        <h6>Amount: {(this.state.amount / 100).toFixed(2)}</h6>
-        <h6>Created By: {shark}</h6>
-        {this.state.paymentError}
-        {this.state.undoPaymentError}
-        <h5>Mooches</h5>
-        <ul>
-          {mooches}
-          {moochesPaid}
-        </ul>
+        <div className="container debtOverview-container">
+          <div className="groupDash-background">
+            <div className="row groupDash-name__row">
+              <h1 className="addExpense-header col s10 offset-s1 center-align">
+                Expense Overview
+              </h1>
+            </div>
+            <div className="row">
+              <button
+                onClick={this.goBack}
+                className="col s4 offset-s4 btn btn-large login-button expenserOverview-button"
+              >
+                Back to Group Dashboard
+              </button>
+              <br />
+              <h3 className="col s4 offset-s4 center-align">
+                {this.state.description}
+              </h3>
+              <h5 className="col s4 offset-s4 center-align">
+                Amount: $ {(this.state.amount / 100).toFixed(2)}
+              </h5>
+              <h4 className="col s4 offset-s4 center-align">
+                <span className="mooches">Mooches</span>
+              </h4>
+
+              {mooches}
+              {moochesPaid}
+
+              <h5 className="col s4 offset-s4 center-align">
+                Created By: {shark}
+              </h5>
+              {this.state.paymentError}
+              {this.state.undoPaymentError}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

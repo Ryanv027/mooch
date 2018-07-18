@@ -8,7 +8,8 @@ class AddExpense extends React.Component {
     groupID: "",
     userID: "",
     description: "",
-    amount: 0
+    amount: 0,
+    error: ""
   };
 
   componentWillMount = () => {
@@ -21,32 +22,36 @@ class AddExpense extends React.Component {
 
   expenseSubmit = e => {
     e.preventDefault();
-    const filteredUserIDs = [];
-    this.state.groupUserData.filter(user => {
-      if (user.checked === true && user.userID !== this.state.userID) {
-        filteredUserIDs.push(user.userID);
-        return true;
-      } else return null;
-    });
-    const info = {
-      groupID: this.state.groupID,
-      users: filteredUserIDs,
-      userID: this.state.userID,
-      description: this.state.description,
-      amount: parseFloat(this.state.amount) * 100
-    };
-    console.log(info.amount);
-    axios
-      .post("/api/createExpense", info)
-      .then(response => {
-        console.log(response);
-        if (response.data.length > 0) {
-          this.props.groupDashboardView();
-        }
-      })
-      .catch(error => {
-        console.log(error);
+    if (this.state.amount > 0 && this.state.description.length > 0) {
+      const filteredUserIDs = [];
+      this.state.groupUserData.filter(user => {
+        if (user.checked === true && user.userID !== this.state.userID) {
+          filteredUserIDs.push(user.userID);
+          return true;
+        } else return null;
       });
+      const info = {
+        groupID: this.state.groupID,
+        users: filteredUserIDs,
+        userID: this.state.userID,
+        description: this.state.description,
+        amount: parseFloat(this.state.amount) * 100
+      };
+      console.log(info.amount);
+      axios
+        .post("/api/createExpense", info)
+        .then(response => {
+          console.log(response);
+          if (response.data.length > 0) {
+            this.props.groupDashboardView();
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      this.setState({ error: "All fields must be filled out" });
+    }
   };
 
   onChangeDescription = e => {
@@ -85,7 +90,7 @@ class AddExpense extends React.Component {
       if (user.userID !== this.props.userID) {
         return (
           <p key={index}>
-            <label htmlFor={user.userName}>
+            <label htmlFor={user.userName} className="col s8 offset-s3">
               <input
                 type="checkbox"
                 id={user.userName}
@@ -100,32 +105,61 @@ class AddExpense extends React.Component {
       } else return null;
     });
 
-    return (
-      <div>
-        <h1>Add Expense</h1>
-        <button
-          className="col s12 btn btn-large waves-effect waves-light green-accent-2"
-          onClick={this.props.groupDashboardView}
-        >
-          Back To Group Dashboard
-        </button>
+    const buttonStyle = {
+      padding: "15px",
+      color: "white",
+      marginBottom: "10px"
+    };
 
-        <form onSubmit={this.expenseSubmit}>
-          <h6>Description</h6>
-          <input
-            type="text"
-            value={this.state.description}
-            onChange={this.onChangeDescription}
-          />
-          <h6>Amount</h6>
-          <input
-            type="number"
-            value={this.state.amount}
-            onChange={this.onChangeAmount}
-          />
-          {userCheckboxes}
-          <button>Submit</button>
-        </form>
+    return (
+      <div className="container singleExpense-container">
+        <div className="groupDash-background">
+          <div className="row groupDash-name__row">
+            <h1 className="col s6 offset-s3 center-align addExpense-header">
+              Add Expense
+            </h1>
+          </div>
+          <div className="row">
+            <h4 className="col s10 offset-s1 center-align">
+              {this.state.error}
+            </h4>
+            <button
+              className="col s4 offset-s4 btn btn-large login-button"
+              onClick={this.props.groupDashboardView}
+            >
+              Back To Group Dashboard
+            </button>
+          </div>
+          <div className="row">
+            <form onSubmit={this.expenseSubmit}>
+              <h6 className="col s4 offset-s4 center-align">Description</h6>
+              <input
+                type="text"
+                value={this.state.description}
+                onChange={this.onChangeDescription}
+                className="col s8 offset-s2"
+              />
+              <h6 className="col s4 offset-s4 center-align">Amount</h6>
+              <input
+                type="number"
+                value={this.state.amount}
+                onChange={this.onChangeAmount}
+                className="col s8 offset-s2"
+              />
+              <h6 className="col s8 offset-s2 center-align addExpense-uncheck">
+                (Uncheck users that you would like to exclude from this expense)
+              </h6>
+              {userCheckboxes}
+              <div className="spacing col s12" />
+              <button
+                className="col s2 offset-s5 login-button"
+                style={buttonStyle}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

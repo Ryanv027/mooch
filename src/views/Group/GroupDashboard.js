@@ -44,7 +44,8 @@ class GroupDashboard extends React.Component {
     const debits = this.getMyDebits(userID, expenses);
     const calculatedCredit = credits;
     const calculatedDebits = -debits;
-
+    console.log("CREDITS", credits);
+    console.log("DEBITS", debits);
     return ((calculatedDebits + calculatedCredit) / 100).toFixed(2);
   };
 
@@ -88,28 +89,45 @@ class GroupDashboard extends React.Component {
     });
 
     return (
-      <div>
-        <h1>{this.props.groupName}</h1>
-        <button
-          className="col s6 btn btn-large waves-effect waves-light green-accent-2"
-          onClick={this.props.addExpenseView}
-        >
-          Add Expense
-        </button>
-        <button
-          className="col s6 btn btn-large waves-effect waves-light green-accent-2"
-          onClick={this.props.debtOverview}
-        >
-          Debt Overview
-        </button>
-        {expenses.length > 0 ? (
-          <div>
-            <h4>Expenses</h4>
-            {expenses}
+      <div className="container groupExpense-container">
+        <div className="section groupDash-background">
+          <div className="row groupDash-name__row">
+            <h1 className="col s8 offset-s2 center-align groupDash-name">
+              Group - {this.props.groupName}
+            </h1>
           </div>
-        ) : (
-          <h1>No expenses found! Add one to get started!</h1>
-        )}
+
+          <div className="divider" />
+
+          <div className="row">
+            <button
+              className="col s3 offset-s2 btn btn-large waves-effect waves-light green-accent-2 login-button"
+              onClick={this.props.addExpenseView}
+            >
+              Add Expense
+            </button>
+            <button
+              className="col s3 offset-s2 btn btn-large waves-effect waves-light green-accent-2 login-button "
+              onClick={this.props.debtOverview}
+            >
+              Debt Overview
+            </button>
+          </div>
+          {expenses.length > 0 ? (
+            <div className="row">
+              <h4 className="col s4 offset-s4 center-align groupDash-expense">
+                Group Expenses
+              </h4>
+              {expenses}
+            </div>
+          ) : (
+            <div className="row">
+              <h1 className="font-medium col s10 offset-s1 center-align">
+                No expenses found! Add one to get started!
+              </h1>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

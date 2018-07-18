@@ -56,15 +56,46 @@ class SingleExpense extends React.Component {
       return `${userName} `;
     });
     const amount = (this.props.expense.amount / 100).toFixed(2);
+
+    const style = {
+      paddingBottom: "10px"
+    };
+    const buttonStyle = {
+      padding: "8px"
+    };
     return (
-      <div>
-        {this.state.error}
-        <h6>Expense: {this.props.expense.description}</h6>
-        <p>Created By: {userName}</p>
-        <p>Amount: {amount}</p>
-        <p>Mooches: {mooches}</p>
-        <button onClick={this.deleteExpense}>Delete Expense</button>
-        <button onClick={this.editExpense}>Expense Overview</button>
+      <div className="col s4 offset-s4 singleExpense-container" style={style}>
+        <div className="row">
+          <div className="col s12 center-align">{this.state.error}</div>
+          <h6 className="col s4 offset-s4 center-align singleExpense-title">
+            {this.props.expense.description}
+          </h6>
+          <button
+            onClick={this.deleteExpense}
+            className="col s1 offset-s3 singleExpense-delete"
+          >
+            -
+          </button>
+          <p className="col s4 offset-s4 center-align singleExpense-amount">
+            Amount: ${amount}
+          </p>
+          <p className="col s4 offset-s4 center-align singleExpense-mooches">
+            Mooches:
+          </p>
+          <p className="col s4 offset-s4 center-align singleExpense-moochesList">
+            {mooches}
+          </p>
+          <p className="col s4 offset-s4 center-align">
+            Created By: {userName}
+          </p>
+          <button
+            onClick={this.editExpense}
+            className="col s6 offset-s3 singleExpense-button"
+            style={buttonStyle}
+          >
+            Expense Overview
+          </button>
+        </div>
       </div>
     );
   }
