@@ -131,13 +131,13 @@ class CreateGroup extends React.Component {
     const users = this.state.groupUserData.map((user, index) => {
       if (user.userID !== this.props.userID) {
         return (
-          <div key={index}>
-            <h6>{user.userName}</h6>
+          <div key={index} className="row">
+            <h4 className="col s9 createGroup-username">{user.userName}</h4>
             <button
               onClick={() => this.deleteUser(user.userID)}
-              className="deleteButton"
+              className="deleteButton col s3"
             >
-              X
+              delete
             </button>
           </div>
         );
@@ -150,43 +150,47 @@ class CreateGroup extends React.Component {
         <div className="section">
           <div className="container">
             <center>
-              <div className="z-depth-5 grey lighten-4 row prime">
+              <div className="z-depth-5 grey lighten-4 row prime createGroup-background">
                 <div className="row">
                   <form onSubmit={this.handleSubmit} id="createGroup">
-                    <h6>Group Name</h6>
+                    <h6 className="font-medium">Group Name</h6>
                     <input
                       type="text"
                       value={this.state.groupName}
                       onChange={this.onChangeGroupName}
                     />
-                    <h6>Add Your Mooches</h6>
+                    <h6 className="font-medium">Add Your Mooches</h6>
                     <p>{this.state.invalidUsernameError}</p>
                     <input
                       type="text"
                       value={this.state.userName}
                       onChange={this.onChangeUserName}
                     />
-                    <h6>Group Description</h6>
+                    <div className="row center">
+                      <button
+                        type="button"
+                        className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
+                        onClick={this.checkUserNameValidity}
+                      >
+                        Add New User
+                      </button>
+                    </div>
+                    <h6 className="font-medium">Group Description</h6>
                     <textarea
                       onChange={this.onChangeDescription}
                       value={this.state.groupDescription}
                     />
-                    <button
-                      type="button"
-                      className="col s6 btn btn-large waves-effect waves-light green-accent-2"
-                      onClick={this.checkUserNameValidity}
-                    >
-                      Add New User
-                    </button>
+
                     <button
                       type="submit"
-                      className="col s6 btn btn-large waves-effect waves-light green-accent-2"
+                      className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
                     >
                       Create Group
                     </button>
                   </form>
                   <br />
-                  <h6>{users}</h6>
+                  <h2 className="underline">Users</h2>
+                  <h4>{users}</h4>
                 </div>
               </div>
             </center>

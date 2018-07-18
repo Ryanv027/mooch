@@ -32,25 +32,8 @@ class GroupBox extends Component {
     return (
       <div className="individualbox col s3">
         <div className="groupBox" onClick={this.renderGroup}>
-          <div className="row">
-            <div className="col s12">
-              <div className="card medium">
-                <div className="card-image">
-                  <img src={this.state.src} alt="wallpaper" />
-                  <span className="card-title groupBox-name" />
-                  {/* <a className="btn-floating halfway-fab waves-effect waves-light red">
-                    <i className="material-icons">add</i>
-                  </a> */}
-                </div>
-                <div className="card-content">
-                  <div>
-                    <h5>{this.state.groupName}</h5>
-                    <p>{this.state.groupDescription}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h1 className="group-title">{this.state.groupName}</h1>
+          <h4 className="group-description">{this.state.groupDescription}</h4>
         </div>
       </div>
     );
