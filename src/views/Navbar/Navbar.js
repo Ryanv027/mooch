@@ -27,7 +27,7 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a className="padL medium-size" onClick={this.goHome}>
-                  HOME
+                  DASHBOARD
                 </a>
               </li>
             </ul>

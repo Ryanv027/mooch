@@ -12,7 +12,8 @@ class CreateGroup extends React.Component {
     groupDescription: "",
     userName: "",
     groupUserData: [],
-    invalidUsernameError: ""
+    invalidUsernameError: "",
+    error: ""
   };
 
   componentDidMount = () => {
@@ -85,36 +86,43 @@ class CreateGroup extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const groupUserData = this.state.groupUserData.map(user => {
-      return user.userID;
-    });
-
-    const groupInfo = {
-      groupName: this.state.groupName,
-      groupType: this.state.groupType,
-      users: groupUserData,
-      groupDescription: this.state.groupDescription
-    };
-    axios
-      .post("/api/createGroup", groupInfo)
-      .then(response => {
-        const groupID = response.data;
-        Promise.all(
-          this.state.groupUserData.map(user => {
-            //creating an updated version of the users groups and including the brand new group
-            const updatedGroups = [...user.groups, groupID];
-            //adding the updated groups array to each individual user
-            const info = { groups: updatedGroups, userID: user.userID };
-            return axios.put("/api/addGroupToUser", info);
-          })
-        ).then(response => {
-          this.props.addGroup(groupID);
-          this.props.history.push(`/group/${groupID}`);
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    if (
+      this.state.groupName.length > 0 &&
+      this.state.groupDescription.length > 0
+    ) {
+      const groupUserData = this.state.groupUserData.map(user => {
+        return user.userID;
       });
+
+      const groupInfo = {
+        groupName: this.state.groupName,
+        groupType: this.state.groupType,
+        users: groupUserData,
+        groupDescription: this.state.groupDescription
+      };
+      axios
+        .post("/api/createGroup", groupInfo)
+        .then(response => {
+          const groupID = response.data;
+          Promise.all(
+            this.state.groupUserData.map(user => {
+              //creating an updated version of the users groups and including the brand new group
+              const updatedGroups = [...user.groups, groupID];
+              //adding the updated groups array to each individual user
+              const info = { groups: updatedGroups, userID: user.userID };
+              return axios.put("/api/addGroupToUser", info);
+            })
+          ).then(response => {
+            this.props.addGroup(groupID);
+            this.props.history.push(`/group/${groupID}`);
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      this.setState({ error: "All fields must be entered!" });
+    }
   };
 
   deleteUser = userID => {
@@ -137,7 +145,7 @@ class CreateGroup extends React.Component {
               onClick={() => this.deleteUser(user.userID)}
               className="deleteButton col s3"
             >
-              delete
+              -
             </button>
           </div>
         );
@@ -152,6 +160,8 @@ class CreateGroup extends React.Component {
             <center>
               <div className="z-depth-5 grey lighten-4 row prime createGroup-background">
                 <div className="row">
+                  <h1 className="createGroup-title">Create Group</h1>
+                  <h4 className="col s10 offset-s1">{this.state.error}</h4>
                   <form onSubmit={this.handleSubmit} id="createGroup">
                     <h6 className="font-medium">Group Name</h6>
                     <input
@@ -169,10 +179,10 @@ class CreateGroup extends React.Component {
                     <div className="row center">
                       <button
                         type="button"
-                        className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
+                        className="col s2 offset-s5 btn btn-large login-button addUser-button"
                         onClick={this.checkUserNameValidity}
                       >
-                        Add New User
+                        +
                       </button>
                     </div>
                     <h6 className="font-medium">Group Description</h6>
