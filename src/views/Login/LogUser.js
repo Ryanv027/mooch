@@ -52,9 +52,9 @@ class LogUser extends Component {
       })
       .then(response => {
         if (response.data === "user not found") {
-          this.setState({ loginError: "Username not found" });
+          this.setState({ loginError: "*Username not found" });
         } else if (response.data === "password invalid") {
-          this.setState({ loginError: "Password invalid" });
+          this.setState({ loginError: "*Password invalid" });
         } else {
           this.settingUserReduxState(response);
         }
@@ -66,75 +66,80 @@ class LogUser extends Component {
 
   render = () => {
     return (
-      <div className="container">
-        <div className="section" />
-        <center>
-          <div className="z-depth-5 grey lighten-4 row prime login-background">
-            <img
-              className="responsive-img"
-              alt="moneyMan"
-              src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
-            />
-            <div className="section" />
-            <h5 className="black-text login-font font-top">WELCOME TO MOOCH</h5>
-            <h6 className="black-text login-font font-bottom">
-              Take The Hassle Out Of Settling Debts
-            </h6>
-            <div className="section" />
-            <form className="col s12" onSubmit={this.handleSubmit}>
-              <br />
-              <center>
-                <div className="row">
-                  {this.state.loginError}
-                  <div className="input-field col s12">
-                    <input
-                      className="validate"
-                      type="text"
-                      name="username"
-                      id="username"
-                      onChange={this.onChangeUsername}
-                      value={this.state.username}
-                    />
-                    <label htmlFor="username">Enter your username</label>
-                  </div>
+      <div className="center">
+        <div className="row">
+          <div className="col l8 s12 offset-l2">
+            <div className="login-box">
+              <div className="row">
+                <div className="col s2">
+                  <p className="back-button" onClick={this.props.handleHome}>
+                    &larr; Back
+                  </p>
                 </div>
 
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input
-                      className="validate"
-                      type="password"
-                      name="password"
-                      id="password"
-                      onChange={this.onChangePassword}
-                      value={this.state.password}
-                    />
-                    <label htmlFor="password">Enter your password</label>
-                  </div>
-                  <div className="row">
-                    <button
-                      type="submit"
-                      name="btn_login"
-                      className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                  <div className="row">
-                    <button
-                      type="button"
-                      name="btn_login"
-                      className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
-                      onClick={this.props.handleHome}
-                    >
-                      Back
-                    </button>
-                  </div>
+                <div className="col l8 s12">
+                  <img
+                    className="img-dimension"
+                    alt="moneyMan"
+                    src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
+                  />
                 </div>
-              </center>
-            </form>
+
+                <div className="col s8 offset-s2">
+                  <h5 className="black-text login-font font-top">
+                    WELCOME TO MOOCH
+                  </h5>
+                  <h6 className="black-text login-font font-bottom">
+                    Take The Hassle Out Of Settling Debts
+                  </h6>
+                </div>
+
+                <div className="col s10 offset-s1">
+                  <p className="error">{this.state.loginError}</p>
+                </div>
+
+                <div className="col s8 offset-s2">
+                  <form onSubmit={this.handleSubmit}>
+                    <br />
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <input
+                          className="validate"
+                          type="text"
+                          name="username"
+                          id="username"
+                          onChange={this.onChangeUsername}
+                          value={this.state.username}
+                        />
+                        <label htmlFor="username">Enter your username</label>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="input-field col s12 margin-top-small">
+                        <input
+                          className="validate"
+                          type="password"
+                          name="password"
+                          id="password"
+                          onChange={this.onChangePassword}
+                          value={this.state.password}
+                        />
+                        <label htmlFor="password">Enter your password</label>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col l4 s10 offset-s1 offset-l4">
+                        <button type="submit" className="main-button">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-        </center>
+        </div>
       </div>
     );
   };
