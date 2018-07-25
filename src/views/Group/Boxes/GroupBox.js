@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../Group.css";
+import "./../styles/Group.css";
 
 class GroupBox extends Component {
   state = {
@@ -13,6 +13,7 @@ class GroupBox extends Component {
   componentDidMount = () => {
     this.groupInfo();
   };
+
   groupInfo = () => {
     axios
       .get("/api/getGroupData", { params: { groupID: this.props.groupID } })
@@ -30,7 +31,7 @@ class GroupBox extends Component {
 
   render = () => {
     return (
-      <div className="individualbox col s3">
+      <div className="col l4 s10 offset-s1">
         <div className="groupBox" onClick={this.renderGroup}>
           <h1 className="group-title">{this.state.groupName}</h1>
           <h4 className="group-description">{this.state.groupDescription}</h4>

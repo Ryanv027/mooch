@@ -1,0 +1,216 @@
+@import "./CreateGroup.css";
+@import "./AddGroupButton.css";
+@import "./GroupBox.css";
+
+input {
+  color: black;
+}
+
+.xyz {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.deleteButton {
+}
+
+.card {
+  box-shadow: 10px 10px #0c0c0c;
+  border-radius: 20px 20px;
+}
+
+.img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.paidMooch {
+  text-decoration: line-through;
+}
+
+.font-medium {
+  font-size: 25px;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Raleway", sans-serif;
+  /* font-family: "Dosis", sans-serif; */
+  /* font-family: 'Quicksand', sans-serif;  */
+}
+
+/* .login-button {
+  background-color: rgb(22, 102, 61);
+  border-radius: 15px;
+  margin-top: 25px;
+  box-shadow: 2px 5px 10px black;
+} */
+
+/* .login-button:hover {
+  transform: scale(1.02);
+  box-shadow: 5px 8px 20px black;
+} */
+
+/* .login-button:active {
+  background-color: rgb(22, 102, 61);
+  transform: scale(0.98);
+} */
+
+.addUser-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.button-user {
+  margin: 10px 0px 10px 10px;
+}
+
+textarea {
+  height: 5rem;
+}
+
+.createGroup-username {
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.deleteButton:active {
+  transform: scale(0.98);
+  background: rgb(150, 31, 31);
+}
+
+/* GROUP DASHBOARD */
+
+.groupExpense-container {
+  width: 60%;
+}
+
+.groupDash-name {
+  margin: 10px auto;
+  letter-spacing: 2px;
+  font-family: "Raleway", sans-serif;
+}
+
+.groupDash-name__row {
+  background: url("./../../../images/moochPics/concrete_seamless.png");
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0px 1px 5px black;
+  margin-bottom: 5px;
+}
+
+.groupDash-background {
+  background: #f5f5f5;
+  margin-top: 20px;
+  border-radius: 30px;
+  padding-top: 0px;
+}
+
+.groupDash-expense {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  border-bottom: 1px solid black;
+}
+
+/* SINGLE EXPENSE */
+
+.singleExpense-container {
+  margin-bottom: 10px;
+  border-bottom: 1px solid grey;
+  font-family: "Raleway", sans-serif;
+  width: 60%;
+}
+
+.singleExpense-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 22px;
+  font-family: "Raleway", sans-serif;
+}
+
+.singleExpense-delete {
+  background: rgb(150, 31, 31);
+  color: white;
+  border-radius: 3px;
+  margin-top: 2px;
+}
+
+.singleExpense-delete:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.singleExpense-mooches {
+  margin-bottom: 0px;
+}
+
+.singleExpense-button {
+  background: rgb(22, 102, 61);
+  color: white;
+  border-radius: 5px;
+}
+
+.singleExpense-button:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+/* ADD EXPENSE PAGE */
+
+.addExpense-form {
+  margin-top: 20px;
+}
+
+.addExpense-uncheck {
+  margin-bottom: 20px;
+}
+
+.addExpense-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.spacing {
+  margin-top: 20px;
+}
+
+/* DEBT OVERVIEW */
+
+.debtOverview-container {
+  width: 60%;
+  font-family: "Raleway", sans-serif;
+}
+
+.debtOverview-negative {
+  color: red;
+}
+
+.expenseOverView-spacing {
+  margin-bottom: 30px;
+}
+
+.mooches {
+  text-decoration: underline;
+}
+
+.moochList {
+  margin-top: 7px;
+  margin-bottom: 0px;
+}
+
+.paid-button {
+  background: rgb(22, 102, 61);
+}
+
+.paid-button__disabled {
+  background: rgb(127, 177, 151);
+}
+
+.undoPayment-button {
+  background: rgb(22, 102, 61);
+  margin-left: 5px;
+}

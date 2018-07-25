@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Navbar from "./../Navbar/Navbar";
 import axios from "axios";
 import { addGroup } from "./../../actions/groups";
-import "./CreateGroup.css";
+import "./styles/Group.css";
 
 class CreateGroup extends React.Component {
   state = {
@@ -56,7 +56,7 @@ class CreateGroup extends React.Component {
         .then(response => {
           if (response.data.userName === this.props.userName) {
             this.setState({
-              invalidUsernameError: "You cannot enter your own username!"
+              invalidUsernameError: "*You cannot enter your own username!"
             });
           } else if (response.data !== "invalid") {
             //setting userdata to state to access later for our axios.put call
@@ -70,17 +70,17 @@ class CreateGroup extends React.Component {
             // const userIDs = [...this.state.userIDs, response.data.userID];
             this.setState({
               userName: "",
-              error: "",
+              invalidUsernameError: "",
               groupUserData: usersInfo
             });
           } else {
             this.setState({
-              invalidUsernameError: "Please enter a valid username"
+              invalidUsernameError: "*Please enter a valid username"
             });
           }
         });
     } else {
-      this.setState({ invalidUsernameError: "Please enter a username" });
+      this.setState({ invalidUsernameError: "*Please enter a valid username" });
     }
   };
 
@@ -121,7 +121,7 @@ class CreateGroup extends React.Component {
           console.log(error);
         });
     } else {
-      this.setState({ error: "All fields must be entered!" });
+      this.setState({ error: "*All fields must be entered!" });
     }
   };
 
@@ -139,73 +139,106 @@ class CreateGroup extends React.Component {
     const users = this.state.groupUserData.map((user, index) => {
       if (user.userID !== this.props.userID) {
         return (
-          <div key={index} className="row">
-            <h4 className="col s9 createGroup-username">{user.userName}</h4>
-            <button
-              onClick={() => this.deleteUser(user.userID)}
-              className="deleteButton col s3"
-            >
-              -
-            </button>
+          <div key={index}>
+            <div className="col s6 offset-s1 mt-small">
+              <p className="user-box-username">{user.userName}</p>
+            </div>
+            <div className="col s4 mt-small">
+              <div
+                className="delete-button center"
+                onClick={() => this.deleteUser(user.userID)}
+              >
+                <span className="delete-button-x">X</span>
+              </div>
+            </div>
           </div>
         );
       } else return null;
     });
 
+    // <a
+
+    //   className="delete-button"
+    // >
+    //   -
+    // </a>
     return (
       <div>
         <Navbar history={this.props.history} />
-        <div className="section">
-          <div className="container">
-            <center>
-              <div className="z-depth-5 grey lighten-4 row prime createGroup-background">
-                <div className="row">
-                  <h1 className="createGroup-title">Create Group</h1>
-                  <h4 className="col s10 offset-s1">{this.state.error}</h4>
-                  <form onSubmit={this.handleSubmit} id="createGroup">
-                    <h6 className="font-medium">Group Name</h6>
-                    <input
-                      type="text"
-                      value={this.state.groupName}
-                      onChange={this.onChangeGroupName}
-                    />
-                    <h6 className="font-medium">Add Your Mooches</h6>
-                    <p>{this.state.invalidUsernameError}</p>
-                    <input
-                      type="text"
-                      value={this.state.userName}
-                      onChange={this.onChangeUserName}
-                    />
-                    <div className="row center">
-                      <button
-                        type="button"
-                        className="col s2 offset-s5 btn btn-large login-button addUser-button"
+
+        <section className="section">
+          <div className="container create-group-container">
+            <div className="row">
+              <div className="col l6 s12 offset-l3">
+                <div className="create-group-background">
+                  <div className="row">
+                    <div className="col s10 l10 offset-s1 offset-l1">
+                      <h1 className="create-group-title">Create Group</h1>
+                    </div>
+                    <div className="col s10 offset-s1 center">
+                      <p className="error">{this.state.error}</p>
+                    </div>
+                    <div className="col s10 offset-s1">
+                      <h6 className="font-medium center">Group Name</h6>
+                      <input
+                        type="text"
+                        value={this.state.groupName}
+                        onChange={this.onChangeGroupName}
+                      />
+                    </div>
+                    <div className="col s10 offset-s1">
+                      <p className="center error margin-top">
+                        {this.state.invalidUsernameError}
+                      </p>
+                      <h6 className="font-medium center">Add Your Mooches</h6>
+                      <input
+                        type="text"
+                        value={this.state.userName}
+                        onChange={this.onChangeUserName}
+                      />
+                    </div>
+                    <div className="col s2 offset-s5">
+                      <div
+                        className="add-user-button"
                         onClick={this.checkUserNameValidity}
                       >
-                        +
-                      </button>
+                        <span className="plus">+</span>
+                      </div>
                     </div>
-                    <h6 className="font-medium">Group Description</h6>
-                    <textarea
-                      onChange={this.onChangeDescription}
-                      value={this.state.groupDescription}
-                    />
-
-                    <button
-                      type="submit"
-                      className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
-                    >
-                      Create Group
-                    </button>
-                  </form>
-                  <br />
-                  <h2 className="underline">Users</h2>
-                  <h4>{users}</h4>
+                    <div className="col s10 offset-s1">
+                      <h6 className="font-medium center margin-top">
+                        Group Description
+                      </h6>
+                      <textarea
+                        onChange={this.onChangeDescription}
+                        value={this.state.groupDescription}
+                      />
+                    </div>
+                    <div className="col s10 l4 offset-s1 offset-l4">
+                      <div
+                        onClick={this.handleSubmit}
+                        className="button center"
+                      >
+                        Create Group
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </center>
+
+              <div className="col l2 s10 offset-l1 offset-s1 users-box">
+                <div className="create-group-background">
+                  <div className="row">
+                    <div className="col s10 offset-s1">
+                      <h1 className="user-box-title center">Users</h1>
+                    </div>
+                    {users}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     );
   }

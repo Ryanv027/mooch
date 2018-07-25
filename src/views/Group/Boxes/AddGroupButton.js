@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Group.css";
+import "../styles/Group.css";
 
 class AddGroupBox extends Component {
   directToCreateGroup = () => {
@@ -8,8 +8,11 @@ class AddGroupBox extends Component {
 
   render = () => {
     return (
-      <div className="addGroupBox" onClick={this.directToCreateGroup}>
-        <h3 className="center plus">Create Group</h3>
+      <div
+        className="add-group-box col l4 s8 offset-l4 offset-s2"
+        onClick={this.directToCreateGroup}
+      >
+        <h3 className="add-group-box-text">Create Group</h3>
       </div>
     );
   };

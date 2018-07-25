@@ -60,7 +60,7 @@ class SignUp extends Component {
           this.setState({ usernameError: false });
           this.checkPassword();
         } else if (response.data === "invalid") {
-          this.setState({ usernameError: "Username already exists" });
+          this.setState({ usernameError: "*Username already exists" });
         }
       });
   };
@@ -72,7 +72,7 @@ class SignUp extends Component {
     } else {
       this.setState({
         passwordError:
-          "Please enter a valid password length (6 or more characters)"
+          "*Please enter a valid password length (6 or more characters)"
       });
     }
   };
@@ -85,7 +85,7 @@ class SignUp extends Component {
           this.setState({ emailError: false });
           this.sendInfo();
         } else {
-          this.setState({ emailError: "Email already exists!" });
+          this.setState({ emailError: "*Email already exists!" });
         }
       });
   };
@@ -118,100 +118,105 @@ class SignUp extends Component {
 
   render = () => {
     return (
-      <div className="container">
-        <div className="section section-adjustment" />
-        <center>
-          <div className="z-depth-5 grey lighten-4 row prime login-background">
-            <img
-              className="responsive-img"
-              alt="moneyMan"
-              src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
-            />
-            <div className="section" />
-            <h5 className="black-text login-font font-top">WELCOME TO MOOCH</h5>
-            <h6 className="black-text login-font font-bottom">
-              Take The Hassle Out Of Settling Debts
-            </h6>
-            <div className="section" />
-            <div className="col s12">
-              <br />
-              <center>
-                <div className="row">
-                  <div className="col s12 center">
-                    <form className="col s12" onSubmit={this.handleSubmit}>
-                      <div className="row">
-                        <div className="input-field">
-                          <input
-                            placeholder="name"
-                            type="text"
-                            className="validate"
-                            value={this.state.name}
-                            onChange={this.onChangeName}
-                          />
-                        </div>
+      <div className="center">
+        <div className="row">
+          <div className="col l8 s12 offset-l2">
+            <div className="login-box">
+              <div className="row">
+                <div className="col s2">
+                  <p className="back-button" onClick={this.props.handleHome}>
+                    &larr; Back
+                  </p>
+                </div>
+                <div className="col l8 s12">
+                  <img
+                    className="img-dimension"
+                    alt="moneyMan"
+                    src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
+                  />
+                </div>
+
+                <div className="col s8 offset-s2">
+                  <h5 className="black-text login-font font-top">
+                    WELCOME TO MOOCH
+                  </h5>
+                  <h6 className="black-text login-font font-bottom margin-bottom-medium">
+                    Take The Hassle Out Of Settling Debts
+                  </h6>
+                </div>
+
+                <div className="col s8 offset-s2">
+                  <form className="col s12" onSubmit={this.handleSubmit}>
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <input
+                          placeholder="name"
+                          type="text"
+                          className="validate"
+                          value={this.state.name}
+                          onChange={this.onChangeName}
+                        />
                       </div>
-                      <div className="row">
-                        {this.state.usernameError}
-                        <div className="input-field">
-                          <input
-                            placeholder="username"
-                            type="text"
-                            className="validate"
-                            value={this.state.username}
-                            onChange={this.onChangeUsername}
-                          />
-                        </div>
+                    </div>
+                    <div className="row">
+                      <div className="col s10 offset-s1">
+                        <p className="error">{this.state.usernameError}</p>
                       </div>
-                      <div className="row">
-                        {this.state.emailError}
-                        <div className="input-field">
-                          <input
-                            placeholder="email"
-                            type="email"
-                            className="validate"
-                            value={this.state.email}
-                            onChange={this.onChangeEmail}
-                          />
-                        </div>
+                      <div className="input-field col s12">
+                        <input
+                          placeholder="username"
+                          type="text"
+                          className="validate"
+                          value={this.state.username}
+                          onChange={this.onChangeUsername}
+                        />
                       </div>
-                      <div className="row">
-                        {this.state.passwordError}
-                        <div className="input-field">
-                          <input
-                            placeholder="password"
-                            type="password"
-                            className="validate"
-                            value={this.state.password}
-                            onChange={this.onChangePassword}
-                          />
-                        </div>
+                    </div>
+                    <div className="row">
+                      <div className="col s10 offset-s1">
+                        <p className="error">{this.state.emailError}</p>
                       </div>
-                      <div className="row">
+                      <div className="input-field col s12">
+                        <input
+                          placeholder="email"
+                          type="email"
+                          className="validate"
+                          value={this.state.email}
+                          onChange={this.onChangeEmail}
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col s10 offset-s1">
+                        <p className="error">{this.state.passwordError}</p>
+                      </div>
+                      <div className="input-field col s12">
+                        <input
+                          placeholder="password"
+                          type="password"
+                          className="validate"
+                          value={this.state.password}
+                          onChange={this.onChangePassword}
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col s10 offset-s1">
                         <button
                           type="submit"
                           name="btn_login"
-                          className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
+                          className="main-button"
                         >
                           Submit
                         </button>
                       </div>
-                      <div className="row">
-                        <button
-                          type="button"
-                          name="btn_login"
-                          className="col s12 btn btn-large waves-effect waves-light green-accent-2 login-button"
-                          onClick={this.props.handleHome}
-                        >
-                          Back
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                    </div>
+                  </form>
                 </div>
-              </center>
+              </div>
             </div>
           </div>
-        </center>
+        </div>
       </div>
     );
   };

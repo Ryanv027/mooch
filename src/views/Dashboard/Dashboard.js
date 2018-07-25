@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import AddGroupBox from "../Group/Boxes/AddGroupBox";
+import AddGroupButton from "../Group/Boxes/AddGroupButton";
 import GroupBox from "../Group/Boxes/GroupBox";
 import "./Dashboard.css";
 
@@ -18,11 +18,13 @@ class Dashboard extends Component {
     });
 
     return (
-      <div className="dashboard-container">
-        <div className="row">
-          <Navbar history={this.props.history} />
-          <AddGroupBox history={this.props.history} />
-          <center>{groups}</center>
+      <div>
+        <Navbar history={this.props.history} />
+        <div className="container">
+          <div className="row">
+            <AddGroupButton history={this.props.history} />
+          </div>
+          <div className="row">{groups}</div>
         </div>
       </div>
     );
