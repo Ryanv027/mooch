@@ -1,5 +1,6 @@
 @import "./views/Login/Login.css";
 @import "./views/Group/styles/Group.css";
+@import "./views/Dashboard/Dashboard.css";
 
 *,
 *::after,
@@ -12,7 +13,6 @@
 /* this defines what 1rem is (10px if user doesn't change it on their browser) */
 html {
   font-size: 62.5%;
-  zoom: 0.9;
 }
 
 body {

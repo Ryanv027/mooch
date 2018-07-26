@@ -1,0 +1,10 @@
+.dashboard-main-background {
+  background-image: linear-gradient(
+      to right,
+      rgba(19, 18, 18, 0.9),
+      rgba(29, 97, 2, 0.9)
+    ),
+    url("./../../images/moochPics/money_dollars_bills_background_surface_65906_1600x1200.jpg");
+  background-size: cover;
+  height: 130vh;
+}

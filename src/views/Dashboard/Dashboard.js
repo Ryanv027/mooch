@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import AddGroupButton from "../Group/Boxes/AddGroupButton";
 import GroupBox from "../Group/Boxes/GroupBox";
-import "./Dashboard.css";
+import "./../../index.css";
 
 class Dashboard extends Component {
   render = () => {
@@ -18,7 +18,7 @@ class Dashboard extends Component {
     });
 
     return (
-      <div>
+      <div className="dashboard-main-background">
         <Navbar history={this.props.history} />
         <div className="container">
           <div className="row">
