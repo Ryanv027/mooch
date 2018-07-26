@@ -107,11 +107,11 @@ class LogUser extends Component {
                           className="validate"
                           type="text"
                           name="username"
+                          placeholder="username"
                           id="username"
                           onChange={this.onChangeUsername}
                           value={this.state.username}
                         />
-                        <label htmlFor="username">Enter your username</label>
                       </div>
                     </div>
                     <div className="row">
@@ -120,11 +120,11 @@ class LogUser extends Component {
                           className="validate"
                           type="password"
                           name="password"
+                          placeholder="password"
                           id="password"
                           onChange={this.onChangePassword}
                           value={this.state.password}
                         />
-                        <label htmlFor="password">Enter your password</label>
                       </div>
                     </div>
                     <div className="row">
