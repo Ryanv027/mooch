@@ -19,6 +19,7 @@ module.exports = {
   },
 
   findUser: (info, cb) => {
+    console.log("HIT FIND USER");
     db.users
       .findOne({ where: { userName: info.userName } })
       .then(user => {
