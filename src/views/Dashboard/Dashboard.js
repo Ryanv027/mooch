@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import AddGroupButton from "../Group/Boxes/AddGroupButton";
 import GroupBox from "../Group/Boxes/GroupBox";
 import "./../../index.css";
+import "./../../sass/index.scss";
 
 class Dashboard extends Component {
   render = () => {
@@ -18,7 +19,7 @@ class Dashboard extends Component {
     });
 
     return (
-      <div className="dashboard-main-background">
+      <div className="background">
         <Navbar history={this.props.history} />
         <div className="container">
           <div className="row">
