@@ -1,0 +1,12 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* this defines what 1rem is (10px if user doesn't change it on their browser) */
+html {
+  font-size: 62.5%;
+}

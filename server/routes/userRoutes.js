@@ -13,7 +13,7 @@ module.exports = app => {
 
   app.get("/api/getUserLoginInfo", (req, res) => {
     const info = req.query;
-
+    console.log("HIT ROUTE");
     users.findUser(info, response => {
       if (response !== null) {
         const password = response.dataValues.password;
@@ -67,7 +67,7 @@ module.exports = app => {
 
   app.get("/api/checkUserName", (req, res) => {
     const userName = req.query;
-
+    console.log("CHECK USERNAME");
     users.findUser(userName, response => {
       if (response === null) {
         res.send("valid");
