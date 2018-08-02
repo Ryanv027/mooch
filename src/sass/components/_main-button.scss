@@ -1,0 +1,54 @@
+.main-button {
+  background-color: rgb(22, 102, 61);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 0.8rem 1.7rem rgba(19, 18, 18, 0.8);
+  color: white;
+  /* //font-family: "Raleway", sans-serif; */
+  font-size: 2.2rem;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.main-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 1rem 2rem rgba(19, 18, 18, 0.8);
+  background-color: rgb(17, 79, 47);
+}
+
+.main-button:focus {
+  outline: none;
+  background-color: rgb(17, 79, 47);
+}
+
+.main-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0.7rem 1.5rem rgba(19, 18, 18, 0.8);
+}
+
+.back-button {
+  color: rgb(22, 102, 61);
+  font-size: 2rem;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.14);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(1.02);
+    box-shadow: 0 0.5rem 0.6rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .back-button {
+    font-size: 1rem;
+  }
+}
