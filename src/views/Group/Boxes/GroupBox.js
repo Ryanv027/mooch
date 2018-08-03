@@ -29,16 +29,69 @@ class GroupBox extends Component {
     this.props.history.push(`/group/${this.props.groupID}`);
   };
 
+  //  <h1 className="group-title">{this.state.groupName}</h1>
+  // <h4 className="group-description">{this.state.groupDescription}</h4>
+
   render = () => {
     return (
-      <div className="col l4 s10 offset-s1">
-        <div className="groupBox" onClick={this.renderGroup}>
-          <h1 className="group-title">{this.state.groupName}</h1>
-          <h4 className="group-description">{this.state.groupDescription}</h4>
+      <div className="col l3 s10 offset-s1 offset-l2 back-color">
+        <div className="card">
+          <div className="card__side card__side--front">
+            <div className="card__heading">
+              <span className="card__heading-span">{this.state.groupName}</span>
+            </div>
+
+            <div className="card__details">
+              <h6 className="card__details-span">
+                {this.state.groupDescription}
+              </h6>
+            </div>
+          </div>
+          <div className="card__side card__side--back card__side--back-1">
+            <div className="card__cta">
+              <div className="card-button" onClick={this.renderGroup}>
+                View Group
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
   };
 }
+
+// <div class="card">
+// <div class="card__side card__side--front">
+
+//   <div class="card__picture card__picture--1">
+//     &nbsp;
+//   </div>
+//   <h4 class="card__heading">
+//     <span class="card__heading-span card__heading-span--1">
+//       The Sea Explorer
+//     </span>
+//   </h4>
+
+//   <div class="card__details">
+//     <ul>
+//       <li>3 day tours</li>
+//       <li>Up to 30 people</li>
+//       <li>2 tour gudies</li>
+//       <li>Sleep in cozy hotels</li>
+//       <li>Difficulty: easy</li>
+//     </ul>
+//   </div>
+
+// </div>
+// <div class="card__side card__side--back card__side--back-1">
+//   <div class="card__cta">
+//     <div class="card__price-box">
+//       <p class="card__price-only">only</p>
+//       <p class="card__price-value">$297</p>
+//     </div>
+//     <a href="#popup" class="btn btn--white">Book now!</a>
+//   </div>
+// </div>
+//           </div>
 
 export default GroupBox;

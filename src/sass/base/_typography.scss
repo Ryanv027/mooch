@@ -16,6 +16,7 @@ body {
 
   @include respond(phone) {
     font-size: 3.8rem;
+    flex: 1;
   }
 }
 
