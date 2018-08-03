@@ -1,36 +1,42 @@
-.padR {
-  padding-right: 110px;
-}
-
-.padL {
-  padding-left: 110px;
-}
-
-.navbar {
-  /* background: rgb(22, 102, 61); */
-  /* background: linear-gradient(to bottom, #f5f5f5, #d6d6d6); */
-  background: url("./../../images/moochPics/concrete_seamless.png");
-  /* font-family: "Poiret One", cursive; */
-  /* font-family: "Passion One", cursive; */
-  font-family: "Fredoka One", cursive;
-  color: black;
-  border-bottom: 8px solid rgb(22, 102, 61);
-  border-top: 3px solid rgb(22, 102, 61);
-  box-shadow: 0px 10px 15px black;
-  /* font-family: "Prosto One", cursive; */
-  /* font-family: "Cabin Sketch", cursive; */
-  /* font-family: "Press Start 2P", cursive; */
-  /* font-family: "Bubblegum Sans", cursive; */
-  /* font-family: "Pompiere", cursive; */
-  /* font-family: "Londrina Solid", cursive; */
-}
-
-.medium-size {
-  font-size: 25px;
-  color: black;
-}
-
-.large-size {
-  font-size: 60px;
-  margin: 0 auto;
-}
+/* <nav className="nav">
+<div className="">
+  <h1 className="brand-logo center" style={logoStyle}>
+    MOOCH
+  </h1>
+  <div className="left hide-on-med-and-down">
+    <ul>
+      <li>
+        <a onClick={this.goHome}>
+          DASHBOARD
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div className="right">
+    <ul>
+      <li>
+        <a
+          className="padR medium-size hide-on-med-and-down"
+          onClick={this.logout}
+        >
+          LOGOUT
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div className="nav-content hide-on-large-only medium-size">
+  <ul className="tabs">
+    <li className="tab">
+      <a onClick={this.goHome} style={linkStyles}>
+        HOME
+      </a>{" "}
+    </li>
+    <li className="tab">
+      <a onClick={this.logout} style={linkStyles}>
+        LOGOUT
+      </a>{" "}
+    </li>
+  </ul>
+</div>
+</nav> */

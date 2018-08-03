@@ -71,13 +71,13 @@ class LogUser extends Component {
           <div className="col l8 s12 offset-l2">
             <div className="login-box">
               <div className="row">
-                <div className="col s2">
+                <div className="col s1 l2">
                   <p className="back-button" onClick={this.props.handleHome}>
-                    &larr; Back
+                    &larr;Back
                   </p>
                 </div>
 
-                <div className="col l8 s12">
+                <div className="col l8 s10">
                   <img
                     className="img-dimension"
                     alt="moneyMan"
@@ -85,11 +85,9 @@ class LogUser extends Component {
                   />
                 </div>
 
-                <div className="col s8 offset-s2">
-                  <h5 className="black-text login-font font-top">
-                    WELCOME TO MOOCH
-                  </h5>
-                  <h6 className="black-text login-font font-bottom">
+                <div className="col s12">
+                  <h5 className="login-title">WELCOME TO MOOCH</h5>
+                  <h6 className="login-subtitle">
                     Take The Hassle Out Of Settling Debts
                   </h6>
                 </div>
