@@ -168,7 +168,7 @@ class CreateGroup extends React.Component {
         <div className="background-color">
           <div className="create-group-container">
             <div className="row">
-              <div className="col l6 s12 offset-l3">
+              <div className="col l6 s12 offset-l1">
                 <div className="create-group-background">
                   <div className="row">
                     <div className="col s10 l10 offset-s1 offset-l1">
