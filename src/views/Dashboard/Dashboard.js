@@ -8,6 +8,7 @@ import "./../../sass/index.scss";
 
 class Dashboard extends Component {
   render = () => {
+    console.log(this.props);
     const groups = this.props.groups.map(group => {
       return (
         <GroupBox
@@ -19,13 +20,15 @@ class Dashboard extends Component {
     });
 
     return (
-      <div className="background">
+      <div className="page-container">
         <Navbar history={this.props.history} />
-        <div className="container">
-          <div className="row">
-            <AddGroupButton history={this.props.history} />
+        <div className="background-color">
+          <div className="dashboard-container">
+            <div className="row">
+              <AddGroupButton history={this.props.history} />
+            </div>
+            <div className="row">{groups}</div>
           </div>
-          <div className="row">{groups}</div>
         </div>
       </div>
     );
@@ -33,7 +36,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  groups: state.groups
+  groups: state.groups,
+  user: state.auth
 });
 
 export default connect(mapStateToProps)(Dashboard);

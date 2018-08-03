@@ -140,15 +140,15 @@ class CreateGroup extends React.Component {
       if (user.userID !== this.props.userID) {
         return (
           <div key={index}>
-            <div className="col s6 offset-s1 mt-small">
+            <div className="col s6 offset-s1">
               <p className="user-box-username">{user.userName}</p>
             </div>
-            <div className="col s4 mt-small">
+            <div className="col s4">
               <div
                 className="delete-button center"
                 onClick={() => this.deleteUser(user.userID)}
               >
-                <span className="delete-button-x">X</span>
+                <span className="delete-button__x">X</span>
               </div>
             </div>
           </div>
@@ -163,11 +163,10 @@ class CreateGroup extends React.Component {
     //   -
     // </a>
     return (
-      <div>
+      <div className="page-container">
         <Navbar history={this.props.history} />
-
-        <section className="section">
-          <div className="container create-group-container">
+        <div className="background-color">
+          <div className="create-group-container">
             <div className="row">
               <div className="col l6 s12 offset-l3">
                 <div className="create-group-background">
@@ -179,7 +178,7 @@ class CreateGroup extends React.Component {
                       <p className="error">{this.state.error}</p>
                     </div>
                     <div className="col s10 offset-s1">
-                      <h6 className="font-medium center">Group Name</h6>
+                      <h6 className="create-group-subtitle">Group Name</h6>
                       <input
                         type="text"
                         value={this.state.groupName}
@@ -190,7 +189,9 @@ class CreateGroup extends React.Component {
                       <p className="center error margin-top">
                         {this.state.invalidUsernameError}
                       </p>
-                      <h6 className="font-medium center">Add Your Mooches</h6>
+                      <h6 className="create-group-subtitle">
+                        Add Your Mooches
+                      </h6>
                       <input
                         type="text"
                         value={this.state.userName}
@@ -206,7 +207,7 @@ class CreateGroup extends React.Component {
                       </div>
                     </div>
                     <div className="col s10 offset-s1">
-                      <h6 className="font-medium center margin-top">
+                      <h6 className="create-group-subtitle">
                         Group Description
                       </h6>
                       <textarea
@@ -214,13 +215,13 @@ class CreateGroup extends React.Component {
                         value={this.state.groupDescription}
                       />
                     </div>
-                    <div className="col s10 l4 offset-s1 offset-l4">
-                      <div
+                    <div className="col s10 l4 offset-s1 offset-l4 center">
+                      <button
+                        className="main-button"
                         onClick={this.handleSubmit}
-                        className="button center"
                       >
-                        Create Group
-                      </div>
+                        Create
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -230,7 +231,7 @@ class CreateGroup extends React.Component {
                 <div className="create-group-background">
                   <div className="row">
                     <div className="col s10 offset-s1">
-                      <h1 className="user-box-title center">Users</h1>
+                      <h1 className="create-group-title center">Users</h1>
                     </div>
                     {users}
                   </div>
@@ -238,7 +239,7 @@ class CreateGroup extends React.Component {
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </div>
     );
   }

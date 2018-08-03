@@ -25,48 +25,15 @@ class Navbar extends Component {
     };
 
     return (
-      <nav className="navbar nav-extended">
-        <div className="nav-wrapper">
-          <a className="brand-logo center" style={logoStyle}>
-            MOOCH
-          </a>
-          <div className="left hide-on-med-and-down">
-            <ul>
-              <li>
-                <a className="padL medium-size" onClick={this.goHome}>
-                  DASHBOARD
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="right">
-            <ul>
-              <li>
-                <a
-                  className="padR medium-size hide-on-med-and-down"
-                  onClick={this.logout}
-                >
-                  LOGOUT
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="nav-content hide-on-large-only medium-size">
-          <ul className="tabs">
-            <li className="tab">
-              <a onClick={this.goHome} style={linkStyles}>
-                HOME
-              </a>{" "}
-            </li>
-            <li className="tab">
-              <a onClick={this.logout} style={linkStyles}>
-                LOGOUT
-              </a>{" "}
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <div className="navigation">
+        <h3 className="navigation__link-left" onClick={this.goHome}>
+          Home
+        </h3>
+        <h2 className="navigation__logo">Mooch</h2>
+        <h3 className="navigation__link-right" onClick={this.logout}>
+          Logout
+        </h3>
+      </div>
     );
   };
 }
