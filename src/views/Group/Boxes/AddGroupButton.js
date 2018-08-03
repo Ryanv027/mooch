@@ -8,10 +8,7 @@ class AddGroupBox extends Component {
 
   render = () => {
     return (
-      <div
-        className="add-group-box col l4 s8 offset-l4 offset-s2"
-        onClick={this.directToCreateGroup}
-      >
+      <div className="add-group-box" onClick={this.directToCreateGroup}>
         <h3 className="add-group-box-text">Create Group</h3>
       </div>
     );

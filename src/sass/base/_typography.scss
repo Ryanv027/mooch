@@ -6,3 +6,22 @@ body {
   font-weight: 100;
   letter-spacing: 2px;
 }
+
+.page-heading {
+  text-align: center;
+  font-family: $font-main;
+  font-weight: bold;
+  font-size: $font-large;
+  margin: 2.5rem 0 2.5rem 0;
+
+  @include respond(phone) {
+    font-size: 3.8rem;
+  }
+}
+
+.page-heading-secondary {
+  font-size: $font-medium;
+  // font-family: $font-main;
+  margin: 2.5rem 0 2.5rem 0;
+  text-align: center;
+}

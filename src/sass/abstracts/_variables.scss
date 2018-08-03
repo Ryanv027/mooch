@@ -1,4 +1,5 @@
-$color-primary: rgb(22, 102, 61);
+$color-primary: rgba(29, 97, 2, 0.75);
+$color-primary-dark: rgba(23, 70, 4, 0.878);
 
 $color-secondary: rgba(255, 255, 255, 0.953);
 
@@ -13,3 +14,17 @@ $font-secondary: "Passion One", cursive;
 $font-medium: 2rem;
 
 $font-large: 3.5rem;
+
+//UTILITIES
+
+$mb-small: 1rem;
+
+$mb-medium: 2rem;
+
+$mb-large: 3rem;
+
+$mt-small: 1rem;
+
+$mt-medium: 2rem;
+
+$mt-large: 3rem;
