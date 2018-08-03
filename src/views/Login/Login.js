@@ -66,11 +66,9 @@ class Login extends Component {
                           src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
                         />
                       </div>
-                      <div className="col s8 offset-s2">
-                        <h5 className="black-text font-top">
-                          WELCOME TO MOOCH
-                        </h5>
-                        <h6 className="black-text login-font font-bottom">
+                      <div className="col s12">
+                        <h5 className="login-title">WELCOME TO MOOCH</h5>
+                        <h6 className="login-subtitle">
                           Take The Hassle Out Of Settling Debts
                         </h6>
                       </div>
