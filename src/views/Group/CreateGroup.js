@@ -156,12 +156,9 @@ class CreateGroup extends React.Component {
       } else return null;
     });
 
-    // <a
-
-    //   className="delete-button"
-    // >
-    //   -
-    // </a>
+    const font = {
+      fontSize: "1.8rem"
+    };
     return (
       <div className="page-container">
         <Navbar history={this.props.history} />
@@ -213,6 +210,7 @@ class CreateGroup extends React.Component {
                         Group Description
                       </h6>
                       <textarea
+                        style={font}
                         onChange={this.onChangeDescription}
                         value={this.state.groupDescription}
                       />

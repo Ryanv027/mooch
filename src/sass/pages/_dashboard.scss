@@ -5,11 +5,15 @@
     rgba(29, 97, 2, 0.8)
   );
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
 }
 
 .dashboard-container {
-  margin: 3rem 4rem;
+  margin: 3rem 2rem;
+
+  @include respond(phone) {
+    margin: 3rem 0.5rem;
+  }
 }
 
 .dashboard-background {
@@ -17,13 +21,61 @@
   border: 3px solid $color-primary;
   box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.6);
   background: $color-secondary;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  @include respond(phone) {
+    flex-wrap: wrap;
+  }
+
+  &__heading {
+    text-align: center;
+    font-family: $font-main;
+    font-weight: bold;
+    font-size: $font-large;
+    margin: 2.5rem 10rem 2.5rem 0;
+
+    @include respond(phone) {
+      font-size: 3.8rem;
+      margin: 2.5rem 0;
+      flex: 1;
+    }
+  }
 }
 
 .user-greeting {
   font-size: 1.8rem;
+  position: relative;
+
+  &__photo {
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    top: -7px;
+    left: -3.5rem;
+
+    @include respond(phone) {
+      left: -1rem;
+    }
+  }
+
+  @include respond(phone) {
+    margin-bottom: $mb-medium;
+    width: 55%;
+    text-align: center;
+  }
 }
 
-.flex {
-  display: flex;
-  align-items: center;
+.groups-message {
+  text-align: center;
+  display: inline-block;
+  padding-top: 4rem;
+  font-size: 3.2rem;
 }

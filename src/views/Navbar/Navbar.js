@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Navbar.css";
 import { connect } from "react-redux";
 import { logout } from "./../../actions/auth";
 import { logoutGroups } from "./../../actions/groups";
