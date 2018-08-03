@@ -9,5 +9,21 @@
 }
 
 .dashboard-container {
-  margin: 0 8rem;
+  margin: 3rem 4rem;
+}
+
+.dashboard-background {
+  border-radius: 20px;
+  border: 3px solid $color-primary;
+  box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.6);
+  background: $color-secondary;
+}
+
+.user-greeting {
+  font-size: 1.8rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
 }

@@ -1,11 +1,23 @@
-$mb-small: 1rem;
+.mb-small {
+  margin-bottom: $mb-small;
+}
 
-$mb-medium: 2rem;
+.mb-medium {
+  margin-bottom: $mb-medium;
+}
 
-$mb-large: 3rem;
+.mb-large {
+  margin-bottom: $mb-large;
+}
 
-$mt-small: 1rem;
+.mt-small {
+  margin-top: $mt-small;
+}
 
-$mt-medium: 2rem;
+.mt-medium {
+  margin-top: $mt-medium;
+}
 
-$mt-large: 3rem;
+.mt-large {
+  margin-top: $mt-large;
+}

@@ -12,7 +12,7 @@
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 1rem 2rem rgba(19, 18, 18, 0.8);
-    background-color: $color-primary;
+    background-color: $color-primary-dark;
   }
 
   &:focus {
@@ -78,13 +78,18 @@
 
   &:hover {
     box-shadow: 0.1rem 0.7rem 1.3rem darkgrey;
-    background-color: rgb(18, 84, 50);
+    background-color: $color-primary-dark;
     transform: translateY(-0.2rem) scale(1.04);
   }
 
   &:active {
     box-shadow: 0.1rem 0.4rem 0.9rem darkgrey;
     transform: translateY(0) scale(0.9);
+  }
+
+  &__plus {
+    font-size: 5rem;
+    margin-left: 2px;
   }
 }
 
@@ -115,4 +120,27 @@
     font-family: "Muli", "sans-serif";
     margin-left: 2px;
   }
+}
+
+.add-group-box {
+  border: 2px solid rgb(22, 102, 61);
+  // background: linear-gradient(to bottom right, white, rgb(177, 177, 177));
+  margin: 0;
+  border-radius: 25px;
+  box-shadow: 3px 9px 15px black;
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+}
+
+.add-group-box:active {
+  box-shadow: 1px 5px 10px black;
+  transform: scale(0.99);
+}
+
+.add-group-box-text {
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 0.8rem;
 }

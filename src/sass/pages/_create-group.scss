@@ -6,17 +6,8 @@
   }
 }
 
-.background-color {
-  background-image: linear-gradient(
-    to right,
-    rgba(19, 18, 18, 0.8),
-    rgba(29, 97, 2, 0.75)
-  );
-  overflow: auto;
-}
-
 .create-group-container {
-  margin: 3rem 10rem;
+  margin: 3rem 10rem 1rem 10rem;
   overflow: auto;
 
   @include respond(phone) {
@@ -26,27 +17,9 @@
 
 .create-group-background {
   border-radius: 20px;
-  border: 3px solid darkgrey;
+  border: 3px solid $color-primary;
   box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.6);
   background: $color-secondary;
-}
-
-.create-group-title {
-  text-align: center;
-  font-family: "Muli", "sans-serif";
-  font-size: $font-large;
-  margin: 2.5rem 0 2.5rem 0;
-
-  @include respond(phone) {
-    font-size: 3.8rem;
-  }
-}
-
-.create-group-subtitle {
-  font-size: $font-medium;
-  // font-family: $font-main;
-  margin: 2.5rem 0 2.5rem 0;
-  text-align: center;
 }
 
 .error {
@@ -54,6 +27,11 @@
   font-weight: bold;
   font-size: 1.2rem;
   font-family: "Raleway", sans-serif;
+}
+
+.mooch-message {
+  font-size: 1rem;
+  text-align: center;
 }
 
 .margin-top {
@@ -83,10 +61,4 @@
   .users-box {
     margin-top: 2.5rem;
   }
-}
-
-.plus {
-  font-size: 3rem;
-  margin-left: 2px;
-  margin-bottom: 3px;
 }

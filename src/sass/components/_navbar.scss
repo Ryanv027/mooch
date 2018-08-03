@@ -1,8 +1,12 @@
 .navigation {
-  background-image: url("./../images/moochPics/concrete_seamless.png");
-  height: 6rem;
+  background-image: linear-gradient(
+    to right,
+    rgba(63, 63, 63, 0.8),
+    rgba(29, 97, 2, 0.75)
+  );
+  height: 10vh;
   border-bottom: 5px solid $color-primary;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.5);
 
   display: flex;
   justify-content: space-around;
@@ -11,7 +15,7 @@
   &__link-right,
   &__link-left,
   &__logo {
-    color: black;
+    color: $color-secondary;
     display: inline-block;
     font-family: $font-logo;
   }

@@ -172,13 +172,13 @@ class CreateGroup extends React.Component {
                 <div className="create-group-background">
                   <div className="row">
                     <div className="col s10 l10 offset-s1 offset-l1">
-                      <h1 className="create-group-title">Create Group</h1>
+                      <h1 className="page-heading">Create Group</h1>
                     </div>
                     <div className="col s10 offset-s1 center">
                       <p className="error">{this.state.error}</p>
                     </div>
                     <div className="col s10 offset-s1">
-                      <h6 className="create-group-subtitle">Group Name</h6>
+                      <h6 className="page-heading-secondary">Group Name</h6>
                       <input
                         type="text"
                         value={this.state.groupName}
@@ -189,8 +189,10 @@ class CreateGroup extends React.Component {
                       <p className="center error margin-top">
                         {this.state.invalidUsernameError}
                       </p>
-                      <h6 className="create-group-subtitle">
+                      <h6 className="page-heading-secondary">
                         Add Your Mooches
+                        <br />
+                        <span className="mooch-message">(by username)</span>
                       </h6>
                       <input
                         type="text"
@@ -203,11 +205,11 @@ class CreateGroup extends React.Component {
                         className="add-user-button"
                         onClick={this.checkUserNameValidity}
                       >
-                        <span className="plus">+</span>
+                        <span className="add-user-button__plus">+</span>
                       </div>
                     </div>
                     <div className="col s10 offset-s1">
-                      <h6 className="create-group-subtitle">
+                      <h6 className="page-heading-secondary">
                         Group Description
                       </h6>
                       <textarea
@@ -231,7 +233,7 @@ class CreateGroup extends React.Component {
                 <div className="create-group-background">
                   <div className="row">
                     <div className="col s10 offset-s1">
-                      <h1 className="create-group-title center">Users</h1>
+                      <h1 className="page-heading center">Users</h1>
                     </div>
                     {users}
                   </div>
@@ -239,6 +241,10 @@ class CreateGroup extends React.Component {
               </div>
             </div>
           </div>
+          <div className="footer">
+            <h6 className="footer-name">@Ryan Palermo</h6>
+          </div>
+          <div className="footer-accent" />
         </div>
       </div>
     );
