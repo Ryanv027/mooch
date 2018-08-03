@@ -242,7 +242,7 @@ class CreateGroup extends React.Component {
             </div>
           </div>
           <div className="footer">
-            <h6 className="footer-name">@Ryan Palermo</h6>
+            <h6 className="footer-name">@Mooch</h6>
           </div>
           <div className="footer-accent" />
         </div>

@@ -13,6 +13,7 @@
     transform: scale(1.05);
     box-shadow: 0 1rem 2rem rgba(19, 18, 18, 0.8);
     background-color: $color-primary-dark;
+    cursor: pointer;
   }
 
   &:focus {
@@ -48,6 +49,7 @@
     background-position: 100%;
     color: $color-secondary;
     transform: translateX(1rem);
+    cursor: pointer;
   }
 
   &:active {
@@ -80,6 +82,7 @@
     box-shadow: 0.1rem 0.7rem 1.3rem darkgrey;
     background-color: $color-primary-dark;
     transform: translateY(-0.2rem) scale(1.04);
+    cursor: pointer;
   }
 
   &:active {
