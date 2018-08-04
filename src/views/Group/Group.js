@@ -106,32 +106,38 @@ class Group extends Component {
     return (
       <div>
         <Navbar history={this.props.history} />
-        {this.state.groupDashboard ? (
-          <GroupDashboard
-            addExpenseView={this.addExpenseView}
-            debtOverview={this.debtOverview}
-            groupName={this.state.groupName}
-            groupUserData={this.state.groupUserData}
-            calculateGroupDebts={this.calculateGroupDebts}
-            match={this.props.match}
-            history={this.props.history}
-            setGroupDebts={this.setGroupDebts}
-          />
-        ) : null}
-        {this.state.addExpenseView ? (
-          <AddExpense
-            groupDashboardView={this.groupDashboardView}
-            groupUserData={this.state.groupUserData}
-            groupID={this.state.groupID}
-            userID={this.props.id}
-          />
-        ) : null}
-        {this.state.debtOverview ? (
-          <DebtOverview
-            groupDashboardView={this.groupDashboardView}
-            groupUserData={this.state.groupUserData}
-          />
-        ) : null}
+        <div className="background-color">
+          {this.state.groupDashboard ? (
+            <GroupDashboard
+              addExpenseView={this.addExpenseView}
+              debtOverview={this.debtOverview}
+              groupName={this.state.groupName}
+              groupUserData={this.state.groupUserData}
+              calculateGroupDebts={this.calculateGroupDebts}
+              match={this.props.match}
+              history={this.props.history}
+              setGroupDebts={this.setGroupDebts}
+            />
+          ) : null}
+          {this.state.addExpenseView ? (
+            <AddExpense
+              groupDashboardView={this.groupDashboardView}
+              groupUserData={this.state.groupUserData}
+              groupID={this.state.groupID}
+              userID={this.props.id}
+            />
+          ) : null}
+          {this.state.debtOverview ? (
+            <DebtOverview
+              groupDashboardView={this.groupDashboardView}
+              groupUserData={this.state.groupUserData}
+            />
+          ) : null}
+          <div className="footer">
+            <h6 className="footer-name">@Mooch</h6>
+          </div>
+          <div className="footer-accent" />
+        </div>
       </div>
     );
   };

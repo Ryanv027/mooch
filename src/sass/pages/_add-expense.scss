@@ -1,0 +1,62 @@
+.group-container {
+  margin: 3rem 20rem 1rem 20rem;
+  overflow: auto;
+
+  @media screen and (max-width: 1100px) {
+    margin: 3rem 13rem 1rem 13rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin: 3rem 10rem 1rem 10rem;
+  }
+
+  @media screen and (max-width: 740px) {
+    margin: 3rem 7rem 1rem 7rem;
+  }
+
+  @include respond(phone) {
+    margin: 3rem 1rem 1rem 1rem;
+  }
+}
+
+.add-expense__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &-left,
+  &-right,
+  &-center {
+    width: 33.33333%;
+  }
+
+  &-left {
+    text-align: center;
+  }
+
+  &-center {
+    @include respond(tab-port) {
+      font-size: 2.5rem;
+    }
+
+    @media screen and (max-width: 740px) {
+      font-size: 2.2rem;
+    }
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.user-checkbox {
+  &__heading {
+    font-size: 1.5rem;
+    margin: 2rem 0 3rem 0;
+  }
+
+  &__names {
+    font-size: 1.2rem;
+    color: black;
+  }
+}

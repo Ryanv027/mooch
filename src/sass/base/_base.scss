@@ -14,5 +14,6 @@ html {
 .background-color {
   background-color: $color-tertiary;
   overflow: auto;
+  position: relative;
   height: 90vh;
 }
