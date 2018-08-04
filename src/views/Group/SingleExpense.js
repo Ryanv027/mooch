@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import userPhoto from "./../../images/61205.svg";
 
 class SingleExpense extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class SingleExpense extends React.Component {
         });
     } else {
       this.setState({
-        error: "Only original creator can delete this expense!"
+        error: "*Only original creator can delete this expense!"
       });
     }
   };
@@ -49,52 +50,76 @@ class SingleExpense extends React.Component {
     const mooches = this.props.groupUserData.map(user => {
       let userName = "";
       for (let i = 0; i < this.props.expense.mooches.length; i++) {
+        console.log("blah", this.props.expense.mooches.length);
         if (user.userID === this.props.expense.mooches[i]) {
           userName = user.userName;
         }
       }
-      return `${userName} `;
+      if (userName.length > 0) {
+        return (
+          <div className="mooch">
+            {" "}
+            <span>
+              <img src={userPhoto} alt="photo" className="mooch__photo" />
+            </span>
+            {userName}{" "}
+          </div>
+        );
+      } else return null;
     });
     const amount = (this.props.expense.amount / 100).toFixed(2);
 
-    const style = {
-      paddingBottom: "10px"
-    };
-    const buttonStyle = {
-      padding: "8px"
-    };
     return (
-      <div className="col s4 offset-s4 singleExpense-container" style={style}>
+      <div className="single-expense">
         <div className="row">
-          <div className="col s12 center-align">{this.state.error}</div>
-          <h6 className="col s4 offset-s4 center-align singleExpense-title">
-            {this.props.expense.description}
-          </h6>
+          <div className="col s12 center">
+            <h6 className="single-expense__title">
+              {this.props.expense.description}
+            </h6>
+          </div>
+
+          <div className="col s12 center">
+            <div className="h6 error single-expense__error">
+              {this.state.error}
+            </div>
+          </div>
+
           <button
             onClick={this.deleteExpense}
-            className="col s1 offset-s3 singleExpense-delete"
+            className="single-expense__button"
           >
             -
           </button>
-          <p className="col s4 offset-s4 center-align singleExpense-amount">
-            Amount: ${amount}
-          </p>
-          <p className="col s4 offset-s4 center-align singleExpense-mooches">
-            Mooches:
-          </p>
-          <p className="col s4 offset-s4 center-align singleExpense-moochesList">
-            {mooches}
-          </p>
-          <p className="col s4 offset-s4 center-align">
-            Created By: {userName}
-          </p>
-          <button
-            onClick={this.editExpense}
-            className="col s6 offset-s3 singleExpense-button"
-            style={buttonStyle}
-          >
-            Expense Overview
-          </button>
+
+          <div className="col s5  center mt-small">
+            <h6 className="single-expense__description">
+              <span className="bold">Amount:</span>{" "}
+              <span className="color-green">$</span>
+              {amount}
+            </h6>
+          </div>
+
+          <div className="col s6 offset-s1 center mt-small">
+            <h6 className="single-expense__description">
+              <span className="bold">Created By:</span> {userName}
+            </h6>
+          </div>
+
+          <div className="col s10 offset-s1 center mt-medium">
+            <h6 className="single-expense__description">
+              <span className="bold">Mooches:</span>
+            </h6>
+          </div>
+
+          <div className="col s10 offset-s1">
+            <div className="mooch-container">{mooches}</div>
+          </div>
+
+          <div className="col s10 offset-s1 center">
+            <button onClick={this.editExpense} className="secondary-button">
+              Expense Overview
+            </button>
+          </div>
         </div>
       </div>
     );
