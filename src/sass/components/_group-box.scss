@@ -449,3 +449,17 @@
 //     }
 //   }
 // }
+
+.test {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.test2 {
+  width: 21%;
+
+  @include respond(phone) {
+    width: 70%;
+  }
+}
