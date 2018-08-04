@@ -37,7 +37,7 @@ class AddExpense extends React.Component {
         description: this.state.description,
         amount: parseFloat(this.state.amount) * 100
       };
-      console.log(info.amount);
+      // console.log(info.amount);
       axios
         .post("/api/createExpense", info)
         .then(response => {
@@ -50,7 +50,7 @@ class AddExpense extends React.Component {
           console.log(error);
         });
     } else {
-      this.setState({ error: "All fields must be filled out" });
+      this.setState({ error: "*All fields must be filled out" });
     }
   };
 
@@ -86,78 +86,87 @@ class AddExpense extends React.Component {
   };
 
   render() {
+    const usernameStyle = {
+      fontSize: "1.8rem",
+      color: "black"
+    };
+
     const userCheckboxes = this.state.groupUserData.map((user, index) => {
       if (user.userID !== this.props.userID) {
         return (
-          <p key={index}>
-            <label htmlFor={user.userName} className="col s8 offset-s3">
-              <input
-                type="checkbox"
-                id={user.userName}
-                className="filled-in"
-                checked={user.checked}
-                onChange={() => this.checkboxToggle(user.userID)}
-              />
-              <span>{user.userName}</span>
-            </label>
-          </p>
+          <div key={index}>
+            <div className="col s8 offset-s3 mb-medium">
+              <label htmlFor={user.userName}>
+                <input
+                  type="checkbox"
+                  id={user.userName}
+                  className="filled-in"
+                  checked={user.checked}
+                  onChange={() => this.checkboxToggle(user.userID)}
+                />
+                <span style={usernameStyle}>{user.userName}</span>
+              </label>
+            </div>
+          </div>
         );
       } else return null;
     });
 
-    const buttonStyle = {
-      padding: "15px",
-      color: "white",
-      marginBottom: "10px"
-    };
-
     return (
-      <div className="container singleExpense-container">
-        <div className="groupDash-background">
-          <div className="row groupDash-name__row">
-            <h1 className="col s6 offset-s3 center-align addExpense-header">
-              Add Expense
-            </h1>
-          </div>
-          <div className="row">
-            <h4 className="col s10 offset-s1 center-align">
-              {this.state.error}
-            </h4>
-            <button
-              className="col s4 offset-s4 btn btn-large login-button"
-              onClick={this.props.groupDashboardView}
-            >
-              Back To Group Dashboard
-            </button>
-          </div>
-          <div className="row">
-            <form onSubmit={this.expenseSubmit}>
-              <h6 className="col s4 offset-s4 center-align">Description</h6>
-              <input
-                type="text"
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-                className="col s8 offset-s2"
-              />
-              <h6 className="col s4 offset-s4 center-align">Amount</h6>
-              <input
-                type="number"
-                value={this.state.amount}
-                onChange={this.onChangeAmount}
-                className="col s8 offset-s2"
-              />
-              <h6 className="col s8 offset-s2 center-align addExpense-uncheck">
-                (Uncheck users that you would like to exclude from this expense)
-              </h6>
-              {userCheckboxes}
-              <div className="spacing col s12" />
-              <button
-                className="col s2 offset-s5 login-button"
-                style={buttonStyle}
-              >
-                Submit
-              </button>
-            </form>
+      <div className="group-container">
+        <div className="row">
+          <div className="col s12">
+            <div className="create-group-background">
+              <div className="add-expense__header">
+                <div className="add-expense__header-left">
+                  <button
+                    className="back-button"
+                    onClick={this.props.groupDashboardView}
+                  >
+                    &larr; Back
+                  </button>
+                </div>
+                <h1 className="page-heading add-expense__header-center">
+                  Add Expense
+                </h1>
+                <div className="add-expense__header-right">&nbsp;</div>
+              </div>
+
+              <div className="col s10 offset-s1 center">
+                <p className="error">{this.state.error}</p>
+              </div>
+
+              <div className="row">
+                <div className="col s8 offset-s2 center">
+                  <h6 className="page-heading-secondary">Description</h6>
+                  <input
+                    type="text"
+                    value={this.state.description}
+                    onChange={this.onChangeDescription}
+                  />
+                </div>
+                <div className="col s8 offset-s2 center">
+                  <h6 className="page-heading-secondary">Amount</h6>
+                  <input
+                    type="number"
+                    value={this.state.amount}
+                    onChange={this.onChangeAmount}
+                  />
+                </div>
+                <div className="col s8 offset-s2 center">
+                  <h6 className="user-checkbox__heading">
+                    (Uncheck users that you would like to exclude from this
+                    expense)
+                  </h6>
+                </div>
+                {userCheckboxes}
+                <div className="col s8 offset-s2 center mt-medium">
+                  <button className="main-button " onClick={this.expenseSubmit}>
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
