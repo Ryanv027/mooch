@@ -66,7 +66,7 @@ class DebtOverview extends React.Component {
               <div className="add-expense__header">
                 <div className="add-expense__header-left">
                   <button
-                    className="back-button"
+                    className="back-button back-button--overview"
                     onClick={this.props.groupDashboardView}
                   >
                     &larr; Back

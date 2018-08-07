@@ -106,7 +106,7 @@ class SingleExpense extends React.Component {
             </h6>
           </div>
 
-          <div className="col s6 offset-s1 center mt-small">
+          <div className="col s5 offset-s2 center mt-small">
             <h6 className="single-expense__description">
               <span className="bold">Created By:</span> {userName}
             </h6>

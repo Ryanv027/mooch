@@ -112,7 +112,11 @@
     border-radius: 50%;
     position: absolute;
     top: -0.2px;
-    left: -2rem;
+    left: 5rem;
+
+    @include respond(phone) {
+      left: 4rem;
+    }
   }
 }
 

@@ -11,6 +11,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+
+  @include respond(phone) {
+    height: 20vh;
+  }
 
   &__link-right,
   &__link-left,
@@ -22,9 +28,13 @@
 
   &__logo {
     font-size: 4rem;
+    width: 33.333333%;
+    text-align: center;
 
     @include respond(phone) {
       font-size: 4rem;
+      width: 90%;
+      order: 0;
     }
   }
 
@@ -42,7 +52,10 @@
     }
 
     @include respond(phone) {
-      font-size: 2rem;
+      font-size: 1.7rem;
+      order: 1;
+
+      width: 20%;
     }
   }
 
@@ -60,7 +73,9 @@
     }
 
     @include respond(phone) {
-      font-size: 2rem;
+      font-size: 1.7rem;
+      order: 2;
+      width: 20%;
     }
   }
 }

@@ -253,26 +253,16 @@ class ExpenseOverview extends React.Component {
       <div className="page-container">
         <Navbar history={this.props.history} />
         <div className="background-color">
-          <div class="bg-video">
-            <video
-              class="bg-video__content"
-              autoplay="autoplay"
-              controls={false}
-              muted
-              loop
-            >
-              <source src={videoMP4} type="video/mp4" />
-              <source src={videoWEBM} type="video/webm" /> Your browser is not
-              supported!
-            </video>
-          </div>
           <div className="create-group-container">
             <div className="row">
               <div className="col s12">
                 <div className="create-group-background">
                   <div className="add-expense__header">
                     <div className="add-expense__header-left">
-                      <button className="back-button" onClick={this.goBack}>
+                      <button
+                        className="back-button back-button--overview"
+                        onClick={this.goBack}
+                      >
                         &larr; Back
                       </button>
                     </div>

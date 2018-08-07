@@ -1,5 +1,5 @@
 .footer {
-  background-color: $color-primary;
+  background-color: rgb(29, 97, 2);
   height: 15vh;
   position: relative;
 }
@@ -26,7 +26,7 @@
 
   @include respond(phone) {
     top: 30%;
-    left: 35%;
+    left: 30%;
   }
 }
 
@@ -49,7 +49,7 @@
 
     @include respond(phone) {
       top: 45%;
-      left: 45%;
+      left: 43%;
     }
   }
 
@@ -65,7 +65,7 @@
 
     @include respond(phone) {
       top: 45%;
-      left: 60%;
+      left: 58%;
     }
   }
 }
