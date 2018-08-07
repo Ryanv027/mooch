@@ -3,7 +3,7 @@ import SignUp from "./SignUp";
 import LogUser from "./LogUser";
 
 import videoMP4 from "./../../videos/Crosby_Street.mp4";
-import videoWEBM from "./../../videos/Breezy.webm";
+import videoWEBM from "./../../videos/Crosby_Street.webm";
 
 class Login extends Component {
   state = {
