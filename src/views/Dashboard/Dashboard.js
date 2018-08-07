@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+import "./../../sass/index.scss";
+
 import Navbar from "../Navbar/Navbar";
 import AddGroupButton from "../Group/Boxes/AddGroupButton";
 import GroupBox from "../Group/Boxes/GroupBox";
 import userPhoto from "./../../images/61205.svg";
-import "./../../sass/index.scss";
+import Footer from "./../components/Footer";
+
+import videoMP4 from "./../../videos/Breezy.mp4";
+import videoWEBM from "./../../videos/Breezy.webm";
 
 class Dashboard extends Component {
   render = () => {
@@ -23,6 +29,13 @@ class Dashboard extends Component {
       <div className="page-container">
         <Navbar history={this.props.history} />
         <div className="background-color">
+          <div class="bg-video">
+            <video class="bg-video__content" autoplay="autoplay" muted loop>
+              <source src={videoMP4} type="video/mp4" />
+              <source src={videoWEBM} type="video/webm" /> Your browser is not
+              supported!
+            </video>
+          </div>
           <div className="dashboard-container">
             <div className="row">
               <div className="col l12 s12">
@@ -47,7 +60,7 @@ class Dashboard extends Component {
                     {groups.length > 0 ? (
                       groups
                     ) : (
-                      <div className="col s10 offset-s1 center">
+                      <div className="col s12 center">
                         <h3 className="groups-message">
                           Create a group to get started!
                         </h3>
@@ -58,10 +71,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-          <div className="footer">
-            <h6 className="footer-name">@Mooch</h6>
-          </div>
-          <div className="footer-accent" />
+          <Footer />
         </div>
       </div>
     );

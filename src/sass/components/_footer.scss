@@ -1,10 +1,7 @@
 .footer {
   background-color: $color-primary;
-  height: 10vh;
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
-  // width: 100%;
+  height: 15vh;
+  position: relative;
 }
 
 .footer-accent {
@@ -19,4 +16,56 @@
 
 .footer-name {
   color: $color-secondary;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+
+  @include respond(tab-port) {
+    left: 35%;
+  }
+
+  @include respond(phone) {
+    top: 30%;
+    left: 35%;
+  }
+}
+
+.icon {
+  font-size: 3rem;
+  color: $color-secondary;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  position: absolute;
+
+  &--1 {
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include respond(tab-port) {
+      top: 25%;
+      left: 55%;
+    }
+
+    @include respond(phone) {
+      top: 45%;
+      left: 45%;
+    }
+  }
+
+  &--2 {
+    top: 35%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+
+    @include respond(tab-port) {
+      top: 25%;
+      left: 60%;
+    }
+
+    @include respond(phone) {
+      top: 45%;
+      left: 60%;
+    }
+  }
 }

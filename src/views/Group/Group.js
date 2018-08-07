@@ -6,6 +6,10 @@ import Navbar from "../Navbar/Navbar";
 import AddExpense from "./AddExpense";
 import GroupDashboard from "./GroupDashboard";
 import DebtOverview from "./DebtOverview";
+import Footer from "./../components/Footer";
+
+import videoMP4 from "./../../videos/Breezy.mp4";
+import videoWEBM from "./../../videos/Breezy.webm";
 
 class Group extends Component {
   state = {
@@ -108,6 +112,13 @@ class Group extends Component {
       <div>
         <Navbar history={this.props.history} />
         <div className="background-color">
+          <div class="bg-video">
+            <video class="bg-video__content" autoplay="autoplay" muted loop>
+              <source src={videoMP4} type="video/mp4" />
+              <source src={videoWEBM} type="video/webm" /> Your browser is not
+              supported!
+            </video>
+          </div>
           {this.state.groupDashboard ? (
             <div>
               <GroupDashboard
@@ -137,10 +148,7 @@ class Group extends Component {
               groupUserData={this.state.groupUserData}
             />
           ) : null}
-          <div className="footer">
-            <h6 className="footer-name">@Mooch</h6>
-          </div>
-          <div className="footer-accent" />
+          <Footer />
         </div>
       </div>
     );

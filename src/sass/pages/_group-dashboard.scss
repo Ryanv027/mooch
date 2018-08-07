@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-left: 2rem;
 
   &__header {
     display: inline-block;
@@ -22,6 +23,7 @@
   // border: 1px solid $color-primary;
   position: relative;
   margin-bottom: 4rem;
+  border-radius: 15px;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
@@ -37,13 +39,20 @@
   &__title {
     font-size: 2rem;
     height: 5rem;
-    padding-top: 1rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    padding: 2.5rem 2rem 5rem 2rem;
     color: $color-secondary;
     background-image: linear-gradient(
       to right,
       $color-primary,
       $color-primary-dark
     );
+
+    @include respond(tab-port) {
+      padding: 2rem 2rem 5.5rem 2rem;
+    }
   }
 
   &__description {
