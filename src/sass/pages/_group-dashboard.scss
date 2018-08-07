@@ -1,8 +1,8 @@
-.group-dash {
-  &__heading {
-    font-size: $font-large;
-  }
-}
+// .group-dash {
+//   &__heading {
+//     font-size: $font-large;
+//   }
+// }
 
 .expense-container {
   display: flex;
@@ -18,10 +18,13 @@
 }
 
 .single-expense {
-  width: 40%;
+  width: 30%;
   // border: 1px solid $color-primary;
   position: relative;
   margin-bottom: 4rem;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 
   &__title {
     font-size: 2rem;
@@ -93,6 +96,25 @@
     top: -0.2px;
     left: -2rem;
   }
+}
+
+.group-dashboard {
+  &__group-name {
+    font-size: 3.5rem;
+    border-bottom: 3px solid $color-primary;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
+}
+
+.no-expenses {
+  margin-bottom: 35rem;
+}
+
+.check-image {
+  height: 4rem;
+  width: 4rem;
 }
 
 .color-green {

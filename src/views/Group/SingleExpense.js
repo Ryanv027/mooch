@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import userPhoto from "./../../images/61205.svg";
+import checkMark from "./../../images/Check_mark.png";
 
 class SingleExpense extends React.Component {
   state = {
@@ -50,7 +51,6 @@ class SingleExpense extends React.Component {
     const mooches = this.props.groupUserData.map(user => {
       let userName = "";
       for (let i = 0; i < this.props.expense.mooches.length; i++) {
-        console.log("blah", this.props.expense.mooches.length);
         if (user.userID === this.props.expense.mooches[i]) {
           userName = user.userName;
         }
@@ -67,6 +67,15 @@ class SingleExpense extends React.Component {
         );
       } else return null;
     });
+
+    const moochCheck = mooches.filter(mooch => {
+      if (mooch !== null) {
+        return mooch;
+      } else return null;
+    });
+
+    console.log(moochCheck.length);
+
     const amount = (this.props.expense.amount / 100).toFixed(2);
 
     return (
@@ -110,10 +119,20 @@ class SingleExpense extends React.Component {
               <span className="bold">Mooches:</span>
             </h6>
           </div>
-
-          <div className="col s10 offset-s1">
-            <div className="mooch-container">{mooches}</div>
-          </div>
+          {moochCheck.length > 0 ? (
+            <div className="col s10 offset-s1">
+              <div className="mooch-container">{mooches}</div>
+            </div>
+          ) : (
+            <div>
+              <div className="col s10 offset-s1 mt-medium center">
+                <h6>All mooches have paid up!</h6>
+              </div>
+              <div className="col s10 offset-s1 mt-medium center">
+                <img src={checkMark} alt="check mark" className="check-image" />
+              </div>
+            </div>
+          )}
 
           <div className="col s10 offset-s1 center">
             <button onClick={this.editExpense} className="secondary-button">

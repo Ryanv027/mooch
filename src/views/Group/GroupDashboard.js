@@ -88,6 +88,7 @@ class GroupDashboard extends React.Component {
       );
     });
 
+    console.log("DASHBOARD ", this.state.groupUserdata);
     return (
       <div className="group-container">
         <div className="row">
@@ -95,7 +96,9 @@ class GroupDashboard extends React.Component {
             <div className="create-group-background">
               <div className="row">
                 <div className="col s8 offset-s2 center">
-                  <h1 className="page-heading">Group Dashboard</h1>
+                  <h3 className="group-dashboard__group-name">
+                    {this.props.groupName}
+                  </h3>
                 </div>
 
                 <div className="col s3 offset-s2 mb-large">
@@ -128,8 +131,8 @@ class GroupDashboard extends React.Component {
                     </div>
                   </div>
                 ) : (
-                  <div className="expense-container">
-                    <h1 className="font-medium col s10 offset-s1 center-align">
+                  <div className="col s10 offset-s1 center">
+                    <h1 className="page-heading-secondary no-expenses">
                       No expenses found! Add one to get started!
                     </h1>
                   </div>

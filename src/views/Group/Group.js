@@ -52,7 +52,8 @@ class Group extends Component {
           balance: 0
         };
       });
-      this.setState({ groupUserData: users, groupDashboard: true });
+      this.setState({ groupUserData: users });
+      this.groupDashboardView();
     });
   };
 
@@ -108,16 +109,19 @@ class Group extends Component {
         <Navbar history={this.props.history} />
         <div className="background-color">
           {this.state.groupDashboard ? (
-            <GroupDashboard
-              addExpenseView={this.addExpenseView}
-              debtOverview={this.debtOverview}
-              groupName={this.state.groupName}
-              groupUserData={this.state.groupUserData}
-              calculateGroupDebts={this.calculateGroupDebts}
-              match={this.props.match}
-              history={this.props.history}
-              setGroupDebts={this.setGroupDebts}
-            />
+            <div>
+              <GroupDashboard
+                addExpenseView={this.addExpenseView}
+                debtOverview={this.debtOverview}
+                groupDashboardView={this.groupDashboardView}
+                groupName={this.state.groupName}
+                groupUserData={this.state.groupUserData}
+                calculateGroupDebts={this.calculateGroupDebts}
+                match={this.props.match}
+                history={this.props.history}
+                setGroupDebts={this.setGroupDebts}
+              />
+            </div>
           ) : null}
           {this.state.addExpenseView ? (
             <AddExpense
