@@ -256,7 +256,7 @@ class ExpenseOverview extends React.Component {
           <div className="create-group-container">
             <div className="row">
               <div className="col s12">
-                <div className="create-group-background">
+                <div className="create-group-background--second overview">
                   <div className="add-expense__header">
                     <div className="add-expense__header-left">
                       <button

@@ -125,11 +125,11 @@ class AddExpense extends React.Component {
       <div className="group-container">
         <div className="row">
           <div className="col s12">
-            <div className="create-group-background">
+            <div className="create-group-background--second overview">
               <div className="add-expense__header">
                 <div className="add-expense__header-left">
                   <button
-                    className="back-button back-button--expense"
+                    className="back-button back-button--overview"
                     onClick={this.props.groupDashboardView}
                   >
                     &larr; Back

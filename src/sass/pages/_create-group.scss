@@ -20,6 +20,21 @@
   border: 3px solid $color-primary;
   box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.6);
   background: $color-secondary;
+  // height: 50rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 3rem;
+}
+
+.create-group-background--second {
+  border-radius: 20px;
+  border: 3px solid $color-primary;
+  box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.6);
+  background: $color-secondary;
+  height: 50rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 3rem;
 }
 
 .mooch-message {

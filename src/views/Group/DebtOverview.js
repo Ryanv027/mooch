@@ -62,7 +62,7 @@ class DebtOverview extends React.Component {
       <div className="group-container">
         <div className="row">
           <div className="col s12">
-            <div className="create-group-background overview">
+            <div className="create-group-background--second overview">
               <div className="add-expense__header">
                 <div className="add-expense__header-left">
                   <button

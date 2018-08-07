@@ -97,7 +97,7 @@ class GroupDashboard extends React.Component {
       <div className="group-container">
         <div className="row">
           <div className="col s12">
-            <div className="create-group-background">
+            <div className="create-group-background--second">
               <div className="row">
                 <div className="col s8 offset-s2 center">
                   <h3 className="group-dashboard__group-name">
