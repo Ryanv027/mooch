@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+import checkMark from "./../../images/Check_mark.png";
+
 class AddExpense extends React.Component {
   state = {
     groupUserData: [],
@@ -95,17 +97,24 @@ class AddExpense extends React.Component {
       if (user.userID !== this.props.userID) {
         return (
           <div key={index}>
-            <div className="col s8 offset-s3 mb-medium">
-              <label htmlFor={user.userName}>
-                <input
-                  type="checkbox"
-                  id={user.userName}
-                  className="filled-in"
-                  checked={user.checked}
-                  onChange={() => this.checkboxToggle(user.userID)}
-                />
+            <div className="col s8 offset-s3 mb-medium checkbox">
+              <input
+                type="checkbox"
+                id={user.userName}
+                name={user.userName}
+                className="filled-in checkbox__button"
+                checked={user.checked}
+                onChange={() => this.checkboxToggle(user.userID)}
+              />
+              <label htmlFor={user.userName} className="checkbox__label">
+                <span className="checkbox__span" />
                 <span style={usernameStyle}>{user.userName}</span>
               </label>
+              <img
+                src={checkMark}
+                alt="check mark"
+                className="checkbox__image"
+              />
             </div>
           </div>
         );
@@ -137,7 +146,7 @@ class AddExpense extends React.Component {
               </div>
 
               <div className="row">
-                <div className="col s8 offset-s2 center">
+                <div className="col s8 offset-s2 center input-field">
                   <h6 className="page-heading-secondary">Description</h6>
                   <input
                     type="text"
@@ -145,7 +154,7 @@ class AddExpense extends React.Component {
                     onChange={this.onChangeDescription}
                   />
                 </div>
-                <div className="col s8 offset-s2 center">
+                <div className="col s8 offset-s2 center input-field">
                   <h6 className="page-heading-secondary">Amount</h6>
                   <input
                     type="number"

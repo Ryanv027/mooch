@@ -1,73 +1,107 @@
 import React from "react";
 
+import handMoney from "./../../images/1293751237.svg";
+
 class DebtOverview extends React.Component {
-  getCreditUsers = () => {
-    const credits = this.props.groupUserData.filter(user => {
-      return user.balance > 0;
-    });
-    return credits;
+  state = {
+    mooches: [],
+    financers: []
+  };
+  componentDidMount = () => {
+    this.findMooches();
+    this.findFinancers();
   };
 
-  getDebitUsers = () => {
-    const debits = this.props.groupUserData.filter(user => {
-      return user.balance < 0;
-    });
-    return debits;
-  };
-
-  calculateSomeShit = (credits, debits) => {
-    const list = credits.map(user => {
-      const balance = user.balance;
-      let updatingBalance = 0;
-      for (let i = 0; i < debits.length; i++) {
-        if (debits[i].balance < balance) {
-        }
+  findMooches = () => {
+    const users = this.props.groupUserData;
+    const mooches = [];
+    for (let i = 0; i < users.length; i++) {
+      if (parseInt(users[i].balance) < 0) {
+        mooches.push(users[i]);
       }
-    });
+    }
+    this.setState({ mooches });
+  };
+
+  findFinancers = () => {
+    const users = this.props.groupUserData;
+    const financers = [];
+    for (let i = 0; i < users.length; i++) {
+      if (parseInt(users[i].balance) >= 0) {
+        financers.push(users[i]);
+      }
+    }
+    this.setState({ financers });
   };
 
   render() {
-    const credits = this.getCreditUsers();
-    const debits = this.getDebitUsers();
-    console.log(credits);
-    console.log(debits);
-
-    const calculateSomeShit = this.calculateSomeShit(credits, debits);
-
-    const users = this.props.groupUserData.map(user => {
+    console.log(this.state.mooches);
+    const financers = this.state.financers.map(user => {
       return (
-        <div className="row">
-          <h4 className="col s2 offset-s4">{user.userName}</h4>
-          {user.balance >= 0 ? (
-            <h4 className="col s3">$ {user.balance}</h4>
-          ) : (
-            <h4 className="col s3">
-              $ <span className="debtOverview-negative">{user.balance}</span>
-            </h4>
-          )}
+        <div className="col s5 offset-s1 mb-medium">
+          <h4 className="overview__username">
+            {user.userName}{" "}
+            <span className="overview__financer">${user.balance}</span>
+          </h4>
         </div>
       );
     });
-    console.log(this.props);
+
+    const mooches = this.state.mooches.map(user => {
+      return (
+        <div className="col s5 offset-s1 mb-medium">
+          <h4 className="overview__username">
+            {user.userName}{" "}
+            <span className="overview__mooch">${user.balance}</span>
+          </h4>
+        </div>
+      );
+    });
+
     return (
-      <div className="container debtOverview-container">
-        <div className="groupDash-background">
-          <div className="row groupDash-name__row">
-            <h1 className="col s10 offset-s1 center-align addExpense-header">
-              Debt Overview
-            </h1>
-          </div>
-          <div className="row">
-            <button
-              className="col s4 offset-s4 btn btn-large login-button"
-              onClick={this.props.groupDashboardView}
-            >
-              Back To Group Dashboard
-            </button>
-          </div>
-          {users}
-          <div className="row">
-            <div className="spacing col s12" />
+      <div className="group-container">
+        <div className="row">
+          <div className="col s12">
+            <div className="create-group-background">
+              <div className="add-expense__header">
+                <div className="add-expense__header-left">
+                  <button
+                    className="back-button"
+                    onClick={this.props.groupDashboardView}
+                  >
+                    &larr; Back
+                  </button>
+                </div>
+                <h1 className="page-heading add-expense__header-center">
+                  Debt Overview
+                </h1>
+                <div className="add-expense__header-right">&nbsp;</div>
+              </div>
+              <div className="row">
+                <div className="col s10 l4 offset-s1 offset-l2">
+                  <div className="row overview">
+                    <div className="col s10 offset-s1 center">
+                      <h3 className="overview__title">Pay Me</h3>
+                    </div>
+                    <img
+                      className="overview__image"
+                      alt="hand and moeny"
+                      src={handMoney}
+                    />
+                    {financers}
+                  </div>
+                </div>
+                <div className="col s10 l4 offset-s1">
+                  <div className="row">
+                    <div className="col s10 offset-s1 center">
+                      <h3 className="overview__title">Pay Up</h3>
+                    </div>
+                    {mooches}
+                  </div>
+                </div>
+              </div>
+              <div className="room">&nbsp;</div>
+            </div>
           </div>
         </div>
       </div>

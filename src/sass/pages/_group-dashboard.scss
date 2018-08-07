@@ -1,0 +1,135 @@
+// .group-dash {
+//   &__heading {
+//     font-size: $font-large;
+//   }
+// }
+
+.expense-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__header {
+    display: inline-block;
+    font-size: 2.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+.single-expense {
+  width: 35%;
+  // border: 1px solid $color-primary;
+  position: relative;
+  margin-bottom: 4rem;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  @include respond(tab-port) {
+    width: 45%;
+  }
+
+  @include respond(phone) {
+    width: 95%;
+  }
+
+  &__title {
+    font-size: 2rem;
+    height: 5rem;
+    padding-top: 1rem;
+    color: $color-secondary;
+    background-image: linear-gradient(
+      to right,
+      $color-primary,
+      $color-primary-dark
+    );
+  }
+
+  &__description {
+    margin: 3rem 0 1.5rem 0;
+    font-size: 1.4rem;
+  }
+
+  &__button {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    margin-top: 0 !important;
+
+    background-color: rgb(150, 31, 31);
+    height: 1.5rem;
+    width: 2rem;
+    color: white;
+    border-radius: 3px;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0.1rem 0.1rem 1rem darkgrey;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+
+  &__error {
+    font-size: 1rem !important;
+    // height: 1rem !important;
+  }
+}
+
+.mooch-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.mooch {
+  width: 90%;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  position: relative;
+
+  &__photo {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.2px;
+    left: -2rem;
+  }
+}
+
+.group-dashboard {
+  &__group-name {
+    font-size: 3.5rem;
+    border-bottom: 3px solid $color-primary;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
+}
+
+.no-expenses {
+  margin-bottom: 35rem;
+}
+
+.check-image {
+  height: 4rem;
+  width: 4rem;
+}
+
+.color-green {
+  color: $color-primary;
+}
+
+.bold {
+  font-weight: bold;
+}

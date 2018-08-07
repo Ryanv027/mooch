@@ -88,45 +88,62 @@ class GroupDashboard extends React.Component {
       );
     });
 
+    const buttonStyle = {
+      margin: 0
+    };
+
+    console.log("DASHBOARD ", this.state.groupUserdata);
     return (
-      <div className="container groupExpense-container">
-        <div className="section groupDash-background">
-          <div className="row groupDash-name__row">
-            <h1 className="col s8 offset-s2 center-align groupDash-name">
-              Group - {this.props.groupName}
-            </h1>
-          </div>
+      <div className="group-container">
+        <div className="row">
+          <div className="col s12">
+            <div className="create-group-background">
+              <div className="row">
+                <div className="col s8 offset-s2 center">
+                  <h3 className="group-dashboard__group-name">
+                    {this.props.groupName}
+                  </h3>
+                </div>
 
-          <div className="divider" />
+                <div className="col l3 s8 offset-s2 offset-l2 mb-large center">
+                  <div
+                    className="group-dashboard-button"
+                    onClick={this.props.addExpenseView}
+                  >
+                    <h3 className="add-group-button-text">Add Expense</h3>
+                  </div>
+                </div>
+                <div className="col l3 s8 offset-s2 offset-l2 mb-large center">
+                  <div
+                    className="group-dashboard-button"
+                    onClick={this.props.debtOverview}
+                  >
+                    <h3 className="add-group-button-text">Overview</h3>
+                  </div>
+                </div>
 
-          <div className="row">
-            <button
-              className="col s3 offset-s2 btn btn-large waves-effect waves-light green-accent-2 login-button"
-              onClick={this.props.addExpenseView}
-            >
-              Add Expense
-            </button>
-            <button
-              className="col s3 offset-s2 btn btn-large waves-effect waves-light green-accent-2 login-button "
-              onClick={this.props.debtOverview}
-            >
-              Debt Overview
-            </button>
+                <div className="col s8 offset-s2 center">
+                  <h4 className="expense-container__header mb-medium">
+                    Expenses
+                  </h4>
+                </div>
+
+                {expenses.length > 0 ? (
+                  <div className="row">
+                    <div className="col s8 offset-s2">
+                      <div className="expense-container">{expenses}</div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="col s10 offset-s1 center">
+                    <h1 className="page-heading-secondary no-expenses">
+                      No expenses found! Add one to get started!
+                    </h1>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-          {expenses.length > 0 ? (
-            <div className="row">
-              <h4 className="col s4 offset-s4 center-align groupDash-expense">
-                Group Expenses
-              </h4>
-              {expenses}
-            </div>
-          ) : (
-            <div className="row">
-              <h1 className="font-medium col s10 offset-s1 center-align">
-                No expenses found! Add one to get started!
-              </h1>
-            </div>
-          )}
         </div>
       </div>
     );

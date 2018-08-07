@@ -9,7 +9,7 @@
 }
 
 .dashboard-container {
-  margin: 3rem 2rem;
+  margin: 3rem 10rem;
 
   @include respond(phone) {
     margin: 3rem 0.5rem;
@@ -42,6 +42,10 @@
     font-size: $font-large;
     margin: 2.5rem 10rem 2.5rem 0;
 
+    @include respond(tab-port) {
+      width: 22%;
+    }
+
     @include respond(phone) {
       font-size: 3.8rem;
       margin: 2.5rem 0;
@@ -61,14 +65,19 @@
     top: -7px;
     left: -3.5rem;
 
+    @include respond(tab-port) {
+      width: 30%;
+    }
+
     @include respond(phone) {
-      left: -1rem;
+      left: 1.5rem;
     }
   }
 
   @include respond(phone) {
     margin-bottom: $mb-medium;
-    width: 55%;
+    width: 90%;
+    margin-left: 0.5rem;
     text-align: center;
   }
 }

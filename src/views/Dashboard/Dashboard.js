@@ -43,7 +43,7 @@ class Dashboard extends Component {
                       {`Hello, ${this.props.user.userName}!`}
                     </h6>
                   </div>
-                  <div className="test mt-large">
+                  <div className="group-box-container mt-large">
                     {groups.length > 0 ? (
                       groups
                     ) : (
