@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import Navbar from "./../Navbar/Navbar";
 import Footer from "./../components/Footer";
 
+import videoMP4 from "./../../videos/Breezy.mp4";
+import videoWEBM from "./../../videos/Breezy.webm";
+
 class ExpenseOverview extends React.Component {
   state = {
     expense: "",
@@ -250,6 +253,13 @@ class ExpenseOverview extends React.Component {
       <div className="page-container">
         <Navbar history={this.props.history} />
         <div className="background-color">
+          <div class="bg-video">
+            <video class="bg-video__content" autoplay="autoplay" muted loop>
+              <source src={videoMP4} type="video/mp4" />
+              <source src={videoWEBM} type="video/webm" /> Your browser is not
+              supported!
+            </video>
+          </div>
           <div className="create-group-container">
             <div className="row">
               <div className="col s12">
