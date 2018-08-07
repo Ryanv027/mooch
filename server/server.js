@@ -37,7 +37,7 @@ require("./routes/userRoutes")(app);
 require("./routes/groupRoutes")(app);
 require("./routes/expensesRoutes")(app);
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   // cmd.run(`psql -U ${DB_USER} ${DB_NAME} < db/seeds.sql`);
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
