@@ -39,14 +39,7 @@ class Login extends Component {
     return (
       <div className="background-cover">
         <div class="bg-video">
-          <video
-            class="bg-video__content"
-            autoplay
-            autoplay="autoplay"
-            controls={false}
-            muted
-            loop
-          >
+          <video class="bg-video__content" controls={false} muted loop>
             <source src={videoMP4} type="video/mp4" />
             <source src={videoWEBM} type="video/webm" /> Your browser is not
             supported!
