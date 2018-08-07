@@ -58,7 +58,7 @@
 
 .back-button {
   color: $color-primary;
-  font-size: 2rem;
+  font-size: 2.5rem;
   border: none;
   cursor: pointer;
   display: inline-block;
@@ -71,6 +71,12 @@
     $color-primary 50%
   );
   background-size: 270%;
+
+  &--login {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+  }
 
   &:hover {
     // transform: scale(1.07);

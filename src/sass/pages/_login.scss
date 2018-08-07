@@ -22,17 +22,41 @@
   }
 }
 
+.login-box {
+  border-radius: 30px;
+  border: 6px solid rgb(116, 115, 118);
+  /* height: 80vh; */
+  background-color: rgba(253, 253, 253, 1);
+  padding: 2rem;
+  zoom: 0.8;
+}
+
+.background-logo {
+  background-color: rgba(253, 253, 253, 1);
+  height: 20rem;
+}
+
 .login-title {
   font-size: $font-large;
   margin-bottom: $mb-medium;
   margin-top: $mt-small;
   line-height: 1.1;
+
+  color: $color-primary;
+}
+
+.login-logo {
+  font-size: 9rem;
+  color: $color-primary;
   font-family: $font-logo;
+  margin-top: 3rem;
 }
 
 .login-subtitle {
-  font-size: $font-medium;
+  font-size: 2rem;
   margin-bottom: $mb-small;
+  color: $color-primary;
+  margin-top: 3rem;
 }
 
 .prime {
@@ -72,15 +96,6 @@ main {
   box-shadow: none;
 }
 
-.login-box {
-  border-radius: 30px;
-  border: 6px solid rgb(116, 115, 118);
-  /* height: 80vh; */
-  background-color: $color-secondary;
-  padding: 2rem;
-  zoom: 0.8;
-}
-
 .login-font {
   // font-family: "Poiret One", cursive;
   font-size: 2rem;
@@ -92,4 +107,8 @@ main {
 
 .font-bottom {
   font-size: 18px;
+}
+
+.relative {
+  position: relative;
 }
