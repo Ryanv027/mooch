@@ -80,6 +80,10 @@
   color: $color-primary;
   font-family: $font-logo;
   margin-top: 3rem;
+
+  @media screen and (max-width: 350px) {
+    font-size: 6rem;
+  }
 }
 
 .login-subtitle {
