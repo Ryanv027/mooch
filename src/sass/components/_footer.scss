@@ -18,7 +18,7 @@
   color: $color-secondary;
   position: absolute;
   top: 50%;
-  left: 35%;
+  left: 40%;
 
   @include respond(tab-port) {
     left: 35%;
@@ -39,7 +39,7 @@
 
   &--1 {
     top: 35%;
-    left: 50%;
+    left: 55%;
     transform: translate(-50%, -50%);
 
     @include respond(tab-port) {
@@ -55,7 +55,7 @@
 
   &--2 {
     top: 35%;
-    left: 55%;
+    left: 60%;
     transform: translate(-50%, -50%);
 
     @include respond(tab-port) {

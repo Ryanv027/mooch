@@ -15,7 +15,8 @@ body {
   margin: 2.5rem 0 2.5rem 0;
 
   @include respond(phone) {
-    font-size: 3.8rem;
+    font-size: 3rem;
+    margin-top: 5rem;
     flex: 1;
   }
 }

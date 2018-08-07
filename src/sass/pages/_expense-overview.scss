@@ -1,17 +1,42 @@
 .expense {
   &__name {
     font-size: 3rem;
+
+    @include respond(phone) {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  }
+
+  &__heading {
+    text-align: center;
+    font-family: $font-main;
+    font-weight: bold;
+    font-size: $font-large;
+    margin: 2.5rem 0 2.5rem 0;
+
+    @include respond(phone) {
+      display: none;
+    }
   }
 
   &__creator {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
   }
 
   &__amount {
     font-size: 2.5rem;
     margin-top: 2.5rem;
     margin-bottom: 4rem;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
   }
 
   &__subtitle {
@@ -19,6 +44,10 @@
     margin-bottom: 3rem;
     display: inline-block;
     border-bottom: 2px solid $color-primary;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
 
     &--mooch {
       color: red;

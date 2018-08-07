@@ -266,12 +266,12 @@ class ExpenseOverview extends React.Component {
                         &larr; Back
                       </button>
                     </div>
-                    <h1 className="page-heading add-expense__header-center">
+                    <h1 className="expense__heading add-expense__header-center">
                       Expense Overview
                     </h1>
                     <div className="add-expense__header-right">&nbsp;</div>
                   </div>
-                  <div className="row">
+                  <div className="row mt-x-large">
                     <div className="col s10 offset-s1 center">
                       <h3 className="expense__name">
                         {" "}
@@ -289,15 +289,15 @@ class ExpenseOverview extends React.Component {
                     <div className="col s10 offset-s1 center mb-medium">
                       <h3 className="error">{this.state.paymentError}</h3>
                     </div>
-                    <div className="col l4 s10 offset-s1 offset-l1 center">
+                    <div className="col l4 s10 offset-s1 offset-l1 center mb-large">
                       <h3 className="expense__subtitle expense__subtitle--mooch">
                         Mooches
                       </h3>
-                      <div className="row">
+                      <div className="row ">
                         <div className="col s12">{mooches}</div>
                       </div>
                     </div>
-                    <div className="col l4 s10 offset-s1 offset-l2 center">
+                    <div className="col l4 s10 offset-s1 offset-l2 center mb-large">
                       <h3 className="expense__subtitle expense__subtitle--friends">
                         All Paid Up!
                       </h3>

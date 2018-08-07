@@ -129,7 +129,7 @@ class AddExpense extends React.Component {
               <div className="add-expense__header">
                 <div className="add-expense__header-left">
                   <button
-                    className="back-button back-button--overview"
+                    className="back-button back-button--expense"
                     onClick={this.props.groupDashboardView}
                   >
                     &larr; Back
