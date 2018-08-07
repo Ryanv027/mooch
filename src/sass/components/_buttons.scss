@@ -85,7 +85,16 @@
   &--overview {
     @include respond(phone) {
       font-size: 2rem;
-      top: 4rem;
+      top: 2rem;
+      position: absolute;
+      left: 2rem;
+    }
+  }
+
+  &--expense {
+    @include respond(phone) {
+      font-size: 2rem;
+      top: 5rem;
       position: absolute;
       left: 4rem;
     }
@@ -168,6 +177,9 @@
     font-family: "Muli", "sans-serif";
     margin-left: 2px;
   }
+
+  @include respond(phone) {
+  }
 }
 
 .add-group-button {
@@ -183,31 +195,11 @@
 
   @include respond(tab-port) {
     width: 25%;
-    margin-left: 1rem;
   }
 
   @include respond(phone) {
     order: 1;
-    width: 55%;
-  }
-
-  &:active {
-    box-shadow: 1px 5px 10px black;
-    transform: scale(0.99);
-  }
-}
-
-.group-dashboard-button {
-  border: 2px solid rgb(22, 102, 61);
-  // background: linear-gradient(to bottom right, white, rgb(177, 177, 177));
-  margin: 0;
-  border-radius: 25px;
-  box-shadow: 3px 9px 15px black;
-  transition: all 0.2s;
-
-  &:hover {
-    transform: scale(1.02);
-    cursor: pointer;
+    width: 45%;
   }
 
   &:active {
@@ -220,6 +212,53 @@
   text-align: center;
   font-size: 2.5rem;
   padding: 0.8rem;
+
+  @include respond(phone) {
+    font-size: 2rem;
+    padding: 0.2rem;
+  }
+}
+
+.group-dashboard-button {
+  border: 2px solid rgb(22, 102, 61);
+  // background: linear-gradient(to bottom right, white, rgb(177, 177, 177));
+  margin: 0;
+  border-radius: 25px;
+  box-shadow: 3px 9px 15px black;
+  transition: all 0.2s;
+
+  &__text {
+    font-size: 2.5rem;
+    padding: 1rem;
+    @include respond(phone) {
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+
+    &--1 {
+      font-size: 2.5rem;
+      padding: 1rem;
+
+      @include respond(phone) {
+        font-size: 1.2rem;
+        padding: 1.6rem;
+      }
+    }
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 1px 5px 10px black;
+    transform: scale(0.99);
+  }
+
+  @include respond(phone) {
+    margin-top: 2rem;
+  }
 }
 
 .card-button {
@@ -229,12 +268,13 @@
   color: $color-primary;
   transition: all 0.3s;
 
-  @include respond(phone) {
-    margin: 2rem 2rem 1rem 2rem;
-  }
-
   @include respond(tab-port) {
     margin: 1rem 2rem 1rem 2rem;
+  }
+
+  @include respond(phone) {
+    margin: 2rem 2rem 0rem 2rem;
+    padding: 0.5rem;
   }
 
   &:hover {

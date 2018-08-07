@@ -62,7 +62,7 @@ class DebtOverview extends React.Component {
       <div className="group-container">
         <div className="row">
           <div className="col s12">
-            <div className="create-group-background">
+            <div className="create-group-background overview">
               <div className="add-expense__header">
                 <div className="add-expense__header-left">
                   <button
@@ -72,14 +72,15 @@ class DebtOverview extends React.Component {
                     &larr; Back
                   </button>
                 </div>
-                <h1 className="page-heading add-expense__header-center">
+                <h1 className="overview__heading add-expense__header-center">
                   Debt Overview
                 </h1>
                 <div className="add-expense__header-right">&nbsp;</div>
               </div>
+
               <div className="row">
-                <div className="col s10 l4 offset-s1 offset-l2">
-                  <div className="row overview">
+                <div className="col s10 l4 offset-s1 offset-l2 mt-large">
+                  <div className="row">
                     <div className="col s10 offset-s1 center">
                       <h3 className="overview__title">Pay Me</h3>
                     </div>
@@ -91,7 +92,7 @@ class DebtOverview extends React.Component {
                     {financers}
                   </div>
                 </div>
-                <div className="col s10 l4 offset-s1">
+                <div className="col s10 l4 offset-s1 mt-large">
                   <div className="row">
                     <div className="col s10 offset-s1 center">
                       <h3 className="overview__title">Pay Up</h3>

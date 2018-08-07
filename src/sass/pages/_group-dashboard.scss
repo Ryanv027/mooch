@@ -79,6 +79,11 @@
     justify-content: center;
     align-items: center;
 
+    @include respond(phone) {
+      top: 2.2rem;
+      right: 1.5rem;
+    }
+
     &:hover {
       transform: scale(1.04);
     }
@@ -127,6 +132,10 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     display: inline-block;
+
+    @include respond(phone) {
+      margin-top: 4rem;
+    }
   }
 }
 
