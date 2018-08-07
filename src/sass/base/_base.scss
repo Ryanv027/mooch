@@ -15,7 +15,8 @@ html {
   background-color: $color-tertiary;
   overflow: auto;
   position: relative;
-  height: 90vh;
+  // height: 90vh;
+  height: 100%;
 
   @include respond(phone) {
     height: 85vh;

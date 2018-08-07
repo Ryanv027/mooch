@@ -21,7 +21,9 @@
   border: 3px solid $color-primary;
   box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.6);
   background: $color-secondary;
-  height: 80vh;
+  // height: 80vh;
+  height: 50rem;
+  margin-bottom: 3rem;
   overflow-y: auto;
   overflow-x: hidden;
 }
