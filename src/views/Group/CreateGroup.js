@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Navbar from "./../Navbar/Navbar";
 import axios from "axios";
 import { addGroup } from "./../../actions/groups";
+import Footer from "./../components/Footer";
 import "./styles/Group.css";
 
 class CreateGroup extends React.Component {
@@ -239,10 +240,7 @@ class CreateGroup extends React.Component {
               </div>
             </div>
           </div>
-          <div className="footer">
-            <h6 className="footer-name">@Mooch</h6>
-          </div>
-          <div className="footer-accent" />
+          <Footer />
         </div>
       </div>
     );

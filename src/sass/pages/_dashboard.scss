@@ -70,7 +70,7 @@
     }
 
     @include respond(phone) {
-      left: 1.5rem;
+      opacity: 0;
     }
   }
 

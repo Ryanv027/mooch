@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import SignUp from "./SignUp";
 import LogUser from "./LogUser";
 
+import videoMP4 from "./../../videos/Crosby_Street.mp4";
+import videoWEBM from "./../../videos/Breezy.webm";
+
 class Login extends Component {
   state = {
     user: {},
@@ -34,7 +37,14 @@ class Login extends Component {
 
   render = () => {
     return (
-      <div className="login-main-background">
+      <div className="background-cover">
+        <div class="bg-video">
+          <video class="bg-video__content" autoplay="autoplay" muted loop>
+            <source src={videoMP4} type="video/mp4" />
+            <source src={videoWEBM} type="video/webm" /> Your browser is not
+            supported!
+          </video>
+        </div>
         <div className="login-container">
           <div className="section" />
 

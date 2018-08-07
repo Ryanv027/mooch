@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 import Navbar from "./../Navbar/Navbar";
+import Footer from "./../components/Footer";
 
 class ExpenseOverview extends React.Component {
   state = {
@@ -308,6 +309,7 @@ class ExpenseOverview extends React.Component {
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     );

@@ -130,7 +130,7 @@ class GroupDashboard extends React.Component {
 
                 {expenses.length > 0 ? (
                   <div className="row">
-                    <div className="col s8 offset-s2">
+                    <div className="col s10 offset-s1 center">
                       <div className="expense-container">{expenses}</div>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import AddExpense from "./AddExpense";
 import GroupDashboard from "./GroupDashboard";
 import DebtOverview from "./DebtOverview";
+import Footer from "./../components/Footer";
 
 class Group extends Component {
   state = {
@@ -137,10 +138,7 @@ class Group extends Component {
               groupUserData={this.state.groupUserData}
             />
           ) : null}
-          <div className="footer">
-            <h6 className="footer-name">@Mooch</h6>
-          </div>
-          <div className="footer-accent" />
+          <Footer />
         </div>
       </div>
     );
