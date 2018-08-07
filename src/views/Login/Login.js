@@ -59,18 +59,17 @@ class Login extends Component {
                 <div className="col l8 s12 offset-l2">
                   <div className="login-box">
                     <div className="row">
-                      <div className="col l8 s12 offset-l2">
-                        <img
-                          className="img-dimension"
-                          alt="moneyMan"
-                          src="https://img.clipartxtras.com/9a573c6c1389f488f5675fd71fb6bb36_new-age-monopolies-monopoly-economics-clipart_1166-1273.png"
-                        />
-                      </div>
-                      <div className="col s12">
-                        <h5 className="login-title">WELCOME TO MOOCH</h5>
-                        <h6 className="login-subtitle">
-                          Take The Hassle Out Of Settling Debts
-                        </h6>
+                      <div className="col s12 background-logo center">
+                        <div className="row">
+                          <div className="col s12 center">
+                            <h5 className="login-logo">Mooch</h5>
+                          </div>
+                          <div className="col s12 center">
+                            <h6 className="login-subtitle">
+                              Take The Hassle Out Of Settling Debts
+                            </h6>
+                          </div>
+                        </div>
                       </div>
                       <div className="col s6 offset-s3">
                         <button
