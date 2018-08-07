@@ -74,8 +74,6 @@ class SingleExpense extends React.Component {
       } else return null;
     });
 
-    console.log(moochCheck.length);
-
     const amount = (this.props.expense.amount / 100).toFixed(2);
 
     return (

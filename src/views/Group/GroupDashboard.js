@@ -88,6 +88,10 @@ class GroupDashboard extends React.Component {
       );
     });
 
+    const buttonStyle = {
+      margin: 0
+    };
+
     console.log("DASHBOARD ", this.state.groupUserdata);
     return (
       <div className="group-container">
@@ -101,24 +105,24 @@ class GroupDashboard extends React.Component {
                   </h3>
                 </div>
 
-                <div className="col s3 offset-s2 mb-large">
+                <div className="col l3 s8 offset-s2 offset-l2 mb-large center">
                   <div
-                    className="add-group-button"
+                    className="group-dashboard-button"
                     onClick={this.props.addExpenseView}
                   >
                     <h3 className="add-group-button-text">Add Expense</h3>
                   </div>
                 </div>
-                <div className="col s3 offset-s2">
+                <div className="col l3 s8 offset-s2 offset-l2 mb-large center">
                   <div
-                    className="add-group-button"
+                    className="group-dashboard-button"
                     onClick={this.props.debtOverview}
                   >
                     <h3 className="add-group-button-text">Overview</h3>
                   </div>
                 </div>
 
-                <div className="col s4 offset-s4 center">
+                <div className="col s8 offset-s2 center">
                   <h4 className="expense-container__header mb-medium">
                     Expenses
                   </h4>

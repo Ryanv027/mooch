@@ -18,13 +18,21 @@
 }
 
 .single-expense {
-  width: 30%;
+  width: 35%;
   // border: 1px solid $color-primary;
   position: relative;
   margin-bottom: 4rem;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+
+  @include respond(tab-port) {
+    width: 45%;
+  }
+
+  @include respond(phone) {
+    width: 95%;
+  }
 
   &__title {
     font-size: 2rem;
@@ -39,6 +47,7 @@
   }
 
   &__description {
+    margin: 3rem 0 1.5rem 0;
     font-size: 1.4rem;
   }
 

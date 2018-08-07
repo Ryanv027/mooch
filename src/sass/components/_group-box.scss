@@ -214,14 +214,14 @@
   margin: auto;
 }
 
-.test {
+.group-box-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.test2 {
-  width: 21%;
+.group-box {
+  width: 26%;
 
   @include respond(phone) {
     width: 70%;

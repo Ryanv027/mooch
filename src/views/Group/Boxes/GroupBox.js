@@ -34,7 +34,7 @@ class GroupBox extends Component {
 
   render = () => {
     return (
-      <div className="test2 back-color">
+      <div className="group-box back-color">
         <div className="card">
           <div className="card__side card__side--front">
             <div className="card__heading">

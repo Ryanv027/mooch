@@ -101,7 +101,7 @@ class ExpenseOverview extends React.Component {
       });
     } else {
       this.setState({
-        paymentError: "Only creator of this expense may confirm payment",
+        paymentError: "*Only creator of this expense may confirm payment",
         undoPaymentError: ""
       });
     }
@@ -130,7 +130,7 @@ class ExpenseOverview extends React.Component {
       });
     } else {
       this.setState({
-        undoPaymentError: "Only creator of this expense may undo a payment",
+        undoPaymentError: "*Only creator of this expense may undo a payment",
         paymentError: ""
       });
     }
@@ -164,21 +164,26 @@ class ExpenseOverview extends React.Component {
       if (mooch.length > 0) {
         return (
           <div className="row">
-            <h6 className="col s3 offset-s4 moochList">
-              {mooch} owes {shark} -{" "}
-              {(
-                this.state.amount /
-                100 /
-                (this.state.mooches.length + this.state.moochesPaid.length + 1)
-              ).toFixed(2)}
-            </h6>
-            <button
-              onClick={() => this.payButton(user.userID)}
-              className="col s1 paid-button"
-              style={buttonStyle}
-            >
-              Paid
-            </button>
+            <div className="col s10 offset-s1 center">
+              <h3 className="mooch-list">
+                {mooch} owes {shark} - $
+                {(
+                  this.state.amount /
+                  100 /
+                  (this.state.mooches.length +
+                    this.state.moochesPaid.length +
+                    1)
+                ).toFixed(2)}
+              </h3>
+            </div>
+            <div className="col s10 offset-s1 center">
+              <button
+                onClick={() => this.payButton(user.userID)}
+                className="paid-button"
+              >
+                Confirm Payment
+              </button>
+            </div>
           </div>
         );
       } else return null;
@@ -206,32 +211,26 @@ class ExpenseOverview extends React.Component {
       if (paidMooch.length > 0) {
         return (
           <div className="row">
-            <h6 className="col s3 offset-s4 moochList paidMooch">
-              {paidMooch} owes {shark} -{" "}
-              {(
-                this.state.amount /
-                100 /
-                (this.state.mooches.length + this.state.moochesPaid.length + 1)
-              ).toFixed(2)}
-            </h6>
-            <button
-              disabled={true}
-              className="col s1 paid-button__disabled"
-              style={buttonStyle}
-            >
-              Paid
-            </button>
-            <h3 className="col s1 center-align" style={dash}>
-              {" "}
-              -{" "}
-            </h3>
-            <button
-              onClick={() => this.undoPayment(user.userID)}
-              className="col s2 undoPayment-button"
-              style={buttonStyle}
-            >
-              Undo Payment
-            </button>
+            <div className="col s10 offset-s1 center">
+              <h3 className="paid-mooch">
+                {paidMooch} owes {shark} - $
+                {(
+                  this.state.amount /
+                  100 /
+                  (this.state.mooches.length +
+                    this.state.moochesPaid.length +
+                    1)
+                ).toFixed(2)}
+              </h3>
+            </div>
+            <div className="col s10 offset-s1 center">
+              <button
+                onClick={() => this.undoPayment(user.userID)}
+                className="paid-button"
+              >
+                Undo Payment
+              </button>
+            </div>
           </div>
         );
       } else return null;
@@ -247,41 +246,66 @@ class ExpenseOverview extends React.Component {
     const moochesPaid = this.findMoochesPaid(shark);
 
     return (
-      <div>
+      <div className="page-container">
         <Navbar history={this.props.history} />
-        <div className="container debtOverview-container">
-          <div className="groupDash-background">
-            <div className="row groupDash-name__row">
-              <h1 className="addExpense-header col s10 offset-s1 center-align">
-                Expense Overview
-              </h1>
-            </div>
+        <div className="background-color">
+          <div className="create-group-container">
             <div className="row">
-              <button
-                onClick={this.goBack}
-                className="col s4 offset-s4 btn btn-large login-button expenserOverview-button"
-              >
-                Back to Group Dashboard
-              </button>
-              <br />
-              <h3 className="col s4 offset-s4 center-align">
-                {this.state.description}
-              </h3>
-              <h5 className="col s4 offset-s4 center-align">
-                Amount: $ {(this.state.amount / 100).toFixed(2)}
-              </h5>
-              <h4 className="col s4 offset-s4 center-align">
-                <span className="mooches">Mooches</span>
-              </h4>
+              <div className="col s12">
+                <div className="create-group-background">
+                  <div className="add-expense__header">
+                    <div className="add-expense__header-left">
+                      <button className="back-button" onClick={this.goBack}>
+                        &larr; Back
+                      </button>
+                    </div>
+                    <h1 className="page-heading add-expense__header-center">
+                      Expense Overview
+                    </h1>
+                    <div className="add-expense__header-right">&nbsp;</div>
+                  </div>
+                  <div className="row">
+                    <div className="col s10 offset-s1 center">
+                      <h3 className="expense__name">
+                        {" "}
+                        {this.state.description}
+                      </h3>
+                    </div>
+                    <div className="col s10 offset-s1 center">
+                      <h5 className="expense__amount">
+                        Amount: $ {(this.state.amount / 100).toFixed(2)}
+                      </h5>
+                    </div>
+                    <div className="col s10 offset-s1 center">
+                      <h3 className="expense__creator">Created by: {shark}</h3>
+                    </div>
+                    <div className="col s10 offset-s1 center mb-medium">
+                      <h3 className="error">{this.state.paymentError}</h3>
+                    </div>
+                    <div className="col l4 s10 offset-s1 offset-l1 center">
+                      <h3 className="expense__subtitle expense__subtitle--mooch">
+                        Mooches
+                      </h3>
+                      <div className="row">
+                        <div className="col s12">{mooches}</div>
+                      </div>
+                    </div>
+                    <div className="col l4 s10 offset-s1 offset-l2 center">
+                      <h3 className="expense__subtitle expense__subtitle--friends">
+                        All Paid Up!
+                      </h3>
+                      <div className="row">
+                        <div className="col s12">{moochesPaid}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              {mooches}
-              {moochesPaid}
-
-              <h5 className="col s4 offset-s4 center-align">
-                Created By: {shark}
-              </h5>
-              {this.state.paymentError}
-              {this.state.undoPaymentError}
+                <div className="row">
+                  {this.state.paymentError}
+                  {this.state.undoPaymentError}
+                </div>
+              </div>
             </div>
           </div>
         </div>
