@@ -131,7 +131,7 @@ class CreateGroup extends React.Component {
 
   deleteUser = userID => {
     const filteredGroupData = this.state.groupUserData.filter(user => {
-      console.log(user);
+      // console.log(user);
       if (user.userID !== userID) {
         return user;
       } else return null;
@@ -165,7 +165,7 @@ class CreateGroup extends React.Component {
       height: "6rem"
     };
 
-    console.log("USERS LENGTH", users.length);
+    // console.log("USERS LENGTH", users.length);
     return (
       <div>
         <Navbar history={this.props.history} />
