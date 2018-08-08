@@ -250,72 +250,62 @@ class ExpenseOverview extends React.Component {
     const moochesPaid = this.findMoochesPaid(shark);
 
     return (
-      <div className="page-container">
+      <div>
         <Navbar history={this.props.history} />
         <div className="background-color">
           <div className="create-group-container">
-            <div className="row">
-              <div className="col s12">
-                <div className="create-group-background--second overview">
-                  <div className="add-expense__header">
-                    <div className="add-expense__header-left">
-                      <button
-                        className="back-button back-button--overview"
-                        onClick={this.goBack}
-                      >
-                        &larr; Back
-                      </button>
-                    </div>
-                    <h1 className="expense__heading add-expense__header-center">
-                      Expense Overview
-                    </h1>
-                    <div className="add-expense__header-right">&nbsp;</div>
+            <div className="create-group-background--second overview">
+              <div className="page-container">
+                <div className="add-expense__header">
+                  <div className="add-expense__header-left">
+                    <button
+                      className="back-button back-button--overview"
+                      onClick={this.goBack}
+                    >
+                      &larr; Back
+                    </button>
                   </div>
-                  <div className="row mt-x-large">
-                    <div className="col s10 offset-s1 center">
-                      <h3 className="expense__name">
-                        {" "}
-                        {this.state.description}
-                      </h3>
-                    </div>
-                    <div className="col s10 offset-s1 center">
-                      <h5 className="expense__amount">
-                        Amount: $ {(this.state.amount / 100).toFixed(2)}
-                      </h5>
-                    </div>
-                    <div className="col s10 offset-s1 center">
-                      <h3 className="expense__creator">Created by: {shark}</h3>
-                    </div>
-                    <div className="col s10 offset-s1 center mb-medium">
-                      <h3 className="error">{this.state.paymentError}</h3>
-                    </div>
-                    <div className="col l4 s10 offset-s1 offset-l1 center mb-large">
-                      <h3 className="expense__subtitle expense__subtitle--mooch">
-                        Mooches
-                      </h3>
-                      <div className="row ">
-                        <div className="col s12">{mooches}</div>
-                      </div>
-                    </div>
-                    <div className="col l4 s10 offset-s1 offset-l2 center mb-large">
-                      <h3 className="expense__subtitle expense__subtitle--friends">
-                        All Paid Up!
-                      </h3>
-                      <div className="row">
-                        <div className="col s12">{moochesPaid}</div>
-                      </div>
-                    </div>
-                  </div>
+                  <h1 className="expense__heading add-expense__header-center">
+                    Expense Overview
+                  </h1>
+                  <div className="add-expense__header-right">&nbsp;</div>
                 </div>
-
-                <div className="row">
-                  {this.state.paymentError}
-                  {this.state.undoPaymentError}
+                <div className="row mt-x-large">
+                  <div className="col s10 offset-s1 center">
+                    <h3 className="expense__name"> {this.state.description}</h3>
+                  </div>
+                  <div className="col s10 offset-s1 center">
+                    <h5 className="expense__amount">
+                      Amount: $ {(this.state.amount / 100).toFixed(2)}
+                    </h5>
+                  </div>
+                  <div className="col s10 offset-s1 center">
+                    <h3 className="expense__creator">Created by: {shark}</h3>
+                  </div>
+                  <div className="col s10 offset-s1 center mb-medium">
+                    <h3 className="error">{this.state.paymentError}</h3>
+                  </div>
+                  <div className="col l4 s10 offset-s1 offset-l1 center mb-large">
+                    <h3 className="expense__subtitle expense__subtitle--mooch">
+                      Mooches
+                    </h3>
+                    <div className="row ">
+                      <div className="col s12">{mooches}</div>
+                    </div>
+                  </div>
+                  <div className="col l4 s10 offset-s1 offset-l2 center mb-large">
+                    <h3 className="expense__subtitle expense__subtitle--friends">
+                      All Paid Up!
+                    </h3>
+                    <div className="row">
+                      <div className="col s12">{moochesPaid}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </div>
     );

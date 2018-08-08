@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import SingleExpense from "./SingleExpense";
+import Footer from "./../components/Footer";
 
 class GroupDashboard extends React.Component {
   state = {
@@ -95,59 +96,54 @@ class GroupDashboard extends React.Component {
     console.log("DASHBOARD ", this.state.groupUserdata);
     return (
       <div className="group-container">
-        <div className="row">
-          <div className="col s12">
-            <div className="create-group-background--second">
-              <div className="row">
-                <div className="col s8 offset-s2 center">
-                  <h3 className="group-dashboard__group-name">
-                    {this.props.groupName}
-                  </h3>
-                </div>
-
-                <div className="col l3 s4 offset-s1 offset-l2 mb-large center">
-                  <div
-                    className="group-dashboard-button"
-                    onClick={this.props.addExpenseView}
-                  >
-                    <h3 className="group-dashboard-button__text">
-                      Add Expense
-                    </h3>
-                  </div>
-                </div>
-                <div className="col l3 s4 offset-s2 offset-l2 mb-large center">
-                  <div
-                    className="group-dashboard-button"
-                    onClick={this.props.debtOverview}
-                  >
-                    <h3 className="group-dashboard-button__text--1">
-                      Overview
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="col s8 offset-s2 center">
-                  <h4 className="expense-container__header mb-large mt-medium">
-                    Expenses
-                  </h4>
-                </div>
-
-                {expenses.length > 0 ? (
-                  <div className="row">
-                    <div className="col s10 offset-s1 center">
-                      <div className="expense-container">{expenses}</div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="col s10 offset-s1 center">
-                    <h1 className="page-heading-secondary no-expenses">
-                      No expenses found! Add one to get started!
-                    </h1>
-                  </div>
-                )}
+        <div className="create-group-background--second">
+          <div className="page-container">
+            <div className="row">
+              <div className="col s8 offset-s2 center">
+                <h3 className="group-dashboard__group-name">
+                  {this.props.groupName}
+                </h3>
               </div>
+
+              <div className="col l3 s4 offset-s1 offset-l2 mb-large center">
+                <div
+                  className="group-dashboard-button"
+                  onClick={this.props.addExpenseView}
+                >
+                  <h3 className="group-dashboard-button__text">Add Expense</h3>
+                </div>
+              </div>
+              <div className="col l3 s4 offset-s2 offset-l2 mb-large center">
+                <div
+                  className="group-dashboard-button"
+                  onClick={this.props.debtOverview}
+                >
+                  <h3 className="group-dashboard-button__text--1">Overview</h3>
+                </div>
+              </div>
+
+              <div className="col s8 offset-s2 center">
+                <h4 className="expense-container__header mb-large mt-medium">
+                  Expenses
+                </h4>
+              </div>
+
+              {expenses.length > 0 ? (
+                <div className="row">
+                  <div className="col s10 offset-s1 center">
+                    <div className="expense-container">{expenses}</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="col s10 offset-s1 center">
+                  <h1 className="page-heading-secondary no-expenses">
+                    No expenses found! Add one to get started!
+                  </h1>
+                </div>
+              )}
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     );

@@ -4,7 +4,7 @@
     rgba(63, 63, 63, 0.8),
     rgba(29, 97, 2, 0.75)
   );
-  height: 10vh;
+  height: 10rem;
   border-bottom: 5px solid $color-primary;
   box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.5);
 
@@ -15,7 +15,7 @@
   text-align: center;
 
   @include respond(phone) {
-    height: 17vh;
+    height: 12rem;
   }
 
   &__link-right,

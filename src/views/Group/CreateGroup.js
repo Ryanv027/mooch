@@ -144,7 +144,7 @@ class CreateGroup extends React.Component {
       if (user.userID !== this.props.userID) {
         return (
           <div key={index}>
-            <div className="col s6 offset-s1">
+            <div className="col s6 offset-s1 mb-medium">
               <p className="user-box-username">{user.userName}</p>
             </div>
             <div className="col s4">
@@ -161,89 +161,87 @@ class CreateGroup extends React.Component {
     });
 
     const font = {
-      fontSize: "1.8rem"
+      fontSize: "1.8rem",
+      height: "6rem"
     };
+
+    console.log("USERS LENGTH", users.length);
     return (
-      <div className="page-container">
+      <div>
         <Navbar history={this.props.history} />
         <div className="background-color">
           <div className="create-group-container">
-            <div className="row">
-              <div className="col l6 s12 offset-l1">
-                <div className="create-group-background">
-                  <div className="row">
-                    <div className="col s10 l10 offset-s1 offset-l1">
-                      <h1 className="page-heading">Create Group</h1>
-                    </div>
-                    <div className="col s10 offset-s1 center">
-                      <p className="error">{this.state.error}</p>
-                    </div>
-                    <div className="col s10 offset-s1">
-                      <h6 className="page-heading-secondary">Group Name</h6>
-                      <input
-                        type="text"
-                        value={this.state.groupName}
-                        onChange={this.onChangeGroupName}
-                      />
-                    </div>
-                    <div className="col s10 offset-s1">
-                      <p className="center error margin-top">
-                        {this.state.invalidUsernameError}
-                      </p>
-                      <h6 className="page-heading-secondary">
-                        Add Your Mooches
-                        <br />
-                        <span className="mooch-message">(by username)</span>
-                      </h6>
-                      <input
-                        type="text"
-                        value={this.state.userName}
-                        onChange={this.onChangeUserName}
-                      />
-                    </div>
-                    <div className="col s2 offset-s5">
-                      <div
-                        className="add-user-button"
-                        onClick={this.checkUserNameValidity}
-                      >
-                        <span className="add-user-button__plus">+</span>
-                      </div>
-                    </div>
-                    <div className="col s10 offset-s1">
-                      <h6 className="page-heading-secondary">
-                        Group Description
-                      </h6>
-                      <textarea
-                        style={font}
-                        onChange={this.onChangeDescription}
-                        value={this.state.groupDescription}
-                      />
-                    </div>
-                    <div className="col s10 l4 offset-s1 offset-l4 center">
-                      <button
-                        className="main-button"
-                        onClick={this.handleSubmit}
-                      >
-                        Create
-                      </button>
+            <div className="create-group-background">
+              <div className="page-container">
+                <div className="row">
+                  <div className="col s10 l10 offset-s1 offset-l1">
+                    <h1 className="page-heading">Create Group</h1>
+                  </div>
+                  <div className="col s10 offset-s1 center">
+                    <p className="error">{this.state.error}</p>
+                  </div>
+                  <div className="col s10 offset-s1">
+                    <h6 className="page-heading-secondary">Group Name</h6>
+                    <input
+                      type="text"
+                      value={this.state.groupName}
+                      onChange={this.onChangeGroupName}
+                    />
+                  </div>
+                  <div className="col s10 offset-s1">
+                    <p className="center error margin-top">
+                      {this.state.invalidUsernameError}
+                    </p>
+                    <h6 className="page-heading-secondary">
+                      Add Your Mooches
+                      <br />
+                      <span className="mooch-message">(by username)</span>
+                    </h6>
+                    <input
+                      type="text"
+                      value={this.state.userName}
+                      onChange={this.onChangeUserName}
+                    />
+                  </div>
+                  <div className="col s2 offset-s5">
+                    <div
+                      className="add-user-button"
+                      onClick={this.checkUserNameValidity}
+                    >
+                      <span className="add-user-button__plus">+</span>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="col l2 s10 offset-l1 offset-s1 users-box">
-                <div className="create-group-background">
-                  <div className="row">
-                    <div className="col s10 offset-s1">
-                      <h1 className="page-heading center">Users</h1>
-                    </div>
-                    {users}
+                  <div className="col s10 offset-s1">
+                    <h6 className="page-heading-secondary">
+                      Group Description
+                    </h6>
+                    <textarea
+                      style={font}
+                      onChange={this.onChangeDescription}
+                      value={this.state.groupDescription}
+                    />
                   </div>
+                  <div className="col s10 l4 offset-s1 offset-l4 center">
+                    <button className="main-button" onClick={this.handleSubmit}>
+                      Create
+                    </button>
+                  </div>
+                  <div className="col s10 offset-s1 mt-large">
+                    <h1 className="page-heading center">Users Added</h1>
+                  </div>
+                  {users.length > 1 ? (
+                    users
+                  ) : (
+                    <div className="col s10 offset-s1 mb-large center">
+                      <h3 className="username-message">Add Some Users!</h3>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
+
+            <Footer />
           </div>
-          <Footer />
         </div>
       </div>
     );
