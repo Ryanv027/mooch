@@ -30,11 +30,13 @@
     font-size: 4rem;
     width: 33.333333%;
     text-align: center;
+    padding-right: 3rem;
 
     @include respond(phone) {
       font-size: 4rem;
       width: 90%;
       order: 0;
+      padding-right: 0;
     }
   }
 

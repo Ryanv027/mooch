@@ -50,7 +50,7 @@ class Dashboard extends Component {
                   {groups.length > 0 ? (
                     groups
                   ) : (
-                    <div className="col s12 center">
+                    <div className="col s12 center quick-fix">
                       <h3 className="groups-message">
                         Create a group to get started!
                       </h3>
