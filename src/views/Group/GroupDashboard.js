@@ -10,12 +10,12 @@ class GroupDashboard extends React.Component {
   };
 
   componentDidMount = () => {
-    console.log("component mounted dashboard");
+    // console.log("component mounted dashboard");
     this.getGroupExpenses();
   };
 
   componentDidUpdate = () => {
-    console.log("component did update");
+    // console.log("component did update");
   };
 
   getGroupExpenses = () => {
@@ -35,18 +35,18 @@ class GroupDashboard extends React.Component {
       const newUser = { ...user, balance: balance };
       return newUser;
     });
-    console.log(newGroupUsers);
+    // console.log(newGroupUsers);
     this.props.setGroupDebts(newGroupUsers);
   };
 
   getUserBalance = (userID, expenses) => {
-    console.log(userID, "AND", expenses);
+    // console.log(userID, "AND", expenses);
     const credits = this.getMyCredits(userID, expenses);
     const debits = this.getMyDebits(userID, expenses);
     const calculatedCredit = credits;
     const calculatedDebits = -debits;
-    console.log("CREDITS", credits);
-    console.log("DEBITS", debits);
+    // console.log("CREDITS", credits);
+    // console.log("DEBITS", debits);
     return ((calculatedDebits + calculatedCredit) / 100).toFixed(2);
   };
 
@@ -93,7 +93,7 @@ class GroupDashboard extends React.Component {
       margin: 0
     };
 
-    console.log("DASHBOARD ", this.state.groupUserdata);
+    // console.log("DASHBOARD ", this.state.groupUserdata);
     return (
       <div className="group-container">
         <div className="create-group-background--second">

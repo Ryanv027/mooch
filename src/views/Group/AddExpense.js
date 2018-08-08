@@ -44,7 +44,7 @@ class AddExpense extends React.Component {
       axios
         .post("/api/createExpense", info)
         .then(response => {
-          console.log(response);
+          // console.log(response);
           if (response.data.length > 0) {
             this.props.groupDashboardView();
           }

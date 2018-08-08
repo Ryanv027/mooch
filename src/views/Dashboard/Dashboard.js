@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import "./../../sass/index.scss";
-
 import Navbar from "../Navbar/Navbar";
 import AddGroupButton from "../Group/Boxes/AddGroupButton";
 import GroupBox from "../Group/Boxes/GroupBox";
@@ -14,7 +12,7 @@ import videoWEBM from "./../../videos/Breezy.webm";
 
 class Dashboard extends Component {
   render = () => {
-    console.log(this.props);
+    // console.log(this.props);
     const groups = this.props.groups.map(group => {
       return (
         <GroupBox

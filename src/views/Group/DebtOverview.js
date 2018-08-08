@@ -36,7 +36,7 @@ class DebtOverview extends React.Component {
   };
 
   render() {
-    console.log(this.state.mooches);
+    // console.log(this.state.mooches);
     const financers = this.state.financers.map(user => {
       return (
         <div className="col s5 offset-s1 mb-medium">
