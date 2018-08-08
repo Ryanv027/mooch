@@ -22,3 +22,11 @@ html {
     height: 85vh;
   }
 }
+
+.page-container {
+  margin: 0 12rem;
+
+  @include respond(phone) {
+    margin: 0;
+  }
+}

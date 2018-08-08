@@ -6,7 +6,6 @@ import Navbar from "../Navbar/Navbar";
 import AddExpense from "./AddExpense";
 import GroupDashboard from "./GroupDashboard";
 import DebtOverview from "./DebtOverview";
-import Footer from "./../components/Footer";
 
 import videoMP4 from "./../../videos/Breezy.mp4";
 import videoWEBM from "./../../videos/Breezy.webm";
@@ -141,7 +140,6 @@ class Group extends Component {
               groupUserData={this.state.groupUserData}
             />
           ) : null}
-          <Footer />
         </div>
       </div>
     );

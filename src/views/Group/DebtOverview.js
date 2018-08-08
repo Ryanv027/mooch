@@ -1,6 +1,7 @@
 import React from "react";
 
 import handMoney from "./../../images/1293751237.svg";
+import Footer from "./../components/Footer";
 
 class DebtOverview extends React.Component {
   state = {
@@ -60,50 +61,49 @@ class DebtOverview extends React.Component {
 
     return (
       <div className="group-container">
-        <div className="row">
-          <div className="col s12">
-            <div className="create-group-background--second overview">
-              <div className="add-expense__header">
-                <div className="add-expense__header-left">
-                  <button
-                    className="back-button back-button--overview"
-                    onClick={this.props.groupDashboardView}
-                  >
-                    &larr; Back
-                  </button>
-                </div>
-                <h1 className="overview__heading add-expense__header-center">
-                  Debt Overview
-                </h1>
-                <div className="add-expense__header-right">&nbsp;</div>
+        <div className="create-group-background--second overview">
+          <div className="page-container">
+            <div className="add-expense__header">
+              <div className="add-expense__header-left">
+                <button
+                  className="back-button back-button--overview"
+                  onClick={this.props.groupDashboardView}
+                >
+                  &larr; Back
+                </button>
               </div>
-
-              <div className="row">
-                <div className="col s10 l4 offset-s1 offset-l2 mt-large">
-                  <div className="row">
-                    <div className="col s10 offset-s1 center">
-                      <h3 className="overview__title">Pay Me</h3>
-                    </div>
-                    <img
-                      className="overview__image"
-                      alt="hand and moeny"
-                      src={handMoney}
-                    />
-                    {financers}
-                  </div>
-                </div>
-                <div className="col s10 l4 offset-s1 mt-large">
-                  <div className="row">
-                    <div className="col s10 offset-s1 center">
-                      <h3 className="overview__title">Pay Up</h3>
-                    </div>
-                    {mooches}
-                  </div>
-                </div>
-              </div>
-              <div className="room">&nbsp;</div>
+              <h1 className="overview__heading add-expense__header-center">
+                Debt Overview
+              </h1>
+              <div className="add-expense__header-right">&nbsp;</div>
             </div>
+
+            <div className="row">
+              <div className="col s10 l4 offset-s1 offset-l2 mt-large">
+                <div className="row">
+                  <div className="col s10 offset-s1 center">
+                    <h3 className="overview__title">Pay Me</h3>
+                  </div>
+                  <img
+                    className="overview__image"
+                    alt="hand and moeny"
+                    src={handMoney}
+                  />
+                  {financers}
+                </div>
+              </div>
+              <div className="col s10 l4 offset-s1 mt-large">
+                <div className="row">
+                  <div className="col s10 offset-s1 center">
+                    <h3 className="overview__title">Pay Up</h3>
+                  </div>
+                  {mooches}
+                </div>
+              </div>
+            </div>
+            <div className="room">&nbsp;</div>
           </div>
+          <Footer />
         </div>
       </div>
     );

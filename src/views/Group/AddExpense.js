@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 import checkMark from "./../../images/Check_mark.png";
+import Footer from "./../components/Footer";
 
 class AddExpense extends React.Component {
   state = {
@@ -123,60 +124,59 @@ class AddExpense extends React.Component {
 
     return (
       <div className="group-container">
-        <div className="row">
-          <div className="col s12">
-            <div className="create-group-background--second overview">
-              <div className="add-expense__header">
-                <div className="add-expense__header-left">
-                  <button
-                    className="back-button back-button--overview"
-                    onClick={this.props.groupDashboardView}
-                  >
-                    &larr; Back
-                  </button>
-                </div>
-                <h1 className="page-heading add-expense__header-center">
-                  Add Expense
-                </h1>
-                <div className="add-expense__header-right">&nbsp;</div>
+        <div className="create-group-background--second overview">
+          <div className="page-container">
+            <div className="add-expense__header">
+              <div className="add-expense__header-left">
+                <button
+                  className="back-button back-button--overview"
+                  onClick={this.props.groupDashboardView}
+                >
+                  &larr; Back
+                </button>
               </div>
+              <h1 className="page-heading add-expense__header-center">
+                Add Expense
+              </h1>
+              <div className="add-expense__header-right">&nbsp;</div>
+            </div>
 
-              <div className="col s10 offset-s1 center">
-                <p className="error">{this.state.error}</p>
+            <div className="col s10 offset-s1 center">
+              <p className="error">{this.state.error}</p>
+            </div>
+
+            <div className="row">
+              <div className="col s8 offset-s2 center input-field">
+                <h6 className="page-heading-secondary">Description</h6>
+                <input
+                  type="text"
+                  value={this.state.description}
+                  onChange={this.onChangeDescription}
+                />
               </div>
-
-              <div className="row">
-                <div className="col s8 offset-s2 center input-field">
-                  <h6 className="page-heading-secondary">Description</h6>
-                  <input
-                    type="text"
-                    value={this.state.description}
-                    onChange={this.onChangeDescription}
-                  />
-                </div>
-                <div className="col s8 offset-s2 center input-field">
-                  <h6 className="page-heading-secondary">Amount</h6>
-                  <input
-                    type="number"
-                    value={this.state.amount}
-                    onChange={this.onChangeAmount}
-                  />
-                </div>
-                <div className="col s8 offset-s2 center">
-                  <h6 className="user-checkbox__heading">
-                    (Uncheck users that you would like to exclude from this
-                    expense)
-                  </h6>
-                </div>
-                {userCheckboxes}
-                <div className="col s8 offset-s2 center mt-medium">
-                  <button className="main-button " onClick={this.expenseSubmit}>
-                    Submit
-                  </button>
-                </div>
+              <div className="col s8 offset-s2 center input-field">
+                <h6 className="page-heading-secondary">Amount</h6>
+                <input
+                  type="number"
+                  value={this.state.amount}
+                  onChange={this.onChangeAmount}
+                />
+              </div>
+              <div className="col s8 offset-s2 center">
+                <h6 className="user-checkbox__heading">
+                  (Uncheck users that you would like to exclude from this
+                  expense)
+                </h6>
+              </div>
+              {userCheckboxes}
+              <div className="col s8 offset-s2 center mt-medium mb-large">
+                <button className="main-button " onClick={this.expenseSubmit}>
+                  Submit
+                </button>
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     );
