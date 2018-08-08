@@ -29,7 +29,7 @@ class ExpenseOverview extends React.Component {
     axios
       .get("/api/singleExpenseData", { params: { expenseID: expenseID } })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         const moochesPaid =
           response.data.moochesPaid === null ? [] : response.data.moochesPaid;
         this.setGroupData(response.data.groupID);
@@ -83,7 +83,7 @@ class ExpenseOverview extends React.Component {
   };
 
   payButton = userID => {
-    console.log(userID);
+    // console.log(userID);
     if (this.props.loggedUser === this.state.shark) {
       const mooches = this.state.mooches.filter(mooch => {
         return mooch !== userID;
@@ -141,11 +141,11 @@ class ExpenseOverview extends React.Component {
   };
 
   findShark = () => {
-    console.log("hit find shark");
+    // console.log("hit find shark");
     let shark = "";
     this.state.groupUserData.map(user => {
       if (user.userID === this.state.shark) {
-        console.log(user.userName);
+        // console.log(user.userName);
         shark = user.userName;
       }
     });
@@ -242,7 +242,7 @@ class ExpenseOverview extends React.Component {
   };
 
   render() {
-    console.log("RENDER");
+    // console.log("RENDER");
     const shark = this.findShark();
 
     const mooches = this.findMooches(shark);
