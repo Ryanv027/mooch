@@ -45,7 +45,7 @@
     width: 10rem;
     position: absolute;
     top: 12%;
-    right: 46%;
+    right: 46.5%;
 
     @include respond(tab-port) {
       height: 7rem;
@@ -58,14 +58,14 @@
       height: 7rem;
       width: 7rem;
       top: 10rem;
-      right: 44%;
+      right: 45.5%;
     }
 
     @include respond(phone) {
       height: 7rem;
       width: 7rem;
       top: 14rem;
-      right: 13rem;
+      right: 15rem;
     }
   }
 }
