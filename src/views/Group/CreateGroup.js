@@ -144,7 +144,7 @@ class CreateGroup extends React.Component {
       if (user.userID !== this.props.userID) {
         return (
           <div key={index}>
-            <div className="col s6 offset-s1 mb-medium">
+            <div className="col s6 l2 offset-l5 offset-s1 mb-medium">
               <p className="user-box-username">{user.userName}</p>
             </div>
             <div className="col s4">
