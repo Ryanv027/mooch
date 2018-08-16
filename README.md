@@ -2,7 +2,7 @@
 
 are you tired of freeloaders? letting your roommate borrow money but never pay you back? let us help you out with that. with mooch, you'll never have to worry about missing money again!
 
-Our live link is currently being worked on. It is unavailable for use right now.
+https://mooch-app.herokuapp.com/
 
 ## our team
 
